@@ -1,4 +1,4 @@
-namespace Reci_me.Models
+namespace Reci_Me.UI.Models
 {
     public class ErrorViewModel
     {

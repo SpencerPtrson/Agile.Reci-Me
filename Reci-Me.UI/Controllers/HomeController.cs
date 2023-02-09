@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Reci_me.Models;
+using Reci_Me.UI.Models;
 using System.Diagnostics;
 
-namespace Reci_me.Controllers
+namespace Reci_Me.UI.Controllers
 {
     public class HomeController : Controller
     {
