@@ -57,6 +57,9 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="PreDeploy" />
+    <Folder Include="PostDeploy" />
+    <Folder Include="PostDeploy\DefaultData" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\tblRecipeImage.sql" />
@@ -64,5 +67,20 @@
     <Build Include="Tables\tblRecipe.sql" />
     <Build Include="Tables\tblAccessLevel.sql" />
     <Build Include="Tables\tblRecipeIngredient.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostDeploy\Script.PostDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="PreDeploy\Script.PreDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeploy\DefaultData\Recipes.sql" />
+    <None Include="PostDeploy\DefaultData\Users.sql" />
+    <None Include="PostDeploy\DefaultData\AccessLevels.sql" />
+    <None Include="PostDeploy\DefaultData\RecipeImages.sql" />
+    <None Include="PostDeploy\DefaultData\Recipe-Ingredients.sql" />
+    <None Include="PostDeploy\DefaultData\Ingredients.sql" />
+    <None Include="PostDeploy\DefaultData\MeasuringTypes.sql" />
   </ItemGroup>
 </Project>
