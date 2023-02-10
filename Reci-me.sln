@@ -13,6 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reci-Me.UI", "Reci-Me.UI\Re
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Reci-me.DB", "Reci-me.DB\Reci-me.DB.sqlproj", "{64342256-D143-441B-BF25-C921C4C7D7A5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F24F3F71-F2C6-4353-9804-0D9F7B2BD225}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.txt = TextFile1.txt
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{897122F5-E578-4246-A5E5-D7B70E68F2B9}"
 	ProjectSection(SolutionItems) = preProject
 		PLscafolding.txt = PLscafolding.txt
