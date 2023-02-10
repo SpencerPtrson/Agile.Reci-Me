@@ -70,11 +70,11 @@
     <Build Include="Tables\tblRecipeIngredient.sql" />
     <Build Include="Tables\tblUser.sql" />
     <Build Include="Tables\tblMeasuringType.sql" />
-    <Build Include="Functions\UserID.sql" />
-    <Build Include="Functions\AccessID.sql" />
-    <Build Include="Functions\RecipeID.sql" />
-    <Build Include="Functions\MeasuringID.sql" />
-    <Build Include="Functions\IngredientID.sql" />
+    <Build Include="Functions\fnUserID.sql" />
+    <Build Include="Functions\fnAccessID.sql" />
+    <Build Include="Functions\fnRecipeID.sql" />
+    <Build Include="Functions\fnMeasuringID.sql" />
+    <Build Include="Functions\fnIngredientID.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Reci-me.DB.refactorlog" />
