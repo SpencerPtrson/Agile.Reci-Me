@@ -87,5 +87,6 @@
     <None Include="PostDeploy\DefaultData\Recipe-Ingredients.sql" />
     <None Include="PostDeploy\DefaultData\Ingredients.sql" />
     <None Include="PostDeploy\DefaultData\MeasuringTypes.sql" />
+    <None Include="local.publish.xml" />
   </ItemGroup>
 </Project>
