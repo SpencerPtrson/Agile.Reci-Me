@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[tblRecipeImage]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [Recipe Id] UNIQUEIDENTIFIER NOT NULL, 
+    [IsThumbnail] BIT NOT NULL
+)
