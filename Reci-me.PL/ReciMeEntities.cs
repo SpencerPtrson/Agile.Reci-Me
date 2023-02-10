@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Reci_me.PL;
 
-public partial class VehicleEntities : DbContext
+public partial class ReciMeEntities : DbContext
 {
-    public VehicleEntities()
+    public ReciMeEntities()
     {
     }
 
-    public VehicleEntities(DbContextOptions<VehicleEntities> options)
+    public ReciMeEntities(DbContextOptions<ReciMeEntities> options)
         : base(options)
     {
     }
