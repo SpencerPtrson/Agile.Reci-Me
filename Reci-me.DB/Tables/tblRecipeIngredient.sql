@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[tblRecipeIngredient]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [RecipeId] UNIQUEIDENTIFIER NOT NULL, 
+    [IngredientId] UNIQUEIDENTIFIER NOT NULL, 
+    [Quantity] FLOAT NOT NULL, 
+    [MeasuringId] UNIQUEIDENTIFIER NOT NULL
+)
