@@ -61,5 +61,8 @@
   <ItemGroup>
     <Build Include="Tables\tblRecipeImage.sql" />
     <Build Include="Tables\tblIngredient.sql" />
+    <Build Include="Tables\tblRecipe.sql" />
+    <Build Include="Tables\tblAccessLevel.sql" />
+    <Build Include="Tables\tblRecipeIngredient.sql" />
   </ItemGroup>
 </Project>
