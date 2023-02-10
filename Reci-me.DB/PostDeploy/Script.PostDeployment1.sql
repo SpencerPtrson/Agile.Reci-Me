@@ -10,8 +10,8 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-:r .\DefaultData\Users.sql
 :r .\DefaultData\AccessLevels.sql
+:r .\DefaultData\Users.sql
 :r .\DefaultData\Recipes.sql
 :r .\DefaultData\RecipeImages.sql
 :r .\DefaultData\Ingredients.sql
