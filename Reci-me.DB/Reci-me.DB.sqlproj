@@ -71,6 +71,8 @@
     <Build Include="Tables\tblUser.sql" />
     <Build Include="Tables\tblMeasuringType.sql" />
     <Build Include="Functions\UserID.sql" />
+    <Build Include="Functions\AccessID.sql" />
+    <Build Include="Functions\RecipeID.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Reci-me.DB.refactorlog" />
