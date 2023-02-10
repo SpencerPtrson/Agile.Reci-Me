@@ -9,3 +9,12 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
+:r .\DefaultData\Users.sql
+:r .\DefaultData\AccessLevels.sql
+:r .\DefaultData\Recipes.sql
+:r .\DefaultData\RecipeImages.sql
+:r .\DefaultData\Ingredients.sql
+:r .\DefaultData\MeasuringTypes.sql
+:r .\DefaultData\Recipe-Ingredients.sql
+
