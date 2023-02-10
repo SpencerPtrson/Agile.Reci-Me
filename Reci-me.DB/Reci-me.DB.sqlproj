@@ -67,6 +67,11 @@
     <Build Include="Tables\tblRecipe.sql" />
     <Build Include="Tables\tblAccessLevel.sql" />
     <Build Include="Tables\tblRecipeIngredient.sql" />
+    <Build Include="Tables\tblUser.sql" />
+    <Build Include="Tables\tblMeasuringType.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Reci-me.DB.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeploy\Script.PostDeployment1.sql" />
