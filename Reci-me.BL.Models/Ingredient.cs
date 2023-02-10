@@ -8,7 +8,7 @@ namespace Reci_me.BL.Models
 {
     public class Ingredient
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public bool IsCommonAllergen { get; set; }
     }

@@ -8,8 +8,8 @@ namespace Reci_me.BL.Models
 {
     public class RecipeImage
     {
-        public int Id { get; set; }
-        public int RecipeId { get; set; }
+        public Guid Id { get; set; }
+        public Guid RecipeId { get; set; }
         public bool IsThumbnail { get; set; }
     }
 }
