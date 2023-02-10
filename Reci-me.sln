@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reci-me.BL.Models", "Reci-m
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reci-me.PL", "Reci-me.PL\Reci-me.PL.csproj", "{5FAC1A40-D1C7-412D-85C2-5229BBCCA815}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reci-Me.UI", "Reci-Me.UI\Reci-Me.UI.csproj", "{3641C224-A646-42D1-B756-11854BE8459D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reci-Me.UI", "Reci-Me.UI\Reci-Me.UI.csproj", "{3641C224-A646-42D1-B756-11854BE8459D}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Reci-me.DB", "Reci-me.DB\Reci-me.DB.sqlproj", "{64342256-D143-441B-BF25-C921C4C7D7A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,12 @@ Global
 		{3641C224-A646-42D1-B756-11854BE8459D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3641C224-A646-42D1-B756-11854BE8459D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3641C224-A646-42D1-B756-11854BE8459D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64342256-D143-441B-BF25-C921C4C7D7A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64342256-D143-441B-BF25-C921C4C7D7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64342256-D143-441B-BF25-C921C4C7D7A5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{64342256-D143-441B-BF25-C921C4C7D7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64342256-D143-441B-BF25-C921C4C7D7A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64342256-D143-441B-BF25-C921C4C7D7A5}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
