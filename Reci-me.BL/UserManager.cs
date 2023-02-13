@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿using Castle.Core.Resource;
+using Microsoft.EntityFrameworkCore.Storage;
 using Reci_me.BL.Models;
 using Reci_me.PL;
 using System;
@@ -38,6 +39,32 @@ namespace Reci_me.BL
                 else
                 {
                     throw new Exception("User Name was not set.");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public static List<User> LoadContact()
+        {
+            try
+            {
+                List<User> rows = new List<User>();
+
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    dc.tblUsers.ToList().ForEach(s => rows.Add(new User
+                    {
+                        Id = s.Id,
+                        Email = s.Email,
+                        Password = s.Password,
+                        ProfilePicture = s.Picture,
+                        ProfileDescription = s.Description,
+                        AccessLevelId = s.AccessLevelId
+                    }));
+                    return rows;
                 }
             }
             catch (Exception)

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Reci_me.BL;
 
 namespace Reci_Me.UI.Controllers
 {
@@ -8,7 +9,7 @@ namespace Reci_Me.UI.Controllers
         // GET: ContactUsController
         public ActionResult Index()
         {
-            return View();
+            return View(UserManager.LoadContact());
         }
 
         // GET: ContactUsController/Details/5
