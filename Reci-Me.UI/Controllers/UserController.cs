@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Reci_me.BL;
+using Reci_me.BL.Models;
 
 namespace Reci_Me.UI.Controllers
 {
@@ -78,6 +80,49 @@ namespace Reci_Me.UI.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Login(string returnUrl)
+        {
+            TempData["returnurl"] = returnUrl;
+            return View();
+        }
+
+        // POST: UserController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User user)
+        {
+            try
+            {
+                UserManager.Login(user);
+                //SetUser(user);
+
+                return RedirectToAction("Index", "Home");
+
+                //if (TempData["returnurl"] != null)
+                //    return Redirect(TempData["returnurl"]?.ToString());
+                //else
+                //    return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View();
+            }
+        }
+        private void SetUser(User user)
+        {
+            //HttpContext.Session.SetObject("user", user);
+
+            //if (user != null)
+            //{
+            //    HttpContext.Session.SetObject("fullname", "Welcome " + user.Email);
+            //}
+            //else
+            //{
+            //    HttpContext.Session.SetObject("fullname", "Welcome " + String.Empty);
+            //}
         }
     }
 }

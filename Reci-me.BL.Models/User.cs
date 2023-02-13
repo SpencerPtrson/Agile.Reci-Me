@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace Reci_me.BL.Models
     {
         public Guid Id { get; set; }
         public string Email { get; set; }
-        public string Username { get; set; }
+        //public string UserName { get; set; } Seem to have no username in our DB
         public string Password { get; set; }
 
         // Will be the image path of the picture
