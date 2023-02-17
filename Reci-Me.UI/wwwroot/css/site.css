@@ -13,6 +13,90 @@ html {
   min-height: 100%;
 }
 
+
+.navbar-nav {
+    position: relative;
+    top: 50px;
+}
+
+.nav-item {
+    font-family: 'Brush Script MT';
+    font-size: 30px;
+}
+
+    .nav-item:hover {
+        text-decoration: underline;
+    }
+
+    .nav-item button {
+        float: right;
+        padding: 5px 10px;
+        background-color: #FFC018;
+        color: black;
+        margin-right: -6px;
+        margin-top: 6.5px;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+    }
+
+.search input[type=text] {
+    width: 175px;
+    height: 48px;
+    border: none;
+}
+
+.search {
+    float: right;
+    margin: 7px;
+}
+
+    .search button {
+        float: right;
+        padding: 5px 10px;
+        background-color: #FFC018;
+        color: black;
+        margin-right: 16px;
+        font-size: 12px;
+        border: none;
+        cursor: pointer;
+    }
+
+.search button:hover {
+    background: #ccc;
+}
+
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #FFC018;
+    color: black;
+}
+
+a:hover {
+    color: white;
+}
+
+a:visited {
+    color: #D42A2A;
+}
+
+footer {
+    padding-top: 10px;
+    text-align:center;
+    font-family: 'Brush Script MT';
+    font-size: 20px;
+}
+
+.fa {
+    padding: 10px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.form-control {
+    margin: auto; 
+    width: 50%;
 }
