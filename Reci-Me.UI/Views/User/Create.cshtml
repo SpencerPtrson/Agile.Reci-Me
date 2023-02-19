@@ -1,7 +1,8 @@
-﻿@model Reci_Me.BL.Models.User
+﻿@model Reci_me.BL.Models.User
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Create</h1>
@@ -13,21 +14,6 @@
         <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
@@ -38,11 +24,26 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Movie.ImagePath" class="control-label"></label>
-                <img class="imagepropmed" alt="@Model.Movie.Title" id="programimage" src="~/images/@Model.Movie.ImagePath" />
-                <input asp-for="Movie.ImagePath" class="form-control" />
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+             @*<div class="form-group">
+                <label asp-for="ProfilePicture" class="control-label"></label>
+                <img class="imagepropmed" alt="PersonalImage" id="programimage" src="~/images/@Model.ProfilePicture" />
+                <input asp-for="ProfilePicture" class="form-control" />
                 <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" />
-                <span asp-validation-for="Movie.ImagePath" class="text-danger"></span>
+                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="AccessLevelId" class="control-label"></label>
+                <input asp-for="AccessLevelId" class="form-control" />
+                <span asp-validation-for="AccessLevelId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -55,3 +56,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
