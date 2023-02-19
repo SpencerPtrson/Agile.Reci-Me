@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Reci_me.BL;
 using Reci_me.BL.Models;
+using Reci_me.UI.Models;
 
 namespace Reci_Me.UI.Controllers
 {
@@ -10,6 +11,19 @@ namespace Reci_Me.UI.Controllers
         // GET: UserController
         public ActionResult Index()
         {
+            ViewBag.Title = "Users";
+            return View(UserManager.Load());
+        }
+
+        public ActionResult Seed()
+        {
+            UserManager.Seed();
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            SetUser(null);
             return View();
         }
 
@@ -37,6 +51,50 @@ namespace Reci_Me.UI.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        public ActionResult Login(string returnUrl)
+        {
+            TempData["returnurl"] = returnUrl;
+            return View();
+        }
+
+        // POST: UserController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User user)
+        {
+            try
+            {
+                UserManager.Login(user);
+                SetUser(user);
+
+                return RedirectToAction("Index", "ContactUs");
+
+                //if (TempData["returnurl"] != null)
+                //    return Redirect(TempData["returnurl"]?.ToString());
+                //else
+                //    return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View();
+            }
+        }
+
+        private void SetUser(User user)
+        {
+            HttpContext.Session.SetObject("user", user);
+
+            if (user != null)
+            {
+                HttpContext.Session.SetObject("description", "Welcome " + user.ProfileDescription);
+            }
+            else
+            {
+                HttpContext.Session.SetObject("description", "Welcome " + String.Empty);
             }
         }
 
@@ -80,49 +138,6 @@ namespace Reci_Me.UI.Controllers
             {
                 return View();
             }
-        }
-
-        public ActionResult Login(string returnUrl)
-        {
-            TempData["returnurl"] = returnUrl;
-            return View();
-        }
-
-        // POST: UserController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(User user)
-        {
-            try
-            {
-                UserManager.Login(user);
-                //SetUser(user);
-
-                return RedirectToAction("Index", "Home");
-
-                //if (TempData["returnurl"] != null)
-                //    return Redirect(TempData["returnurl"]?.ToString());
-                //else
-                //    return RedirectToAction("Index", "Home");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Error = ex.Message;
-                return View();
-            }
-        }
-        private void SetUser(User user)
-        {
-            //HttpContext.Session.SetObject("user", user);
-
-            //if (user != null)
-            //{
-            //    HttpContext.Session.SetObject("fullname", "Welcome " + user.Email);
-            //}
-            //else
-            //{
-            //    HttpContext.Session.SetObject("fullname", "Welcome " + String.Empty);
-            //}
         }
     }
 }

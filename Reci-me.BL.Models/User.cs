@@ -13,10 +13,12 @@ namespace Reci_me.BL.Models
         public string Email { get; set; }
         //public string UserName { get; set; } Seem to have no username in our DB
         public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         // Will be the image path of the picture
         public string ProfilePicture { get; set; }
-        public string ProfileDescription { get; set; }
+        public string ProfileDescription { get { return FirstName + " " + LastName; } set { } }
         public Guid AccessLevelId { get; set; }
     }
 }
