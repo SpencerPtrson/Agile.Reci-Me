@@ -72,7 +72,7 @@ namespace Reci_Me.UI.Controllers
                 UserManager.Login(user);
                 SetUser(user);
 
-                return RedirectToAction("Index", "ContactUs");
+                return RedirectToAction("Index", "User");
 
                 //if (TempData["returnurl"] != null)
                 //    return Redirect(TempData["returnurl"]?.ToString());
