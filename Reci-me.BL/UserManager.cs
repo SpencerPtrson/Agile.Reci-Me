@@ -263,6 +263,36 @@ namespace Reci_me.BL
                     };
                     Insert(user);
 
+
+                    user = new User
+                    {
+                        Email = "spencer.peterson0728@fvtc.edu",
+                        Password = "Agile"
+                    };
+                    Insert(user);
+
+                    user = new User
+                    {
+                        Email = "byron.baker5104@fvtc.edu",
+                        Password = "Agile"
+                    };
+                    Insert(user);
+
+                    user = new User
+                    {
+                        Email = "abigail.proudlock0180@fvtc.edu",
+                        Password = "Agile"
+                    };
+                    Insert(user);
+
+                    user = new User
+                    {
+                        Email = "john.yang9556@fvtc.edu",
+                        Password = "Agile"
+                    };
+                    Insert(user);
+
+
                     //user = new User
                     //{
                     //    UserName = "bfoote",
