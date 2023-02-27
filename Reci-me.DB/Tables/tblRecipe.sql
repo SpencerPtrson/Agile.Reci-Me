@@ -7,5 +7,6 @@
     [TotalTime] FLOAT NOT NULL, 
     [PrepTime] FLOAT NOT NULL, 
     [UserId] UNIQUEIDENTIFIER NOT NULL, 
-    [IsHidden] BIT NOT NULL
+    [IsHidden] BIT NOT NULL, 
+    [RecipeType] VARCHAR(50) NOT NULL
 )
