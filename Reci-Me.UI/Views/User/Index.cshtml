@@ -4,13 +4,10 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<div style="width:100%; text-align:center">
+<h1>User Profile</h1>
+<br />
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -44,11 +41,85 @@
                 @Html.DisplayFor(modelItem => item.AccessLevelId)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Id })
             </td>
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+    <div class="row gutters-sm" style="width:100%; text-align: center">
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="https://atlasfamilyhealthcenter.com/wp-content/uploads/2017/12/blank-avatar.png" alt="Admin" class="rounded-circle" width="150">
+                        <div class="mt-3">
+                            <h2>John Doe</h2>
+                            <input type="submit" value="Reset PW" class="btn btn-primary" />
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Full Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            John Doe
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            xxxx@gmail.com
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Access Level ID</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            Admin
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">All Saved Recipes</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <a asp-action="">All Saved Recipes</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">All Created Recipes</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <a asp-action="">All Created Recipes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div style="width:100%; text-align:center">
+<p>
+    <a asp-action="Create">Create New Account</a>
+    <a asp-action="">Edit Account</a>
+    <a asp-action="">Delete Account</a>
+</p>
+</div>
