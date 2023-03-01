@@ -80,8 +80,10 @@ namespace Reci_me.BL
                     row.UserId = new Guid();
                     row.Servings = 1;
                     row.TotalTime = 20;
-                    row.Name = "Spaghetti";
                     row.PrepTime = 5;
+                    row.Name = "Spaghetti";
+                    row.MainImagePath = "Image Path";
+                    row.CategoryId = new Guid();
 
                     recipe.Id = row.Id;
 
@@ -92,12 +94,9 @@ namespace Reci_me.BL
                 }
 
                 return results;
-
-
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -122,6 +121,7 @@ namespace Reci_me.BL
                         row.Name = recipe.Name;
                         row.TotalTime = recipe.TotalTime;
                         row.PrepTime = recipe.PrepTime;
+                        row.MainImagePath = recipe.MainImagePath;
 
                         results = dc.SaveChanges();
 
