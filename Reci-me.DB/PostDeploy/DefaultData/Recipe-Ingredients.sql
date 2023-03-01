@@ -1,16 +1,16 @@
 ﻿BEGIN
 	INSERT INTO tblRecipeIngredient VALUES
-		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Shrimp'), 2, dbo.fnMeasuringID('Pound'), 0),
+		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Granulated Sugar'), 0.5, dbo.fnMeasuringID('Tablespoon'), 0),
 		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Blackend Seasoning'), 2, dbo.fnMeasuringID('Teaspoon'), 0),
+		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Shrimp'), 2, dbo.fnMeasuringID('Pound'), 0),
 		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Salt'), 0.5, dbo.fnMeasuringID('Teaspoon'), 0),
 		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Corn Tortilla'), 8, dbo.fnMeasuringID('Whole'), 0),
 		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Red Cabbage'), 2, dbo.fnMeasuringID('Cup'), 0),
 		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Mayonnaise'), 0.25, dbo.fnMeasuringID('Cup'), 0),
-		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Granulated Sugar'), 0.5, dbo.fnMeasuringID('Tablespoon'), 0),
 		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Black Pepper'), 0.25, dbo.fnMeasuringID('Teaspoon'), 0),
 		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('White Vinegar'), 0.5, dbo.fnMeasuringID('Tablespoon'), 0),
 		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Vegetable Oil'), 1, dbo.fnMeasuringID('Tablespoon'), 0),
-		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Mexcian Queso Fresco'), 0.5, dbo.fnMeasuringID('Cup'), 0),
+		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Mexican Queso Fresco'), 0.5, dbo.fnMeasuringID('Cup'), 0),
 		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Cilantro'), 0.5, dbo.fnMeasuringID('Cup'), 0),
 		(NEWID(), dbo.fnRecipeID('Blackened Shrimp Tacos'), dbo.fnIngredientID('Lime Wedge'), 2, dbo.fnMeasuringID('Whole'), 0),
 
@@ -18,7 +18,7 @@
 		(NEWID(), dbo.fnRecipeID('Steak on the Stovetop'), dbo.fnIngredientID('Kosher Salt'), null, dbo.fnMeasuringID('As Needed'), 0),
 		(NEWID(), dbo.fnRecipeID('Steak on the Stovetop'), dbo.fnIngredientID('Unsalted Butter'), 1, dbo.fnMeasuringID('Pound'), 1),
 		(NEWID(), dbo.fnRecipeID('Steak on the Stovetop'), dbo.fnIngredientID('Thyme'), null, dbo.fnMeasuringID('Sprig'), 1),
-		(NEWID(), dbo.fnRecipeID('Steak on the Stovetop'), dbo.fnIngredientID('Flaky Sea Salt'), null, dbo.fnMeasuringID('As Needed')),
+		(NEWID(), dbo.fnRecipeID('Steak on the Stovetop'), dbo.fnIngredientID('Flaky Sea Salt'), null, dbo.fnMeasuringID('As Needed'), 1),
 
 		(NEWID(), dbo.fnRecipeID('Stuffed Peppers'), dbo.fnIngredientID('Uncooked Rice'), 0.5, dbo.fnMeasuringID('Cup'), 0),
 		(NEWID(), dbo.fnRecipeID('Stuffed Peppers'), dbo.fnIngredientID('Extra-Virgin Olive Oil'), 2, dbo.fnMeasuringID('Tablespoon'), 0),
