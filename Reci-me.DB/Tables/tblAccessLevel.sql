@@ -2,5 +2,5 @@
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
     [Name] VARCHAR(50) NOT NULL, 
-    [Permissions] VARCHAR(200) NOT NULL
+    [Permissions] INT NOT NULL
 )

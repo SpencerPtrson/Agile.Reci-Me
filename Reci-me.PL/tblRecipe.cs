@@ -11,8 +11,6 @@ public partial class tblRecipe
 
     public int Servings { get; set; }
 
-    public string Instructions { get; set; } = null!;
-
     public double TotalTime { get; set; }
 
     public double PrepTime { get; set; }

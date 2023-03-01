@@ -1,5 +1,5 @@
 ﻿BEGIN
 	INSERT INTO tblAccessLevel VALUES
-		(NEWID(),'Admin','Read,Write'),
-		(NEWID(),'User','Read')
+		(NEWID(),'Admin', 0),
+		(NEWID(),'User', 1)
 END
