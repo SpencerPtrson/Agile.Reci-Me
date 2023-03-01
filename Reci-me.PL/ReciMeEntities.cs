@@ -106,11 +106,11 @@ public partial class ReciMeEntities : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<tblRecipeIngredient>(entity =>
+        modelBuilder.Entity<tblRecipeInstruction>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC0774CEAE2B");
 
-            entity.ToTable("tblRecipeIngredient");
+            entity.ToTable("tblRecipeInstruction");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
         });
