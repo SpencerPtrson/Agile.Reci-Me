@@ -73,6 +73,8 @@ namespace Reci_me.BL
                     row.Picture = user.ProfilePicture;
                     row.Description = user.ProfileDescription;
                     row.AccessLevelId = user.AccessLevelId;
+                    row.FirstName = user.FirstName;
+                    row.LastName = user.LastName;
 
                     dc.tblUsers.Add(row);
                     results = dc.SaveChanges();
@@ -85,10 +87,8 @@ namespace Reci_me.BL
             }
             catch (Exception)
             {
-
                 throw;
             }
-            return 0;
         }
 
         public static List<User> Load()
@@ -107,6 +107,8 @@ namespace Reci_me.BL
                         ProfilePicture = s.Picture,
                         ProfileDescription = s.Description,
                         AccessLevelId = s.AccessLevelId,
+                        FirstName = s.FirstName,
+                        LastName = s.LastName,
                     }));
                     return rows;
                 }
@@ -134,6 +136,8 @@ namespace Reci_me.BL
                         ProfilePicture = s.Picture,
                         ProfileDescription = s.Description,
                         AccessLevelId = s.AccessLevelId,
+                        FirstName = s.FirstName,
+                        LastName = s.LastName,
                     }));
                     return rows;
                 }
@@ -199,7 +203,6 @@ namespace Reci_me.BL
                                 {
                                     throw new LoginFailureException();
                                 }
-
                             }
                             else
                             {
@@ -239,7 +242,9 @@ namespace Reci_me.BL
                         Password = s.Password,
                         ProfilePicture = s.Picture,
                         ProfileDescription = s.Description,
-                        AccessLevelId = s.AccessLevelId
+                        AccessLevelId = s.AccessLevelId,
+                        FirstName = s.FirstName,
+                        LastName = s.LastName
                     }));
                     return rows;
                 }
@@ -259,7 +264,10 @@ namespace Reci_me.BL
                     User user = new User
                     {
                         Email = "maxwell.wilke3555@fvtc.edu",
-                        Password = "Agile"
+                        Password = "Agile",
+                        FirstName = "Max",
+                        LastName = "Wilke",
+                        ProfilePicture = "image path"
                     };
                     Insert(user);
 
@@ -267,28 +275,40 @@ namespace Reci_me.BL
                     user = new User
                     {
                         Email = "spencer.peterson0728@fvtc.edu",
-                        Password = "Agile"
+                        Password = "Agile",
+                        FirstName = "Spencer",
+                        LastName = "Peterson",
+                        ProfilePicture = "image path"
                     };
                     Insert(user);
 
                     user = new User
                     {
                         Email = "byron.baker5104@fvtc.edu",
-                        Password = "Agile"
+                        Password = "Agile",
+                        FirstName = "Byron",
+                        LastName = "Baker",
+                        ProfilePicture = "image path"
                     };
                     Insert(user);
 
                     user = new User
                     {
                         Email = "abigail.proudlock0180@fvtc.edu",
-                        Password = "Agile"
+                        Password = "Agile",
+                        FirstName = "Abby",
+                        LastName = "Proudlock",
+                        ProfilePicture = "image path"
                     };
                     Insert(user);
 
                     user = new User
                     {
                         Email = "john.yang9556@fvtc.edu",
-                        Password = "Agile"
+                        Password = "Agile",
+                        FirstName = "John",
+                        LastName = "Yang",
+                        ProfilePicture = "image path"
                     };
                     Insert(user);
 
