@@ -117,7 +117,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblRecipeInstruction>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC077C840630");
+            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07B01A0CA4");
 
             entity.ToTable("tblRecipeInstruction");
 
@@ -133,7 +133,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblUser>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblUser__3214EC075BE3FE2B");
+            entity.HasKey(e => e.Id).HasName("PK__tblUser__3214EC0775D04C48");
 
             entity.ToTable("tblUser");
 
