@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Reci_me.BL.Models.Category>
+
+<ul>
+    @foreach(var category in Model) {
+        <li><a asp-controller="AllRecipe"
+               asp-action="Browse"
+               asp-route-id="@category.Id">@category.Name
+            </a>
+        </li>
+    }
+
+    <li><a asp-controller="User" asp-action="Login">Login</a></li>
+    <li><a asp-controller="User" asp-action="Logout">Logout</a></li>
+    <li><a asp-controller="AllRecipe" asp-action="Index">All Recipes</a></li>
+    <li><a asp-controller="User" asp-action="Seed">Seed</a></li>
+</ul>

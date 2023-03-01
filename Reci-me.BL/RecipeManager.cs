@@ -6,14 +6,63 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Reci_me.BL.Models;
-using Reci_me.PL;
+
 
 namespace Reci_me.BL
 {
     public static class RecipeManager
     {
         private const string RowError = "Row doesn't exist.";
+
+        public static List<Recipe> Load(Guid? categoryId = null)
+        {
+            // SELECT * FROM TBLSTUDENT
+            try
+            {
+                List<Recipe> rows = new List<Recipe>();
+
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    var recipes = (from r in dc.tblRecipes
+                                   join rInst in dc.tblRecipeInstructions on r.Id equals rInst.Recipe_Id
+                                   join rIng in dc.tblRecipeIngredients on r.Id equals rIng.RecipeId
+                                   join ing in dc.tblIngredients on rIng.IngredientId equals ing.Id
+                                   join m in dc.tblMeasuringTypes on rIng.MeasuringId equals m.Id
+                                   join c in dc.tblRecipeCategories on r.CategoryId equals c.Id
+                                   where r.CategoryId == categoryId || categoryId == null
+                                   orderby c.Category
+                                   select new
+                                   {
+                                       RecipeId = r.Id,
+                                       RecipeName = r.Name,
+                                       r.Servings,
+                                       r.TotalTime,
+                                       r.PrepTime,
+                                       r.UserId,
+                                       r.IsHidden,
+                                       CategoryId = c.Id,
+                                   }).ToList();
+
+                    recipes.ForEach(r => rows.Add(new Recipe
+                    {
+                        Id = r.RecipeId,
+                        Name = r.RecipeName,
+                        Servings = r.Servings,
+                        TotalTime = r.TotalTime,
+                        PrepTime = r.PrepTime,
+                        UserId = r.UserId,
+                        IsHidden = r.IsHidden,
+                        CategoryId = r.CategoryId,
+                    }));
+                }
+                return rows;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public static int Insert(BL.Models.Recipe recipe, bool rollback = false)
         {
             try
@@ -28,7 +77,6 @@ namespace Reci_me.BL
 
                     //row.Id = dc.tblRecipes.Any() ? dc.tblRecipes.Max(s => s.Id) + 1 : 1;
                     row.Id = new Guid();
-                    row.Instructions = "Do stuff";
                     row.IsHidden = false;
                     row.UserId = new Guid();
                     row.Servings = 1;
@@ -72,7 +120,6 @@ namespace Reci_me.BL
                     if (row != null)
                     {
                         row.Servings = recipe.Servings;
-                        row.Instructions = recipe.Instructions;
                         row.IsHidden = recipe.IsHidden;
                         row.UserId = recipe.UserId;
                         row.Name = recipe.Name;
@@ -132,56 +179,4 @@ namespace Reci_me.BL
                 throw;
             }
         }
-    public class RecipeManager
-    {
-        public static List<Recipe> Load(Guid? categoryId = null)
-        {
-            // SELECT * FROM TBLSTUDENT
-            try
-            {
-                List<Recipe> rows = new List<Recipe>();
-
-                using (ReciMeEntities dc = new ReciMeEntities())
-                {
-                    var recipes = (from r in dc.tblRecipes
-                                   join rInst in dc.tblRecipeInstructions on r.Id equals rInst.Recipe_Id
-                                   join rIng in dc.tblRecipeIngredients on r.Id equals rIng.RecipeId
-                                   join ing in dc.tblIngredients on rIng.IngredientId equals ing.Id
-                                   join m in dc.tblMeasuringTypes on rIng.MeasuringId equals m.Id
-                                   join c in dc.tblRecipeCategories on r.CategoryId equals c.Id
-                                   where r.CategoryId == categoryId || categoryId == null
-                                   orderby c.Category
-                                   select new
-                                   {
-                                       RecipeId = r.Id,
-                                       RecipeName = r.Name,
-                                       r.Servings,
-                                       r.TotalTime,
-                                       r.PrepTime,
-                                       r.UserId,
-                                       r.IsHidden,
-                                       CategoryId = c.Id,
-                                   }).ToList();
-
-                    recipes.ForEach(r => rows.Add(new Recipe
-                    {
-                        Id = r.RecipeId,
-                        Name = r.RecipeName,
-                        Servings= r.Servings,
-                        TotalTime = r.TotalTime,
-                        PrepTime = r.PrepTime,
-                        UserId = r.UserId,
-                        IsHidden = r.IsHidden,
-                        CategoryId = r.CategoryId,
-                    }));
-                }
-                return rows;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
     }
-}

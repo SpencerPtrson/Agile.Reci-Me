@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[tblRecipeCategory]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [Category] VARCHAR(50) NOT NULL
+)
