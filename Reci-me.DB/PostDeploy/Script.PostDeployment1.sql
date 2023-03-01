@@ -14,7 +14,7 @@ Post-Deployment Script Template
 :r .\DefaultData\AccessLevels.sql
 :r .\DefaultData\Users.sql
 :r .\DefaultData\Recipes.sql
-:r .\DefaultData\RecipeImages.sql
+:r .\DefaultData\RecipeInstructions.sql
 :r .\DefaultData\Ingredients.sql
 :r .\DefaultData\MeasuringTypes.sql
 :r .\DefaultData\Recipe-Ingredients.sql

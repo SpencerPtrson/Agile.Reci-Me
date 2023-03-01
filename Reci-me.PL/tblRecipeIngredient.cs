@@ -11,9 +11,7 @@ public partial class tblRecipeIngredient
 
     public Guid IngredientId { get; set; }
 
-    public double? Quantity { get; set; }
+    public double Quantity { get; set; }
 
     public Guid MeasuringId { get; set; }
-
-    public bool IsOptional { get; set; }
 }

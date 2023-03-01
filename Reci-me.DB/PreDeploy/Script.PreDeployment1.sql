@@ -11,7 +11,7 @@
 */
 
 DROP TABLE IF EXISTS dbo.tblRecipeIngredient
-DROP TABLE IF EXISTS dbo.tblRecipeImage
+DROP TABLE IF EXISTS dbo.tblRecipeInstruction
 DROP TABLE IF EXISTS dbo.tblIngredient
 DROP TABLE IF EXISTS dbo.tblRecipe
 DROP TABLE IF EXISTS dbo.tblAccessLevel

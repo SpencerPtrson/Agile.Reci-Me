@@ -77,6 +77,8 @@
     <Build Include="Tables\tblRecipeCategory.sql" />
     <Build Include="Functions\fnCategoryID.sql" />
     <None Include="PostDeploy\DefaultData\Categories.sql" />
+    <Build Include="Tables\tblRecipeInstruction.sql" />
+    <None Include="PostDeploy\DefaultData\RecipeInstructions.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Reci-me.DB.refactorlog" />
@@ -91,7 +93,6 @@
     <None Include="PostDeploy\DefaultData\Recipes.sql" />
     <None Include="PostDeploy\DefaultData\Users.sql" />
     <None Include="PostDeploy\DefaultData\AccessLevels.sql" />
-    <None Include="PostDeploy\DefaultData\RecipeImages.sql" />
     <None Include="PostDeploy\DefaultData\Recipe-Ingredients.sql" />
     <None Include="PostDeploy\DefaultData\Ingredients.sql" />
     <None Include="PostDeploy\DefaultData\MeasuringTypes.sql" />

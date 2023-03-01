@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Reci_me.BL.Models;
-using Reci_me.PL;
 
 
 namespace Reci_me.BL
@@ -18,7 +16,6 @@ namespace Reci_me.BL
 
         public static List<Recipe> Load(Guid? categoryId = null)
         {
-            // SELECT * FROM TBLSTUDENT
             try
             {
                 List<Recipe> rows = new List<Recipe>();
@@ -104,8 +101,6 @@ namespace Reci_me.BL
                 throw;
             }
         }
-
-
 
         public static int Update(BL.Models.Recipe recipe, bool rollback = false)
         {
