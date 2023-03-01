@@ -16,4 +16,8 @@ public partial class tblUser
     public string Description { get; set; } = null!;
 
     public Guid AccessLevelId { get; set; }
+
+    public string FirstName { get; set; } = null!;
+
+    public string LastName { get; set; } = null!;
 }
