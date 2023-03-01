@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseName>yangdb</TargetDatabaseName>
-    <DeployScriptFileName>Reci-me.DB.sql</DeployScriptFileName>
+    <DeployScriptFileName>Reci-Me.DB.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=yang1db.database.windows.net;Persist Security Info=True;User ID=yangdb;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>

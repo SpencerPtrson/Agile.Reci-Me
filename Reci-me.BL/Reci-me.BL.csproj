@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Reci-me.BL.Models\Reci-me.BL.Models.csproj" />
-    <ProjectReference Include="..\Reci-me.PL\Reci-me.PL.csproj" />
+    <ProjectReference Include="..\Reci-Me.BL.Models\Reci-Me.BL.Models.csproj" />
+    <ProjectReference Include="..\Reci-Me.PL\Reci-Me.PL.csproj" />
   </ItemGroup>
 
 </Project>

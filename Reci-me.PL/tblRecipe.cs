@@ -20,4 +20,8 @@ public partial class tblRecipe
     public Guid UserId { get; set; }
 
     public bool IsHidden { get; set; }
+
+    public string MainImagePath { get; set; } = null!;
+
+    public Guid CategoryId { get; set; }
 }

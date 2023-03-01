@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Reci_me.BL;
 
 namespace Reci_Me.UI.Controllers
 {
@@ -8,7 +9,8 @@ namespace Reci_Me.UI.Controllers
         // GET: AllRecipeController
         public ActionResult Index()
         {
-            return View();
+            ViewBag.Title = "Recipes";
+            return View(RecipeManager.Load());
         }
 
         // GET: AllRecipeController/Details/5
@@ -78,6 +80,14 @@ namespace Reci_Me.UI.Controllers
             {
                 return View();
             }
+        }
+
+
+        // Shows the filtered list
+        public ActionResult Browse(Guid categoryId)
+        {
+            ViewBag.Title = "Recipes";
+            return View(nameof(Index), RecipeManager.Load(categoryId));
         }
     }
 }

@@ -3,4 +3,4 @@ Install-Package Microsoft.EntityFrameworkCore.Tools
 Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design
 Install-Package Microsoft.EntityFrameworkCore.Proxies;
 
-Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=Reci-me.DB;Integrated Security=true" Microsoft.EntityFrameworkCore.SqlServer -Context ReciMeEntities -UseDatabaseNames -force
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=Reci-Me.DB;Integrated Security=true" Microsoft.EntityFrameworkCore.SqlServer -Context ReciMeEntities -UseDatabaseNames -force

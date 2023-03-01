@@ -17,3 +17,4 @@ DROP TABLE IF EXISTS dbo.tblRecipe
 DROP TABLE IF EXISTS dbo.tblAccessLevel
 DROP TABLE IF EXISTS dbo.tblUser
 DROP TABLE IF EXISTS dbo.tblMeasuringType
+DROP TABLE IF EXISTS dbo.tblRecipeCategory

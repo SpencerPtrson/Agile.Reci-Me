@@ -23,7 +23,7 @@ public partial class ReciMeEntities : DbContext
 
     public virtual DbSet<tblRecipe> tblRecipes { get; set; }
 
-    public virtual DbSet<tblRecipeImage> tblRecipeImages { get; set; }
+    public virtual DbSet<tblRecipeCategory> tblRecipeCategories { get; set; }
 
     public virtual DbSet<tblRecipeIngredient> tblRecipeIngredients { get; set; }
 
@@ -31,13 +31,13 @@ public partial class ReciMeEntities : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Reci-me.DB;Integrated Security=true");
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Reci-Me.DB;Integrated Security=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<tblAccessLevel>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblAcces__3214EC07A0D59736");
+            entity.HasKey(e => e.Id).HasName("PK__tblAcces__3214EC07BA4522F4");
 
             entity.ToTable("tblAccessLevel");
 
@@ -52,7 +52,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblIngredient>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblIngre__3214EC0735D24104");
+            entity.HasKey(e => e.Id).HasName("PK__tblIngre__3214EC07486F127E");
 
             entity.ToTable("tblIngredient");
 
@@ -64,7 +64,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblMeasuringType>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblMeasu__3214EC0724BE02B3");
+            entity.HasKey(e => e.Id).HasName("PK__tblMeasu__3214EC0738FFFB3D");
 
             entity.ToTable("tblMeasuringType");
 
@@ -79,7 +79,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblRecipe>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC071A69F2A0");
+            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07D349FB0A");
 
             entity.ToTable("tblRecipe");
 
@@ -92,9 +92,21 @@ public partial class ReciMeEntities : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<tblRecipeImage>(entity =>
+        modelBuilder.Entity<tblRecipeCategory>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC075339ECAA");
+            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC0769F1788B");
+
+            entity.ToTable("tblRecipeCategory");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Category)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<tblRecipeIngredient>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC0774CEAE2B");
 
             entity.ToTable("tblRecipeImage");
 
@@ -104,7 +116,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblRecipeIngredient>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07963EB549");
+            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07B01A0CA4");
 
             entity.ToTable("tblRecipeIngredient");
 
@@ -113,7 +125,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblUser>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblUser__3214EC079939ED27");
+            entity.HasKey(e => e.Id).HasName("PK__tblUser__3214EC0775D04C48");
 
             entity.ToTable("tblUser");
 

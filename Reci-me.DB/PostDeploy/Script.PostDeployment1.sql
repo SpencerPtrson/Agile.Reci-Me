@@ -10,6 +10,7 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+:r .\DefaultData\Categories.sql
 :r .\DefaultData\AccessLevels.sql
 :r .\DefaultData\Users.sql
 :r .\DefaultData\Recipes.sql
