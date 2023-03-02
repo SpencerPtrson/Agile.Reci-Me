@@ -1,11 +1,28 @@
-﻿@model IEnumerable<Reci_me.BL.Models.User>
+﻿@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc;
+@inject IHttpContextAccessor HttpContextAccessor
+
+@model IEnumerable<Reci_me.BL.Models.User>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="width:100%; text-align:center">
-<h1>User Profile</h1>
+<h1>
+        @{
+            Reci_me.BL.UserManager.Seed();
+            var description = @HttpContextAccessor.HttpContext?.Session.GetString("description");
+                if (description != null)
+                {
+                    <p>@HttpContextAccessor.HttpContext?.Session.GetString("description")</p>
+                }
+                else
+                {
+                    <p>User Profile</p>
+                }
+          }
+</h1>
 <br />
 @*<table class="table">
     <thead>
@@ -87,7 +104,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
-                            <h6 class="mb-0">Access Level ID</h6>
+                            <h6 class="mb-0">Access Level</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
                             Admin
@@ -118,8 +135,14 @@
 
 <div style="width:100%; text-align:center">
 <p>
-    <a asp-action="Create">Create New Account</a>
-    <a asp-action="">Edit Account</a>
-    <a asp-action="">Delete Account</a>
+        @{
+                Reci_me.BL.UserManager.Seed();
+                if (description != null)
+                {
+                    <a asp-controller="User" asp-action="Logout"><input type="submit" value="Logout" class="btn btn-primary" /></a>
+                }
+         }
+            <a asp-action=""><input type="submit" value="Edit Account" class="btn btn-primary" /></a>
+            <a asp-action=""><input type="submit" value="Delete Account" class="btn btn-primary" /></a>
 </p>
 </div>

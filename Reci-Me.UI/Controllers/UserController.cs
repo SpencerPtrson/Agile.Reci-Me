@@ -25,7 +25,7 @@ namespace Reci_Me.UI.Controllers
         public ActionResult Logout()
         {
             SetUser(null);
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: UserController/Details/5

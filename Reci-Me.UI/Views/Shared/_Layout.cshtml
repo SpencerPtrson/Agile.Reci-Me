@@ -44,11 +44,11 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                            @{
+                            @*@{
                                 Reci_me.BL.UserManager.Seed();
                                 var description = @HttpContextAccessor.HttpContext?.Session.GetString("description");
                                 if (description == null)
-                                {
+                                {*@
                                     <li class="nav-item">
                                         <a asp-controller="User" asp-action="Login">
                                             <button>
@@ -68,14 +68,14 @@
                                         </button>
                                     </form>
                                 </div>
-                                }
+                                @*}
                                 else
                                 {                             
                                 description = description.Replace("\"", "");
                                 <li class="mt-2"><a asp-controller="User" asp-action="Logout">Logout</a></li>
                                 <a class="nav-link text-dark">@description</a>
                                 }
-                            }
+                            }*@
                     </ul>         
                 </div>
             </div>
