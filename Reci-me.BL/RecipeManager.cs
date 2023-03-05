@@ -176,5 +176,74 @@ namespace Reci_me.BL
                 throw;
             }
         }
+
+        public static Recipe LoadById(Guid id)
+        {
+            try
+            {
+                List<Recipe> rows = new List<Recipe>();
+
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    tblRecipe tblRecipe = dc.tblRecipes.Where(c => c.Id == id).FirstOrDefault();
+                    if (tblRecipe!= null) { 
+                        Recipe recipe = new Recipe { 
+                            Id = tblRecipe.Id,
+                            Servings = tblRecipe.Servings,
+                            IsHidden = tblRecipe.IsHidden,
+                            UserId = tblRecipe.UserId,
+                            Name = tblRecipe.Name,
+                            TotalTime = tblRecipe.TotalTime,
+                            PrepTime = tblRecipe.PrepTime,
+                            MainImagePath = tblRecipe.MainImagePath
+                    };
+                        return recipe;
+                    } else
+                    {
+                        throw new Exception(RowError);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static Recipe LoadByName(string name)
+        {
+            try
+            {
+                List<Recipe> rows = new List<Recipe>();
+
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    tblRecipe tblRecipe = dc.tblRecipes.Where(c => c.Name == name).FirstOrDefault();
+                    if (tblRecipe != null)
+                    {
+                        Recipe recipe = new Recipe
+                        {
+                            Id = tblRecipe.Id,
+                            Servings = tblRecipe.Servings,
+                            IsHidden = tblRecipe.IsHidden,
+                            UserId = tblRecipe.UserId,
+                            Name = tblRecipe.Name,
+                            TotalTime = tblRecipe.TotalTime,
+                            PrepTime = tblRecipe.PrepTime,
+                            MainImagePath = tblRecipe.MainImagePath
+                        };
+                        return recipe;
+                    }
+                    else
+                    {
+                        throw new Exception(RowError);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

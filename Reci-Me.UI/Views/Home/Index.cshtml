@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Reci_Me.BL.Recipe>
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -8,30 +7,15 @@
         <h1 class="display-4">Welcome to Reci-Me</h1>
         <p>Check out some of these new recipes.</p>
     </div>
-        <div class="card row">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card row">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card row">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+    <div>
+        @await Component.InvokeAsync("RecipeCard", "Blackened Shrimp Tacos")
+    </div>
+    <div>
+        @await Component.InvokeAsync("RecipeCard", "Steak on the Stovetop")
+    </div>
+    <div>
+        @await Component.InvokeAsync("RecipeCard", "Stuffed Peppers")
+    </div>
     <div class="card row">
     <p>After you do that, how about <a asp-controller="User" asp-action="Create">creating an account</a> and start making some of your own.</p>
     </div>
