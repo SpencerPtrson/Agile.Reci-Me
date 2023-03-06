@@ -17,15 +17,15 @@
 <body>
     <!-- Nav Bar -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-xl navbar-toggleable-xl navbar-light bg-white border-bottom box-shadow mb-3 pb-lg-5" style="min-height: 220px;">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/css/img/Logo revised.png" height="140" width="140"/></a>
+                <a class="navbar-brand mr-auto" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/css/img/Logo revised.png" height="140" width="140"/></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="navbar-collapse collapse d-xl-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 ml-auto">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -61,32 +61,20 @@
                                 </li>
                                 isVisible = "hidden";
                             }
-                            
-
-                            
-                            //string isVisible = "hidden";
-                            //fullname = HttpContextAccessor.HttpContext?.Session.GetString("fullname");
-                            //if (fullname != null )
-                            //{
-                            //    isVisible = "visible";
-                            //}
-                            //else
-                            //{
-                            //    isVisible = "hidden";
-                            //}
+                                                 
                         }
 
 
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
                         @*@{
-                                Reci_me.BL.UserManager.Seed();
-                                var description = @HttpContextAccessor.HttpContext?.Session.GetString("description");
-                                if (description == null)
-                                {*@
+                        Reci_me.BL.UserManager.Seed();
+                        var description = @HttpContextAccessor.HttpContext?.Session.GetString("description");
+                        if (description == null)
+                        {*@                 
 
                         @{
-                            
+
 
                             <li class="nav-item">
                                 <a asp-controller="User" asp-action="Logout">
@@ -104,32 +92,35 @@
                                     </button>
                                 </a>
                             </li>
-                         }
+                        }
 
-                                
-                               
-                                <div class="search">
-                                    <form action="#">
-                                        <input type="text"
+                        <div class="search">
+                            <form class="navbar-form" action="#">
+                                <div class="input-group">
+                                    <input type="text"
                                            placeholder=" Search Recipes"
                                            name="search">
-                                        <button>
-                                            <i class="fa fa-search"
+                                    <button>
+                                        <i class="fa fa-search"
                                            style="font-size: 18px;">
-                                            </i>
-                                        </button>
-                                    </form>
+                                        </i>
+                                    </button>
                                 </div>
-                                @*}
-                                else
-                                {                             
-                                description = description.Replace("\"", "");
-                                <li class="mt-2"><a asp-controller="User" asp-action="Logout">Logout</a></li>
-                                <a class="nav-link text-dark">@description</a>
-                                }
-                            }*@
-                    </ul>         
+                            </form>
+                        </div>
+
+                        
+                        @*}
+                        else
+                        {
+                        description = description.Replace("\"", "");
+                        <li class="mt-2"><a asp-controller="User" asp-action="Logout">Logout</a></li>
+                        <a class="nav-link text-dark">@description</a>
+                        }
+                        }*@
+                    </ul>
                 </div>
+                
             </div>
         </nav>
     </header>
