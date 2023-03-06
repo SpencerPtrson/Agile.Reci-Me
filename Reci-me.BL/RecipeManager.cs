@@ -230,7 +230,7 @@ namespace Reci_me.BL
                             Name = tblRecipe.Name,
                             TotalTime = tblRecipe.TotalTime,
                             PrepTime = tblRecipe.PrepTime,
-                            MainImagePath = tblRecipe.MainImagePath
+                            //MainImagePath = tblRecipe.MainImagePath
                         };
                         return recipe;
                     }
