@@ -97,6 +97,6 @@
     <None Include="PostDeploy\DefaultData\Ingredients.sql" />
     <None Include="PostDeploy\DefaultData\MeasuringTypes.sql" />
     <None Include="admin-remote.publish.xml" />
-    <None Include="local.publish.xml" />
+    <None Include="Reci-Me_1.DB.publish.xml" />
   </ItemGroup>
 </Project>

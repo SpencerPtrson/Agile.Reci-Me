@@ -101,7 +101,7 @@ namespace Reci_Me.UI.Controllers
 
             if (user != null)
             {
-                HttpContext.Session.SetObject("description", "Welcome " + user.FirstName);
+                HttpContext.Session.SetObject("description", "Welcome, " + user.FirstName);
                 HttpContext.Session.SetObject("fullname", user.ProfileDescription);
                 HttpContext.Session.SetObject("email", user.Email);
                 HttpContext.Session.SetObject("accesslevel", user.AccessLevelId);
