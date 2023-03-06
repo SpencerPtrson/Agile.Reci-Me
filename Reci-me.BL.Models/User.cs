@@ -15,17 +15,11 @@ namespace Reci_me.BL.Models
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName { get { return FirstName + " " + LastName; } }
 
         // Will be the image path of the picture
         public string ProfilePicture { get; set; }
-        public string ProfileDescription
-        {
-            get
-            {
-                return FirstName + " " + LastName;
-            }
-            set { }
-        }
+        public string ProfileDescription { get; set; }
         public Guid AccessLevelId { get; set; }
     }
 }
