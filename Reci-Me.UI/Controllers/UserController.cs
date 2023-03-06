@@ -13,7 +13,15 @@ namespace Reci_Me.UI.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Users";
-            return View(UserManager.Load());
+
+            string fullname = HttpContext.Session.GetString("fullname");
+            if (fullname == "null")
+            {
+                return RedirectToAction("Login", "User");
+            }    
+                else
+                    return View(UserManager.Load());
+
         }
 
         public ActionResult Seed()
@@ -25,6 +33,7 @@ namespace Reci_Me.UI.Controllers
         public ActionResult Logout()
         {
             SetUser(null);
+            HttpContext.Session.SetObject("fullname", null);
             return RedirectToAction("Index", "Home");
         }
 
@@ -56,9 +65,9 @@ namespace Reci_Me.UI.Controllers
             }
         }
 
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login(string returnUri)
         {
-            TempData["returnurl"] = returnUrl;
+            TempData["returnuri"] = returnUri;
             return View();
         }
 
@@ -72,12 +81,12 @@ namespace Reci_Me.UI.Controllers
                 UserManager.Login(user);
                 SetUser(user);
 
-                return RedirectToAction("Index", "User");
+                // Tempdata is currently null
+                if (TempData["returnuri"] != null)
+                    return Redirect(TempData["returnuri"]?.ToString());
+                else
+                    return RedirectToAction("Index", "Home");
 
-                //if (TempData["returnurl"] != null)
-                //    return Redirect(TempData["returnurl"]?.ToString());
-                //else
-                //    return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
@@ -92,11 +101,15 @@ namespace Reci_Me.UI.Controllers
 
             if (user != null)
             {
-                HttpContext.Session.SetObject("description", "Welcome " + user.ProfileDescription);
+                HttpContext.Session.SetObject("description", "Welcome " + user.FirstName);
+                HttpContext.Session.SetObject("fullname", user.ProfileDescription);
+                HttpContext.Session.SetObject("email", user.Email);
+                HttpContext.Session.SetObject("accesslevel", user.AccessLevelId);
             }
             else
             {
-                HttpContext.Session.SetObject("description", "Welcome " + String.Empty);
+                HttpContext.Session.SetObject("description", "Please Login");
+                HttpContext.Session.SetObject("user", null);
             }
         }
 
