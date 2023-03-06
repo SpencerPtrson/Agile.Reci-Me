@@ -15,7 +15,7 @@
             var description = @HttpContextAccessor.HttpContext?.Session.GetString("description");
                 if (description != null)
                 {
-                    <p>@HttpContextAccessor.HttpContext?.Session.GetString("description")</p>
+                <p>@HttpContextAccessor.HttpContext?.Session.GetString("description")</p>
                 }
                 else
                 {
@@ -73,7 +73,9 @@
                     <div class="d-flex flex-column align-items-center text-center">
                         <img src="https://atlasfamilyhealthcenter.com/wp-content/uploads/2017/12/blank-avatar.png" alt="Admin" class="rounded-circle" width="150">
                         <div class="mt-3">
-                            <h2>John Doe</h2>
+                            <h2>
+                                @HttpContextAccessor.HttpContext?.Session.GetString("fullname").Replace("\"", "")
+                            </h2>
                             <input type="submit" value="Reset Password" class="btn btn-primary" />
                             <br />
                         </div>
@@ -89,7 +91,7 @@
                             <h6 class="mb-0">Full Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            John Doe
+                            @HttpContextAccessor.HttpContext?.Session.GetString("fullname").Replace("\"", "")
                         </div>
                     </div>
                     <hr>
@@ -98,7 +100,7 @@
                             <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            xxxx@gmail.com
+                            @HttpContextAccessor.HttpContext?.Session.GetString("email").Replace("\"", "")
                         </div>
                     </div>
                     <hr>
@@ -137,12 +139,15 @@
 <p>
         @{
                 Reci_me.BL.UserManager.Seed();
+
+
                 if (description != null)
                 {
                     <a asp-controller="User" asp-action="Logout"><input type="submit" value="Logout" class="btn btn-primary" /></a>
+                    <a asp-action=""><input type="submit" value="Edit Account" class="btn btn-primary" /></a>
+                    <a asp-action=""><input type="submit" value="Delete Account" class="btn btn-primary" /></a>
                 }
          }
-            <a asp-action=""><input type="submit" value="Edit Account" class="btn btn-primary" /></a>
-            <a asp-action=""><input type="submit" value="Delete Account" class="btn btn-primary" /></a>
+            
 </p>
 </div>

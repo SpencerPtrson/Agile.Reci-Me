@@ -177,6 +177,7 @@ namespace Reci_me.BL
             //    throw;
             //}
         }
+
         public static bool Login(User user)
         {
             try
@@ -197,11 +198,17 @@ namespace Reci_me.BL
                                     // login happened
                                     user.Id = tblUser.Id;
                                     user.ProfileDescription = tblUser.Description;
+                                    user.AccessLevelId = tblUser.AccessLevelId;
+                                    user.FirstName = tblUser.FirstName;
+                                    user.LastName = tblUser.LastName;
+                                    user.ProfilePicture = tblUser.Picture;
                                     return true;
                                 }
                                 else
                                 {
                                     throw new LoginFailureException();
+                                    // or
+                                    throw new LoginFailureException("Incorrect Password");
                                 }
                             }
                             else
@@ -223,10 +230,10 @@ namespace Reci_me.BL
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
         public static List<User> LoadContact()
         {
             try
@@ -255,6 +262,7 @@ namespace Reci_me.BL
                 throw;
             }
         }
+
         public static void Seed()
         {
             using (ReciMeEntities dc = new ReciMeEntities())
