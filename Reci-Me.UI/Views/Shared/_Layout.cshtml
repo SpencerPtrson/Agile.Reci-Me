@@ -42,21 +42,43 @@
 
                         @{
                             string action = "Index";
-
+                            string isVisible = "hidden";
                             var fullname = HttpContextAccessor.HttpContext?.Session.GetString("fullname");
-                            if (fullname != null)
+                            if (fullname != null && fullname != "null")
+                            {
                                 action = "Index";
+                                fullname = fullname.Replace("\"", "");
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action=@action>@fullname</a>
+                                </li>
+                                isVisible = "visible";
+                            }                       
                             else
+                            {
                                 action = "Login";
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action=@action>Login</a>
+                                </li>
+                                isVisible = "hidden";
+                            }
+                            
 
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action=@action>Profile</a>
-                            </li>
+                            
+                            //string isVisible = "hidden";
+                            //fullname = HttpContextAccessor.HttpContext?.Session.GetString("fullname");
+                            //if (fullname != null )
+                            //{
+                            //    isVisible = "visible";
+                            //}
+                            //else
+                            //{
+                            //    isVisible = "hidden";
+                            //}
                         }
 
 
                     </ul>
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav flex-grow-1">
                         @*@{
                                 Reci_me.BL.UserManager.Seed();
                                 var description = @HttpContextAccessor.HttpContext?.Session.GetString("description");
@@ -64,15 +86,7 @@
                                 {*@
 
                         @{
-                            string isVisible = "hidden";
-                            fullname = HttpContextAccessor.HttpContext?.Session.GetString("fullname");
-                            if (fullname != null)
-                            {
-                                isVisible = "visible";
-                            } else
-                            {
-                                isVisible = "hidden";
-                            }
+                            
 
                             <li class="nav-item" style="position:relative; left: -7px;">
                                 <a asp-controller="User" asp-action="Logout">
