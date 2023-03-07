@@ -17,6 +17,6 @@ namespace Reci_me.BL.Models
         public Guid UserId { get; set; }
         public bool IsHidden { get; set; }
         public Guid CategoryId { get; set; }
-        public List<Ingredient> Ingredients { get; set; }
+        //public List<Ingredient> Ingredients { get; set; }
     }
 }

@@ -74,7 +74,6 @@ namespace Reci_me.BL
 
                     tblRecipe row = new tblRecipe();
 
-                    //row.Id = dc.tblRecipes.Any() ? dc.tblRecipes.Max(s => s.Id) + 1 : 1;
                     row.Id = new Guid();
                     row.IsHidden = false;
                     row.UserId = new Guid();
