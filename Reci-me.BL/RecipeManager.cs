@@ -40,7 +40,7 @@ namespace Reci_me.BL
                                        r.UserId,
                                        r.IsHidden,
                                        CategoryId = c.Id,
-                                   }).ToList();
+                                   }).Distinct().ToList();
 
                     recipes.ForEach(r => rows.Add(new Recipe
                     {
