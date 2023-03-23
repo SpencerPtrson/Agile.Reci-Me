@@ -27,8 +27,11 @@
                     <h3>@item.Name</h3>
                 </div>
 
-                <div class="card-img">
-                    <img class="imagepropmed" src="~/images/@item.MainImagePath" />
+                @*<div class="card-img">
+                    <img class="imagepropmed" src="~/images/Recipe/@item.MainImagePath" />
+                </div>*@
+                <div>
+                    @await Component.InvokeAsync("RecipeCard", item.Name)
                 </div>
 
                 @*<div class="card-body">

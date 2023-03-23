@@ -40,6 +40,7 @@ namespace Reci_me.BL
                                        r.UserId,
                                        r.IsHidden,
                                        CategoryId = c.Id,
+                                       r.MainImagePath
                                    }).Distinct().ToList();
 
                     recipes.ForEach(r => rows.Add(new Recipe
@@ -52,6 +53,7 @@ namespace Reci_me.BL
                         UserId = r.UserId,
                         IsHidden = r.IsHidden,
                         CategoryId = r.CategoryId,
+                        MainImagePath = r.MainImagePath,
                     }));
                 }
                 return rows;
@@ -229,7 +231,7 @@ namespace Reci_me.BL
                             Name = tblRecipe.Name,
                             TotalTime = tblRecipe.TotalTime,
                             PrepTime = tblRecipe.PrepTime,
-                            //MainImagePath = tblRecipe.MainImagePath
+                            MainImagePath = tblRecipe.MainImagePath
                         };
                         return recipe;
                     }
