@@ -21,16 +21,21 @@
                         asp-items="@(new SelectList(Model.Categories, "Id", "Name"))"></select>
                 <span asp-validation-for="Recipe.CategoryId" class="text-danger"></span>
             </div>
-@*            <div class="form-group">
+            <div class="form-group">
+                <label asp-for="Recipe.Servings" class="control-label"></label>
+                <input asp-for="Recipe.Servings" type="number" min="1" class="form-control" />
+                <span asp-validation-for="Recipe.Servings" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Recipe.MainImagePath" class="control-label"></label>
                 <img class="imagepropmed"
-                     alt="@Model.Recipe.MainImagePath"
+                     alt="Select an Image"
                      id="recipeimage"
-                     src="~/images/@Model.Recipe.MainImagePath" />
+                     src="~/css/img/Logo revised.png" />
                 <input id="FileName" asp-for="Recipe.MainImagePath" class="form-control" />
                 <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" />
                 <span asp-validation-for="Recipe.MainImagePath" class="text-danger"></span>
-            </div>*@
+            </div>
             <div class="form-group mt-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -39,7 +44,7 @@
 </div>
 
 <div class="ps-2">
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-controller="Home">Back to Main Menu</a>
 </div>
 
 @section Scripts {
