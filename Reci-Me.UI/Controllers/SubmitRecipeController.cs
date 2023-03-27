@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Reci_me.BL;
 using Reci_Me.UI.ViewModels;
 
 namespace Reci_Me.UI.Controllers
@@ -9,8 +10,7 @@ namespace Reci_Me.UI.Controllers
         // GET: SubmitRecipeController
         public ActionResult Index()
         {
-            RecipeVM recipeVM = new RecipeVM();
-            return View(recipeVM);
+            return View();
         }
 
         // GET: SubmitRecipeController/Details/5
@@ -22,21 +22,26 @@ namespace Reci_Me.UI.Controllers
         // GET: SubmitRecipeController/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.Title = "Create a Recipe";
+            RecipeVM recipeVM = new RecipeVM();
+            return View(recipeVM);
         }
 
         // POST: SubmitRecipeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(RecipeVM recipeVM)
         {
             try
             {
+                RecipeManager.Insert(recipeVM.Recipe);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Error = ex.Message;
+                ViewBag.Title = "Create a Recipe";
+                return View(recipeVM);
             }
         }
 

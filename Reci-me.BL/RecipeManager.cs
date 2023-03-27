@@ -68,6 +68,8 @@ namespace Reci_me.BL
         {
             try
             {
+                List<User> users = UserManager.Load();
+
                 int results = 0;
                 using (ReciMeEntities dc = new ReciMeEntities())
                 {
@@ -76,15 +78,15 @@ namespace Reci_me.BL
 
                     tblRecipe row = new tblRecipe();
 
-                    row.Id = new Guid();
+                    row.Id = Guid.NewGuid();
                     row.IsHidden = false;
-                    row.UserId = new Guid();
-                    row.Servings = 1;
-                    row.TotalTime = 20;
-                    row.PrepTime = 5;
-                    row.Name = "Spaghetti";
-                    row.MainImagePath = "Image Path";
-                    row.CategoryId = new Guid();
+                    row.UserId = users[0].Id;
+                    row.Servings = recipe.Servings;
+                    row.TotalTime = recipe.TotalTime;
+                    row.PrepTime = recipe.PrepTime;
+                    row.Name = recipe.Name;
+                    row.MainImagePath = recipe.MainImagePath;
+                    row.CategoryId = recipe.CategoryId;
 
                     recipe.Id = row.Id;
 
@@ -96,9 +98,9 @@ namespace Reci_me.BL
 
                 return results;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
