@@ -31,7 +31,7 @@ namespace Reci_me.BL
                                     {
                                         c.Id,
                                         c.Category
-                                    }).ToList();
+                                    }).Distinct().ToList();
 
                     // Create a program instance for each array item, then add to rows (Load()'s return list)
                     foreach (var category in categories)

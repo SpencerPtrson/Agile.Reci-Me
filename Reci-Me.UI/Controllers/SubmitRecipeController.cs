@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Reci_Me.UI.ViewModels;
 
 namespace Reci_Me.UI.Controllers
 {
@@ -8,7 +9,8 @@ namespace Reci_Me.UI.Controllers
         // GET: SubmitRecipeController
         public ActionResult Index()
         {
-            return View();
+            RecipeVM recipeVM = new RecipeVM();
+            return View(recipeVM);
         }
 
         // GET: SubmitRecipeController/Details/5
