@@ -11,15 +11,15 @@ namespace Reci_Me.BL.Test
         {
             Recipe recipe = new Recipe
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 Name = "test",
                 Servings = 1,
                 TotalTime= 1,
                 PrepTime= 1,
                 MainImagePath = "img.png",
-                UserId = new Guid(),
+                UserId = UserManager.Load()[0].Id,
                 IsHidden = true,
-                CategoryId = new Guid()
+                CategoryId = CategoryManager.Load()[0].Id,
             };
             Assert.AreEqual(1, RecipeManager.Insert(recipe, true));
         }
@@ -45,9 +45,9 @@ namespace Reci_Me.BL.Test
                 TotalTime = 1,
                 PrepTime = 1,
                 MainImagePath = "img.png",
-                UserId = new Guid(),
+                UserId = Guid.NewGuid(),
                 IsHidden = true,
-                CategoryId = new Guid(),
+                CategoryId = Guid.NewGuid(),
                 //Ingredients = new List<Ingredient> { }
             };
             RecipeManager.Insert(recipe);
