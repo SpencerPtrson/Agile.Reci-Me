@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc;
+@inject IHttpContextAccessor HttpContextAccessor
+@model Reci_me.BL.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="width:100%; text-align:center">
+    <h1>
+        @{
+            Reci_me.BL.UserManager.Seed();
+            var description = @HttpContextAccessor.HttpContext?.Session.GetString("description");
+            if (description != null)
+            {
+                <p>@HttpContextAccessor.HttpContext?.Session.GetString("description")</p>
+            }
+            else
+            {
+                <p>User Profile</p>
+            }
+        }
+    </h1>
+    <br />
+    <div class="row" style="width:100%; text-align:center">
+        <div class="col-md-4" style="width:100%; text-align:center">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input type="text" placeholder="@HttpContextAccessor.HttpContext?.Session.GetString("email").Replace("\"", "")" asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="text" placeholder="@HttpContextAccessor.HttpContext?.Session.GetString("firstname").Replace("\"", "")" asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="text" placeholder="@HttpContextAccessor.HttpContext?.Session.GetString("lastname").Replace("\"", "")" asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <br />
+                @*<div class="form-group">
+                <label asp-for="ProfilePicture" class="control-label"></label>
+                <img class="imagepropmed" alt="PersonalImage" id="programimage" src="~/images/@Model.ProfilePicture" />
+                <input asp-for="ProfilePicture" class="form-control" />
+                <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" />
+                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                </div>*@
+                <div class="form-group">
+                    <input type="text" placeholder="Access Level" asp-for="AccessLevelId" class="form-control" />
+                    <span asp-validation-for="AccessLevelId" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group" style="width:100%; text-align:center">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <br />
+    <div>
+        <a asp-action="User">Back to User Profile</a>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
