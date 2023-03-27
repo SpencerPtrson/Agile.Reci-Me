@@ -24,12 +24,12 @@ namespace Reci_me.BL
                     // Read database and select data list from tblPrograms and tblDegreeTypes
                     // Store each row into an array
                     var categories = (from c in dc.tblRecipeCategories
-                                    orderby c.Category
-                                    select new
-                                    {
-                                        c.Id,
-                                        c.Category
-                                    }).ToList();
+                                      orderby c.Category
+                                      select new
+                                      {
+                                          c.Id,
+                                          c.Category
+                                      }).ToList();
 
                     // Create a program instance for each array item, then add to rows (Load()'s return list)
                     foreach (var category in categories)
@@ -42,10 +42,7 @@ namespace Reci_me.BL
                     return rows;
                 }
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            catch (Exception ex) { throw ex; }
         }
     }
 }

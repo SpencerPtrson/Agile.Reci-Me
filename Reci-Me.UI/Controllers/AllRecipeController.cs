@@ -19,6 +19,15 @@ namespace Reci_Me.UI.Controllers
             return View();
         }
 
+        // Shows the filtered list
+        public ActionResult Browse(Guid categoryId)
+        {
+            ViewBag.Title = "Recipes";
+            return View(nameof(Index), RecipeManager.Load(categoryId));
+        }
+
+
+
         // GET: AllRecipeController/Create
         public ActionResult Create()
         {
@@ -39,6 +48,8 @@ namespace Reci_Me.UI.Controllers
                 return View();
             }
         }
+
+
 
         // GET: AllRecipeController/Edit/5
         public ActionResult Edit(int id)
@@ -61,6 +72,8 @@ namespace Reci_Me.UI.Controllers
             }
         }
 
+
+
         // GET: AllRecipeController/Delete/5
         public ActionResult Delete(int id)
         {
@@ -80,14 +93,6 @@ namespace Reci_Me.UI.Controllers
             {
                 return View();
             }
-        }
-
-
-        // Shows the filtered list
-        public ActionResult Browse(Guid categoryId)
-        {
-            ViewBag.Title = "Recipes";
-            return View(nameof(Index), RecipeManager.Load(categoryId));
         }
     }
 }

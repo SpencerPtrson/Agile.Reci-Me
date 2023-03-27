@@ -14,8 +14,8 @@ namespace Reci_Me.BL.Test
                 Id = Guid.NewGuid(),
                 Name = "test",
                 Servings = 1,
-                TotalTime= 1,
-                PrepTime= 1,
+                TotalTime = 1,
+                PrepTime = 1,
                 MainImagePath = "img.png",
                 UserId = UserManager.Load()[0].Id,
                 IsHidden = true,
@@ -27,8 +27,7 @@ namespace Reci_Me.BL.Test
         [TestMethod()]
         public void UpdateTest()
         {
-            Guid guid = new Guid("7c6c25a1-2223-4869-b157-1aea3acc9823");
-            Recipe recipe = RecipeManager.LoadById(guid);
+            Recipe recipe = RecipeManager.Load()[0];
             recipe.Name = "test";
 
             int results = RecipeManager.Update(recipe, true);

@@ -5,55 +5,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="width:100%; text-align:center">
-<h1>Please create an Account</h1>
-<br />
-<div class="row" style="width:100%; text-align:center">
-    <div class="col-md-4" style="width:100%; text-align:center">
-        <form asp-action="Create" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input type="text" placeholder="Email" asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <input type="text" placeholder="Password" asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <input type="text" placeholder="First Name" asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <input type="text" placeholder="Last Name" asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <br />
-             @*<div class="form-group">
+    <h1>Please create an Account</h1>
+    <br />
+    <div class="row" style="width:100%; text-align:center">
+        <div class="col-md-4" style="width:100%; text-align:center">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input type="text" placeholder="Email" asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="text" placeholder="Password" asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="text" placeholder="First Name" asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="text" placeholder="Last Name" asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <br />
+                @*<div class="form-group">
                 <label asp-for="ProfilePicture" class="control-label"></label>
                 <img class="imagepropmed" alt="PersonalImage" id="programimage" src="~/images/@Model.ProfilePicture" />
                 <input asp-for="ProfilePicture" class="form-control" />
                 <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" />
                 <span asp-validation-for="ProfilePicture" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <input type="text" placeholder="Access Level" asp-for="AccessLevelId" class="form-control" />
-                <span asp-validation-for="AccessLevelId" class="text-danger"></span>
-            </div>
-            <br />
+                </div>*@
+                <div class="form-group">
+                    <input type="text" placeholder="Access Level" asp-for="AccessLevelId" class="form-control" />
+                    <span asp-validation-for="AccessLevelId" class="text-danger"></span>
+                </div>
+                <br />
                 <div class="form-group" style="width:100%; text-align:center">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <br />
+    <div>
+        <a asp-action="Login">Back to Login Page</a>
     </div>
 </div>
-<br />
-<div>
-    <a asp-action="Login">Back to Login Page</a>
-</div>
-</div>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

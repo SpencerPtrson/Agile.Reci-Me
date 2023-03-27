@@ -2,70 +2,71 @@
 @using Microsoft.AspNetCore.Mvc;
 @inject IHttpContextAccessor HttpContextAccessor
 
-@model IEnumerable<Reci_me.BL.Models.User>
+@* @model IEnumerable<Reci_me.BL.Models.User> *@
+@model Reci_Me.UI.ViewModels.UserVM
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="width:100%; text-align:center">
-<h1>
+    <h1>
         @{
             Reci_me.BL.UserManager.Seed();
             var description = @HttpContextAccessor.HttpContext?.Session.GetString("description");
-                if (description != null)
-                {
+            if (description != null)
+            {
                 <p>@HttpContextAccessor.HttpContext?.Session.GetString("description")</p>
-                }
-                else
-                {
-                    <p>User Profile</p>
-                }
-          }
-</h1>
-<br />
-@*<table class="table">
+            }
+            else
+            {
+                <p>User Profile</p>
+            }
+        }
+    </h1>
+    <br />
+    @*<table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProfilePicture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProfileDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AccessLevelId)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+    <th>
+    @Html.DisplayNameFor(model => model.Email)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.ProfilePicture)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.ProfileDescription)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.AccessLevelId)
+    </th>
+    <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProfilePicture)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProfileDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccessLevelId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.Id })
-            </td>
-        </tr>
-}
+    @foreach (var item in Model) {
+    <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.ProfilePicture)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.ProfileDescription)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.AccessLevelId)
+    </td>
+    <td>
+    @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
+    @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
+    @Html.ActionLink("Delete", "Delete", new {  id=item.Id })
+    </td>
+    </tr>
+    }
     </tbody>
-</table>*@
+    </table>*@
     <div class="row gutters-sm" style="width:100%; text-align: center">
         <div class="col-md-4 mb-3">
             <div class="card">
@@ -135,9 +136,9 @@
         </div>
     </div>
 
-<div style="width:100%; text-align:center">
-<p>
-        @{
+    <div style="width:100%; text-align:center">
+        <p>
+            @{
                 Reci_me.BL.UserManager.Seed();
 
 
@@ -145,12 +146,16 @@
                 {
                     <a asp-controller="User" asp-action="Logout"><input type="submit" value="Logout" class="btn btn-primary" /></a>
                     <a asp-controller="User" asp-action="Edit"><input type="submit" value="Edit Account" class="btn btn-primary" /></a>
+                    //var id = HttpContextAccessor.HttpContext?.Session.GetString("id");
+                    //<a asp-controller="User" asp-action="Delete" asp-route-id="@id"><input type="submit" value="Delete Account" class="btn btn-primary" /></a>
+
+
                     <button name="X-HTTP-Method-Override" value="DELETE" formnovalidate
-                        class="btn btn-primary" onclick="return confirm('Are you sure?')">
+                            class="btn btn-primary" onclick="return confirm('Are you sure?')">
                         Delete Account
                     </button>
                 }
-         }
-            
-</p>
-</div>
+            }
+
+        </p>
+    </div>

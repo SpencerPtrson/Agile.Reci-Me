@@ -9,7 +9,8 @@ namespace Reci_Me.UI.ViewModels
         public List<Category> Categories { get; set; }
 
         // Constructor used with the word Create
-        public RecipeVM() {
+        public RecipeVM()
+        {
             Categories = CategoryManager.Load();
         }
 

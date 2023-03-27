@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Reci_me.BL;
 using Reci_me.BL.Models;
 using Reci_me.UI.Models;
+using Reci_Me.UI.ViewModels;
 
 namespace Reci_Me.UI.Controllers
 {
@@ -16,25 +17,19 @@ namespace Reci_Me.UI.Controllers
 
             string fullname = HttpContext.Session.GetString("fullname");
             if (fullname == "null")
-            {
                 return RedirectToAction("Login", "User");
-            }    
-                else
-                    return View(UserManager.Load());
-
+            else
+            {
+                UserVM userVM = new UserVM();
+                userVM.User = UserManager.Load().First();
+                return View(userVM);
+            }
         }
 
         public ActionResult Seed()
         {
             UserManager.Seed();
             return View();
-        }
-
-        public ActionResult Logout()
-        {
-            SetUser(null);
-            HttpContext.Session.SetObject("fullname", null);
-            return RedirectToAction("Index", "Home");
         }
 
         // GET: UserController/Details/5
@@ -65,10 +60,18 @@ namespace Reci_Me.UI.Controllers
             }
         }
 
+
         public ActionResult Login(string returnUri)
         {
             TempData["returnuri"] = returnUri;
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            SetUser(null);
+            HttpContext.Session.SetObject("fullname", null);
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: UserController/Create
@@ -86,7 +89,6 @@ namespace Reci_Me.UI.Controllers
                     return Redirect(TempData["returnuri"]?.ToString());
                 else
                     return RedirectToAction("Index", "Home");
-
             }
             catch (Exception ex)
             {
@@ -101,6 +103,7 @@ namespace Reci_Me.UI.Controllers
 
             if (user != null)
             {
+                HttpContext.Session.SetObject("id", user.Id);
                 HttpContext.Session.SetObject("description", "Welcome " + user.FirstName);
                 HttpContext.Session.SetObject("fullname", user.FullName);
                 HttpContext.Session.SetObject("firstname", user.FirstName);
@@ -115,31 +118,43 @@ namespace Reci_Me.UI.Controllers
             }
         }
 
+
+
         // GET: UserController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ViewBag.Title = "Edit Recipe";
+            UserVM userVM = new UserVM();
+            return View(userVM);
         }
 
         // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, UserVM userVM)
         {
             try
             {
+                ViewBag.Title = "Edit Profile";
+                UserManager.Update(userVM.User);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Error = ex.Message;
+                ViewBag.Title = "Error";
+                return View(userVM);
             }
         }
 
+
+
         // GET: UserController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+
+            UserManager.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: UserController/Delete/5

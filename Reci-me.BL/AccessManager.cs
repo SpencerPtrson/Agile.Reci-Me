@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
+using Reci_me.BL.Models;
 using Reci_me.PL;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Reci_me.BL
 {
     public enum Permission : int
     {
-        Read = 0, 
+        Read = 0,
         Write = 1
     }
     public class AccessManager
@@ -21,16 +22,6 @@ namespace Reci_me.BL
             int returnval = (int)(alPermissions / Math.Pow(10, alPermissions));
             //Checks if the last digit is a 1 or a 0
             return int.IsOddInteger(returnval);
-        }
-
-        public List<bool> Load(int alPermissions)
-        {
-            List<bool> bools = new List<bool>();
-            foreach (Permission permission in Enum.GetValues(typeof(Permission)).Cast<Permission>())
-            {
-                bools.Add(CheckPermission(alPermissions, permission));
-            }
-            return bools;
         }
         public bool CheckPermission(Guid id, Permission permission)
         {
@@ -56,6 +47,42 @@ namespace Reci_me.BL
             }
         }
 
+        public List<bool> Load(int alPermissions)
+        {
+            List<bool> bools = new List<bool>();
+            foreach (Permission permission in Enum.GetValues(typeof(Permission)).Cast<Permission>())
+            {
+                bools.Add(CheckPermission(alPermissions, permission));
+            }
+            return bools;
+        }
+        public static List<AccessLevel> Load()
+        {
+            try
+            {
+                List<AccessLevel> rows = new List<AccessLevel>();
+
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    (from ac in dc.tblAccessLevels
+                     select new
+                     {
+                         ac.Id,
+                         ac.Name,
+                     }).Distinct().ToList()
+                     .ForEach(ac => rows.Add(new AccessLevel
+                     {
+                         Id = ac.Id,
+                         Name = ac.Name,
+                     }));
+                }
+                return rows;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public List<bool> Load(Guid id)
         {
             try

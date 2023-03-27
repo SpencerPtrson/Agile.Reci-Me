@@ -27,33 +27,85 @@ namespace Reci_me.BL
     }
     public static class UserManager
     {
-        private static string GetHash(string password)
-        {
-            using (var hasher = SHA1.Create())
-            {
-                var hashbytes = Encoding.UTF8.GetBytes(password);
-                return Convert.ToBase64String(hasher.ComputeHash(hashbytes));
-            }
+        private const string RowError = "Row doesn't exist.";
 
-        }
-
-        public static int DeleteAll()
+        public static List<User> Load()
         {
             try
             {
+                List<User> rows = new List<User>();
+
                 using (ReciMeEntities dc = new ReciMeEntities())
                 {
-                    dc.tblUsers.RemoveRange(dc.tblUsers.ToList());
-                    return dc.SaveChanges();
+                    dc.tblUsers.ToList().ForEach(s => rows.Add(new User
+                    {
+                        Id = s.Id,
+                        Email = s.Email,
+                        Password = s.Password,
+                        ProfilePicture = s.Picture,
+                        ProfileDescription = s.Description,
+                        AccessLevelId = s.AccessLevelId,
+                        FirstName = s.FirstName,
+                        LastName = s.LastName,
+                    }));
+                    return rows;
                 }
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception ex) { throw ex; }
         }
+        public static List<User> LoadById(Guid id)
+        {
+            try
+            {
+                List<User> rows = new List<User>();
 
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    dc.tblUsers.Where(s => s.Id == id).ToList().ForEach(s => rows.Add(new User
+                    {
+                        Id = s.Id,
+                        Email = s.Email,
+                        Password = s.Password,
+                        ProfilePicture = s.Picture,
+                        ProfileDescription = s.Description,
+                        AccessLevelId = s.AccessLevelId,
+                        FirstName = s.FirstName,
+                        LastName = s.LastName,
+                    }));
+                    return rows;
+                }
+            }
+            catch (Exception ex) { throw ex; }
+            //try
+            //{
+            //    using (ReciMeEntities dc = new ReciMeEntities())
+            //    {
+            //        tblUser tblUser = dc.tblUsers.Where(c => c.Id == id).FirstOrDefault();
+            //        User user = new User();
+
+            //        if (tblUser != null)
+            //        {
+            //            // Put the table row values into the object.
+            //            user.Id = tblUser.Id;
+            //            user.Email = tblUser.Email;
+            //            user.Password = tblUser.Password;
+            //            user.ProfilePicture = tblUser.Picture;
+            //            user.ProfileDescription = tblUser.Description;
+            //            user.AccessLevelId = tblUser.AccessLevelId;
+            //            return user;
+            //        }
+            //        else
+            //        {
+            //            throw new Exception("Could not find the row");
+            //        }
+            //    }
+            //}
+            //catch (Exception)
+            //{
+
+            //    throw;
+            //}
+        }
         public static int Insert(User user, bool rollback = false)
         {
             try
@@ -85,99 +137,91 @@ namespace Reci_me.BL
                     return results;
                 }
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            catch (Exception ex) { throw ex; }
         }
-
-        public static List<User> Load()
+        public static int Update(User user, bool rollback = false)
         {
             try
             {
-                List<User> rows = new List<User>();
-
+                int results = 0;
                 using (ReciMeEntities dc = new ReciMeEntities())
                 {
-                    dc.tblUsers.ToList().ForEach(s => rows.Add(new User
+                    IDbContextTransaction dbContextTransaction = null;
+                    if (rollback) dbContextTransaction = dc.Database.BeginTransaction();
+
+                    tblUser row = dc.tblUsers.Where(u => u.Id == user.Id).FirstOrDefault();
+
+                    if (row != null)
                     {
-                        Id = s.Id,
-                        Email = s.Email,
-                        Password = s.Password,
-                        ProfilePicture = s.Picture,
-                        ProfileDescription = s.Description,
-                        AccessLevelId = s.AccessLevelId,
-                        FirstName = s.FirstName,
-                        LastName = s.LastName,
-                    }));
-                    return rows;
+                        row.Email = user.Email;
+                        // row.Password = GetHash(user.Password);
+                        row.FirstName = user.FirstName;
+                        row.LastName = user.LastName;
+                        // Need to implement Profile Picture and Profile Description fields in database
+                        row.AccessLevelId = user.AccessLevelId;
+
+                        results = dc.SaveChanges();
+
+                        if (rollback) dbContextTransaction.Rollback();
+                    }
+                    else
+                        throw new Exception(RowError);
                 }
+                return results;
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception ex) { throw ex; }
         }
-
-        public static List<User> LoadById(Guid id)
+        public static int Delete(Guid id, bool rollback = false)
         {
             try
             {
-                List<User> rows = new List<User>();
-
+                int results = 0;
                 using (ReciMeEntities dc = new ReciMeEntities())
                 {
-                    dc.tblUsers.Where(s => s.Id == id).ToList().ForEach(s => rows.Add(new User
+                    // Prepare to create a transaction if the function/data will be rolled back
+                    IDbContextTransaction dbContextTransaction = null;
+                    if (rollback) dbContextTransaction = dc.Database.BeginTransaction();
+
+                    // Create a new row that grabs a data row from the table
+                    tblUser row = dc.tblUsers.Where(u => u.Id == id).FirstOrDefault();
+
+                    // If fetch was successful, update row data
+                    if (row != null)
                     {
-                        Id = s.Id,
-                        Email = s.Email,
-                        Password= s.Password,
-                        ProfilePicture = s.Picture,
-                        ProfileDescription = s.Description,
-                        AccessLevelId = s.AccessLevelId,
-                        FirstName = s.FirstName,
-                        LastName = s.LastName,
-                    }));
-                    return rows;
+                        dc.tblUsers.Remove(row);
+                        results = dc.SaveChanges();
+
+                        // Rollback data if condition met
+                        if (rollback) dbContextTransaction.Rollback();
+                    }
+                    else
+                        throw new Exception("Row does not exist");
+                }
+                return results;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+        public static int DeleteAll()
+        {
+            try
+            {
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    dc.tblUsers.RemoveRange(dc.tblUsers.ToList());
+                    return dc.SaveChanges();
                 }
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            //try
-            //{
-            //    using (ReciMeEntities dc = new ReciMeEntities())
-            //    {
-            //        tblUser tblUser = dc.tblUsers.Where(c => c.Id == id).FirstOrDefault();
-            //        User user = new User();
-
-            //        if (tblUser != null)
-            //        {
-            //            // Put the table row values into the object.
-            //            user.Id = tblUser.Id;
-            //            user.Email = tblUser.Email;
-            //            user.Password = tblUser.Password;
-            //            user.ProfilePicture = tblUser.Picture;
-            //            user.ProfileDescription = tblUser.Description;
-            //            user.AccessLevelId = tblUser.AccessLevelId;
-            //            return user;
-            //        }
-            //        else
-            //        {
-            //            throw new Exception("Could not find the row");
-            //        }
-            //    }
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
+            catch (Exception ex) { throw ex; }
         }
 
+        private static string GetHash(string password)
+        {
+            using (var hasher = SHA1.Create())
+            {
+                var hashbytes = Encoding.UTF8.GetBytes(password);
+                return Convert.ToBase64String(hasher.ComputeHash(hashbytes));
+            }
+        }
         public static bool Login(User user)
         {
             try
@@ -228,12 +272,8 @@ namespace Reci_me.BL
                     throw new Exception("User Name was not set.");
                 }
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            catch (Exception ex) { throw ex; }
         }
-
         public static List<User> LoadContact()
         {
             try
@@ -256,13 +296,8 @@ namespace Reci_me.BL
                     return rows;
                 }
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception ex) { throw ex; }
         }
-
         public static void Seed()
         {
             using (ReciMeEntities dc = new ReciMeEntities())

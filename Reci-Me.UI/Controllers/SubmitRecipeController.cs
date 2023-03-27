@@ -19,6 +19,8 @@ namespace Reci_Me.UI.Controllers
             return View();
         }
 
+
+
         // GET: SubmitRecipeController/Create
         public ActionResult Create()
         {
@@ -45,6 +47,8 @@ namespace Reci_Me.UI.Controllers
             }
         }
 
+
+
         // GET: SubmitRecipeController/Edit/5
         public ActionResult Edit(int id)
         {
@@ -65,6 +69,8 @@ namespace Reci_Me.UI.Controllers
                 return View();
             }
         }
+
+
 
         // GET: SubmitRecipeController/Delete/5
         public ActionResult Delete(int id)

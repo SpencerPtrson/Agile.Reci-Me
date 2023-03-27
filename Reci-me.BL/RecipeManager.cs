@@ -58,10 +58,7 @@ namespace Reci_me.BL
                 }
                 return rows;
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            catch (Exception ex) { throw ex; }
         }
 
         public static int Insert(BL.Models.Recipe recipe, bool rollback = false)
@@ -98,10 +95,7 @@ namespace Reci_me.BL
 
                 return results;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            catch (Exception ex) { throw ex; }
         }
 
         public static int Update(BL.Models.Recipe recipe, bool rollback = false)
@@ -139,11 +133,7 @@ namespace Reci_me.BL
                 return results;
 
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception ex) { throw ex; }
         }
 
         public static int Delete(Guid id, bool rollback = false)
@@ -173,11 +163,7 @@ namespace Reci_me.BL
                 return results;
 
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception ex) { throw ex; }
         }
 
         public static Recipe LoadById(Guid id)
@@ -189,8 +175,10 @@ namespace Reci_me.BL
                 using (ReciMeEntities dc = new ReciMeEntities())
                 {
                     tblRecipe tblRecipe = dc.tblRecipes.Where(c => c.Id == id).FirstOrDefault();
-                    if (tblRecipe!= null) { 
-                        Recipe recipe = new Recipe { 
+                    if (tblRecipe != null)
+                    {
+                        Recipe recipe = new Recipe
+                        {
                             Id = tblRecipe.Id,
                             Servings = tblRecipe.Servings,
                             IsHidden = tblRecipe.IsHidden,
@@ -199,9 +187,10 @@ namespace Reci_me.BL
                             TotalTime = tblRecipe.TotalTime,
                             PrepTime = tblRecipe.PrepTime,
                             MainImagePath = tblRecipe.MainImagePath
-                    };
+                        };
                         return recipe;
-                    } else
+                    }
+                    else
                     {
                         throw new Exception(RowError);
                     }
