@@ -3,14 +3,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<p class="ps-2">
-    <a asp-action="Create">Create New</a>
-</p>
-
-
+<div class="container fluid">
+    <div style="width:100%; text-align:center">
+        <h1>All Recipes</h1>
+    </div>
+    <br />
 <div class="row">
-
     <div class="col-md-2 sidebar rounded-top">
         <div class="header rounded-top">
             <h4>Recipes</h4>
@@ -21,8 +19,8 @@
     </div>
     @foreach (var item in Model)
     {
-        <div class="col-sm-4">
-            <div class="card mb-2">
+        <div class="col-md-2 main body-content" style="width:20%">
+            <div class="card mb-2 main body-content">
                 <div class="card-header header">
                     <h3>@item.Name</h3>
                 </div>
@@ -30,7 +28,7 @@
                 @*<div class="card-img">
                     <img class="imagepropmed" src="~/images/Recipe/@item.MainImagePath" />
                 </div>*@
-                <div>
+                <div class="main body-content">
                     @await Component.InvokeAsync("RecipeCard", item.Name)
                 </div>
 
@@ -49,4 +47,8 @@
         </div>
     }
 
+</div>
+@*    <p class="ps-2" style="width:100%; text-align:center">
+        <a asp-controller="SubmitRecipe" asp-action="Index"><input type="submit" value="Create New Recipe" class="btn btn-primary" /></a>
+    </p>*@
 </div>
