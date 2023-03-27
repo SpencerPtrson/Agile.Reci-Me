@@ -24,14 +24,12 @@ namespace Reci_me.BL
                     // Read database and select data list from tblPrograms and tblDegreeTypes
                     // Store each row into an array
                     var categories = (from c in dc.tblRecipeCategories
-                                    join r in dc.tblRecipes
-                                    on c.Id equals r.CategoryId
                                     orderby c.Category
                                     select new
                                     {
                                         c.Id,
                                         c.Category
-                                    }).Distinct().ToList();
+                                    }).ToList();
 
                     // Create a program instance for each array item, then add to rows (Load()'s return list)
                     foreach (var category in categories)
