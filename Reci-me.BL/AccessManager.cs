@@ -11,7 +11,7 @@ namespace Reci_me.BL
 {
     public enum Permission : int
     {
-        Read = 0,
+        EditUsers = 0,
         Write = 1
     }
     public class AccessManager
@@ -33,7 +33,7 @@ namespace Reci_me.BL
 
                     if (tblAccessLevel != null)
                     {
-                        return true;//CheckPermission(tblAccessLevel.Permissions, permission);
+                        return CheckPermission(tblAccessLevel.Permissions, permission);
                     }
                     else
                     {
@@ -68,12 +68,16 @@ namespace Reci_me.BL
                      select new
                      {
                          ac.Id,
-                         ac.Name,
+                         ac.Description,
+                         ac.Label,
+                         ac.Permissions
                      }).Distinct().ToList()
                      .ForEach(ac => rows.Add(new AccessLevel
                      {
                          Id = ac.Id,
-                         Name = ac.Name,
+                         Description = ac.Description,
+                         Label = ac.Label,
+                         Permissions = ac.Permissions
                      }));
                 }
                 return rows;
@@ -93,7 +97,7 @@ namespace Reci_me.BL
 
                     if (tblAccessLevel != null)
                     {
-                        return new List<bool>();//Load(tblAccessLevel.Permissions);
+                        return Load(tblAccessLevel.Permissions);
                     }
                     else
                     {
@@ -118,8 +122,9 @@ namespace Reci_me.BL
 
                     tblAccessLevel newrow = new tblAccessLevel();
                     newrow.Id = Guid.NewGuid();
-                    newrow.Name = name;
-                    //newrow.Permissions = permissions;
+                    newrow.Description = name;
+                    newrow.Label = name;
+                    newrow.Permissions = permissions;
 
 
                     dc.tblAccessLevels.Add(newrow);
@@ -143,12 +148,12 @@ namespace Reci_me.BL
                 IDbContextTransaction transaction = null;
                 using (ReciMeEntities dc = new ReciMeEntities())
                 {
-                    tblAccessLevel row = dc.tblAccessLevels.FirstOrDefault(c => c.Name == name);
+                    tblAccessLevel row = dc.tblAccessLevels.FirstOrDefault(c => c.Description == name);
                     int results = 0;
                     if (row != null)
                     {
                         if (rollback) transaction = dc.Database.BeginTransaction();
-                        //row.Permissions = permissions;
+                        row.Permissions = permissions;
 
                         results = dc.SaveChanges();
                         if (rollback) transaction.Rollback();
@@ -175,7 +180,7 @@ namespace Reci_me.BL
                 using (ReciMeEntities dc = new ReciMeEntities())
                 {
 
-                    tblAccessLevel row = dc.tblAccessLevels.FirstOrDefault(c => c.Name == name);
+                    tblAccessLevel row = dc.tblAccessLevels.FirstOrDefault(c => c.Description == name);
                     int results = 0;
                     if (row != null)
                     {

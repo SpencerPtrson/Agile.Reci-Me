@@ -44,7 +44,10 @@ public partial class ReciMeEntities : DbContext
             entity.ToTable("tblAccessLevel");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
-            entity.Property(e => e.Name)
+            entity.Property(e => e.Description)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Label)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Permissions)

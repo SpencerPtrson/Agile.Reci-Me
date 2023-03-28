@@ -7,7 +7,9 @@ public partial class tblAccessLevel
 {
     public Guid Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string Description { get; set; } = null!;
 
-    public string Permissions { get; set; } = null!;
+    public string Label { get; set; } = null!;
+
+    public int Permissions { get; set; }
 }

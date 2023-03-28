@@ -9,7 +9,8 @@ namespace Reci_me.BL.Models
     public class AccessLevel
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Permissions { get; set; }
+        public string Description { get; set; }
+        public string Label { get; set; }
+        public int Permissions { get; set; }
     }
 }
