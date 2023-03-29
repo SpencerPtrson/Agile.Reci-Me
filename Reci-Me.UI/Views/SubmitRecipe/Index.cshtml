@@ -4,11 +4,8 @@
     ViewData["Title"] = ViewBag.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-<div class="row ps-2">
-    <div class="col-md-4">
-
+<div>
+    <div style="width:100%; text-align:center">
         <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -42,7 +39,9 @@
                 <img class="imagepropmed"
                      alt="Select an Image"
                      id="recipeimage"
-                     src="~/css/img/Logo revised.png" />
+                     src="~/css/img/Logo revised.png" 
+                     height="100" 
+                     width="100"/>
                 <input id="FileName" asp-for="Recipe.MainImagePath" class="form-control" />
                 <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" />
                 <span asp-validation-for="Recipe.MainImagePath" class="text-danger"></span>
@@ -62,7 +61,7 @@
 </div>
 
 <div class="ps-2">
-    <a asp-action="Index" asp-controller="Home">Back to Main Menu</a>
+    <a asp-action="Index" asp-controller="Home">Back to Home Page</a>
 </div>
 
 @section Scripts {
