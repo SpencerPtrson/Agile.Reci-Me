@@ -289,7 +289,6 @@ namespace Reci_me.BL
                         Password = s.Password,
                         ProfilePicture = s.Picture,
                         ProfileDescription = s.Description,
-                        AccessLevel = AccessManager.Load(s.AccessLevelId),
                         FirstName = s.FirstName,
                         LastName = s.LastName
                     }));
