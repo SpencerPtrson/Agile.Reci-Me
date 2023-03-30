@@ -47,15 +47,6 @@ namespace Reci_me.BL
             }
         }
 
-        public static List<bool> Load(int alPermissions)
-        {
-            List<bool> bools = new List<bool>();
-            foreach (Permission permission in Enum.GetValues(typeof(Permission)).Cast<Permission>())
-            {
-                bools.Add(CheckPermission(alPermissions, permission));
-            }
-            return bools;
-        }
         public static List<AccessLevel> Load()
         {
             try
@@ -82,11 +73,18 @@ namespace Reci_me.BL
                 }
                 return rows;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            catch (Exception ex) { throw ex; }
         }
+
+        public static List<bool> Load(int alPermissions)
+        {
+            List<bool> bools = new List<bool>();
+            foreach (Permission permission in Enum.GetValues(typeof(Permission)).Cast<Permission>())
+            {
+                bools.Add(CheckPermission(alPermissions, permission));
+            }
+            return bools;
+        }   
         public static AccessLevel Load(Guid id)
         {
             try
