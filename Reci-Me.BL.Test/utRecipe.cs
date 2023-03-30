@@ -7,6 +7,28 @@ namespace Reci_Me.BL.Test
     public class utRecipe
     {
         [TestMethod]
+        public void LoadTest()
+        {
+            Assert.AreEqual(4, RecipeManager.Load().Count);
+        }
+
+        [TestMethod]
+        public void LoadByIdTest()
+        {
+            Recipe firstRecipe = RecipeManager.Load()[0];
+            Guid loadedGuid = RecipeManager.LoadById(firstRecipe.Id).Id;
+            Assert.AreEqual(firstRecipe.Id, loadedGuid);
+        }
+
+        [TestMethod]
+        public void LoadByNameTest()
+        {
+            Guid nameId = RecipeManager.LoadByName("Stuffed Peppers").Id;
+            Guid firstId = RecipeManager.Load()[0].Id;
+            Assert.AreEqual(nameId, firstId);
+        }
+
+        [TestMethod]
         public void InsertTest()
         {
             Recipe recipe = new Recipe

@@ -61,111 +61,6 @@ namespace Reci_me.BL
             catch (Exception ex) { throw ex; }
         }
 
-        public static int Insert(BL.Models.Recipe recipe, bool rollback = false)
-        {
-            try
-            {
-                List<User> users = UserManager.Load();
-
-                int results = 0;
-                using (ReciMeEntities dc = new ReciMeEntities())
-                {
-                    IDbContextTransaction dbContextTransaction = null;
-                    if (rollback) dbContextTransaction = dc.Database.BeginTransaction();
-
-                    tblRecipe row = new tblRecipe();
-
-                    row.Id = Guid.NewGuid();
-                    row.IsHidden = false;
-                    row.UserId = users[0].Id;
-                    row.Servings = recipe.Servings;
-                    row.TotalTime = recipe.TotalTime;
-                    row.PrepTime = recipe.PrepTime;
-                    row.Name = recipe.Name;
-                    row.MainImagePath = recipe.MainImagePath;
-                    row.CategoryId = recipe.CategoryId;
-
-                    recipe.Id = row.Id;
-
-                    dc.tblRecipes.Add(row);
-                    results = dc.SaveChanges();
-
-                    if (rollback) dbContextTransaction.Rollback();
-                }
-
-                return results;
-            }
-            catch (Exception ex) { throw ex; }
-        }
-
-        public static int Update(BL.Models.Recipe recipe, bool rollback = false)
-        {
-            try
-            {
-                int results = 0;
-                using (ReciMeEntities dc = new ReciMeEntities())
-                {
-                    IDbContextTransaction dbContextTransaction = null;
-                    if (rollback) dbContextTransaction = dc.Database.BeginTransaction();
-
-                    tblRecipe row = dc.tblRecipes.Where(s => s.Id == recipe.Id).FirstOrDefault();
-
-                    if (row != null)
-                    {
-                        row.Servings = recipe.Servings;
-                        row.IsHidden = recipe.IsHidden;
-                        row.UserId = recipe.UserId;
-                        row.Name = recipe.Name;
-                        row.TotalTime = recipe.TotalTime;
-                        row.PrepTime = recipe.PrepTime;
-                        row.MainImagePath = recipe.MainImagePath;
-
-                        results = dc.SaveChanges();
-
-                        if (rollback) dbContextTransaction.Rollback();
-                    }
-                    else
-                    {
-                        throw new Exception(RowError);
-                    }
-                }
-
-                return results;
-
-            }
-            catch (Exception ex) { throw ex; }
-        }
-
-        public static int Delete(Guid id, bool rollback = false)
-        {
-            try
-            {
-                int results = 0;
-                using (ReciMeEntities dc = new ReciMeEntities())
-                {
-                    IDbContextTransaction dbContextTransaction = null;
-                    if (rollback) dbContextTransaction = dc.Database.BeginTransaction();
-
-                    tblRecipe row = dc.tblRecipes.Where(s => s.Id == id).FirstOrDefault();
-
-                    if (row != null)
-                    {
-                        dc.tblRecipes.Remove(row);
-                        results = dc.SaveChanges();
-
-                        if (rollback) dbContextTransaction.Rollback();
-                    }
-                    else
-                    {
-                        throw new Exception(RowError);
-                    }
-                }
-                return results;
-
-            }
-            catch (Exception ex) { throw ex; }
-        }
-
         public static Recipe LoadById(Guid id)
         {
             try
@@ -236,6 +131,111 @@ namespace Reci_me.BL
             {
                 throw;
             }
+        }
+
+        public static int Insert(Recipe recipe, bool rollback = false)
+        {
+            try
+            {
+                List<User> users = UserManager.Load();
+
+                int results = 0;
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    IDbContextTransaction dbContextTransaction = null;
+                    if (rollback) dbContextTransaction = dc.Database.BeginTransaction();
+
+                    tblRecipe row = new tblRecipe();
+
+                    row.Id = Guid.NewGuid();
+                    row.IsHidden = false;
+                    row.UserId = users[0].Id;
+                    row.Servings = recipe.Servings;
+                    row.TotalTime = recipe.TotalTime;
+                    row.PrepTime = recipe.PrepTime;
+                    row.Name = recipe.Name;
+                    row.MainImagePath = recipe.MainImagePath;
+                    row.CategoryId = recipe.CategoryId;
+
+                    recipe.Id = row.Id;
+
+                    dc.tblRecipes.Add(row);
+                    results = dc.SaveChanges();
+
+                    if (rollback) dbContextTransaction.Rollback();
+                }
+
+                return results;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public static int Update(Recipe recipe, bool rollback = false)
+        {
+            try
+            {
+                int results = 0;
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    IDbContextTransaction dbContextTransaction = null;
+                    if (rollback) dbContextTransaction = dc.Database.BeginTransaction();
+
+                    tblRecipe row = dc.tblRecipes.Where(s => s.Id == recipe.Id).FirstOrDefault();
+
+                    if (row != null)
+                    {
+                        row.Servings = recipe.Servings;
+                        row.IsHidden = recipe.IsHidden;
+                        row.UserId = recipe.UserId;
+                        row.Name = recipe.Name;
+                        row.TotalTime = recipe.TotalTime;
+                        row.PrepTime = recipe.PrepTime;
+                        row.MainImagePath = recipe.MainImagePath;
+
+                        results = dc.SaveChanges();
+
+                        if (rollback) dbContextTransaction.Rollback();
+                    }
+                    else
+                    {
+                        throw new Exception(RowError);
+                    }
+                }
+
+                return results;
+
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public static int Delete(Guid id, bool rollback = false)
+        {
+            try
+            {
+                int results = 0;
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    IDbContextTransaction dbContextTransaction = null;
+                    if (rollback) dbContextTransaction = dc.Database.BeginTransaction();
+
+                    tblRecipe row = dc.tblRecipes.Where(s => s.Id == id).FirstOrDefault();
+
+                    if (row != null)
+                    {
+                        dc.tblRecipes.Remove(row);
+                        results = dc.SaveChanges();
+
+                        if (rollback) dbContextTransaction.Rollback();
+                    }
+                    else
+                    {
+                        throw new Exception(RowError);
+                    }
+                }
+                return results;
+
+            }
+            catch (Exception ex) { throw ex; }
         }
     }
 }
