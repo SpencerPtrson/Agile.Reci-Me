@@ -37,7 +37,7 @@ namespace Reci_Me.BL.Test
         public void DeleteTest()
         {
             Category category = CategoryManager.Load()[0];
-            int results = CategoryManager.Delete(category);
+            int results = CategoryManager.Delete(category, true);
             Assert.AreEqual(1, results);
         }
     }
