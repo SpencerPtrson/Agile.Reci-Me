@@ -53,8 +53,8 @@
                      width="300"/>
                      <br />
                      <br />
-                <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" style="padding-left:195px"/>
-                <span asp-validation-for="Recipe.MainImagePath" class="text-danger"></span>
+                <input id="FileName" asp-for="Recipe.MainImagePath" class="form-control" />
+                <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" />
             </div>
             <br />
             <div class="form-group">
@@ -84,6 +84,15 @@
     var loadFile = function (event) {
         var output = document.getElementById('recipeimage');
         output.src = URL.createObjectURL(event.target.files[0]);
+
+        document.getElementById('File').onchange = function () {
+            var filename = this.value;
+            var lastIndex = filename.lastIndexOf("\\");
+            if (lastIndex >= 0) {
+                filename = filename.substring(lastIndex + 1);
+            }
+            document.getElementById('FileName').innerHTML = filename;
+        }
     }
 </script>
 
