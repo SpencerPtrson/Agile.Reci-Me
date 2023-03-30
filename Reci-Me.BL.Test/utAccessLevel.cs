@@ -10,7 +10,7 @@ namespace Reci_Me.BL.Test
         public void LoadTest()
         {
             List<AccessLevel> accessLevels = AccessManager.Load();
-            Assert.AreEqual(2, accessLevels.Count);
+            Assert.AreEqual(3, accessLevels.Count);
         }
     }
 }
