@@ -109,7 +109,7 @@ namespace Reci_Me.UI.Controllers
                 HttpContext.Session.SetObject("firstname", user.FirstName);
                 HttpContext.Session.SetObject("lastname", user.LastName);
                 HttpContext.Session.SetObject("email", user.Email);
-                HttpContext.Session.SetObject("accesslevel", user.AccessLevelId);
+                HttpContext.Session.SetObject("accesslevel", user.AccessLevel.Label);
             }
             else
             {

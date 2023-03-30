@@ -14,16 +14,16 @@ namespace Reci_me.BL
         EditUsers = 0,
         Write = 1
     }
-    public class AccessManager
+    public static class AccessManager
     {
-        public bool CheckPermission(int alPermissions, Permission permission)
+        public static bool CheckPermission(int alPermissions, Permission permission)
         {
             //Divides to remove any leading digits that aren't the permission being checked
             int returnval = (int)(alPermissions / Math.Pow(10, alPermissions));
             //Checks if the last digit is a 1 or a 0
             return int.IsOddInteger(returnval);
         }
-        public bool CheckPermission(Guid id, Permission permission)
+        public static bool CheckPermission(Guid id, Permission permission)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace Reci_me.BL
             }
         }
 
-        public List<bool> Load(int alPermissions)
+        public static List<bool> Load(int alPermissions)
         {
             List<bool> bools = new List<bool>();
             foreach (Permission permission in Enum.GetValues(typeof(Permission)).Cast<Permission>())
@@ -87,7 +87,30 @@ namespace Reci_me.BL
                 throw ex;
             }
         }
-        public List<bool> Load(Guid id)
+        public static AccessLevel Load(Guid id)
+        {
+            try
+            {
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    tblAccessLevel tblAccessLevel = dc.tblAccessLevels.Where(c => c.Id == id).FirstOrDefault();
+
+                    if (tblAccessLevel != null)
+                    {
+                        return Load().Where(c => c.Id == id).FirstOrDefault();
+                    }
+                    else
+                    {
+                        throw new Exception("Could not find the row");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static List<bool> LoadPermissions(Guid id)
         {
             try
             {
