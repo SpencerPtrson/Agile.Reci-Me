@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Web.CodeGeneration.Design;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.VisualStudio.Web.CodeGeneration.Design;
 using Reci_me.BL.Models;
 using Reci_me.PL;
 using System;
@@ -41,6 +42,85 @@ namespace Reci_me.BL
                     }
                     return rows;
                 }
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public static int Insert(Category category, bool rollback = false)
+        {
+            try
+            {
+                int results = 0;
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    IDbContextTransaction dbContextTransaction = null;
+                    if (rollback) { dbContextTransaction = dc.Database.BeginTransaction(); }
+
+                    tblRecipeCategory row = new tblRecipeCategory();
+                    row.Id = Guid.NewGuid();
+                    row.Category = category.Name;
+                    category.Id = row.Id;
+
+                    dc.tblRecipeCategories.Add(row);
+                    results = dc.SaveChanges();
+
+                    if (rollback) dbContextTransaction.Rollback();
+                }
+                return results;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public static int Update(Category category, bool rollback = false)
+        {
+            try
+            {
+                int results = 0;
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    IDbContextTransaction dbContextTransaction = null;
+                    if (rollback) { dbContextTransaction = dc.Database.BeginTransaction(); }
+
+                    tblRecipeCategory row = dc.tblRecipeCategories.Where(c => c.Id == category.Id).FirstOrDefault(); ;
+
+                    if (row != null)
+                    {
+                        row.Category = category.Name;
+                        results = dc.SaveChanges();
+                    }
+                    else
+                        throw new Exception("Row does not exist");
+
+                    if (rollback) dbContextTransaction.Rollback();
+                }
+                return results;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public static int Delete(Category category, bool rollback = false)
+        {
+            try
+            {
+                int results = 0;
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    IDbContextTransaction dbContextTransaction = null;
+                    if (rollback) { dbContextTransaction = dc.Database.BeginTransaction(); }
+
+                    tblRecipeCategory row = dc.tblRecipeCategories.Where(c => c.Id == category.Id).FirstOrDefault(); ;
+
+                    if (row != null)
+                    {
+                        dc.tblRecipeCategories.Remove(row);
+                        results = dc.SaveChanges();
+                        if (rollback) dbContextTransaction.Rollback();
+                    }
+                    else
+                        throw new Exception("Row does not exist");
+
+                }
+                return results;
             }
             catch (Exception ex) { throw ex; }
         }

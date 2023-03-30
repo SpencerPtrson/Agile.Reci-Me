@@ -12,5 +12,33 @@ namespace Reci_Me.BL.Test
             List<Category> categories = CategoryManager.Load();
             Assert.AreEqual(4, categories.Count);
         }
+
+        [TestMethod]
+        public void InsertTest()
+        {
+            Category category = new Category
+            {
+                Id = Guid.NewGuid(),
+                Name = "Test",
+            };
+            Assert.AreEqual(1, CategoryManager.Insert(category, true));
+        }
+
+        [TestMethod]
+        public void UpdateTest()
+        {
+            Category category = CategoryManager.Load()[0];
+            category.Name = "Test";
+            int results = CategoryManager.Update(category, true);
+            Assert.AreEqual(1, results);
+        }
+
+        [TestMethod]
+        public void DeleteTest()
+        {
+            Category category = CategoryManager.Load()[0];
+            int results = CategoryManager.Delete(category);
+            Assert.AreEqual(1, results);
+        }
     }
 }
