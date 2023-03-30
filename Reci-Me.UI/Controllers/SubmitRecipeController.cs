@@ -37,7 +37,7 @@ namespace Reci_Me.UI.Controllers
             try
             {
                 RecipeManager.Insert(recipeVM.Recipe);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction( nameof(Index), "Home");
             }
             catch (Exception ex)
             {
