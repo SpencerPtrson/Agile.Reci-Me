@@ -11,7 +11,16 @@
     </div>
 </div>
 </body>
-
+<body onload="RandomRecipe()">
+    <div class="wrapper mt-4" style="width:100%; text-align:center; max-width:1200px">
+        <div class="hero-image">
+            <img id="randImg" class="img-fluid" style="max-height: 400" src="~/css/img/wings.jpg" width="1200" height="400" />
+            <div class="hero-text">
+                <h1 id="randText"><mark>Recipe of the week: Buffalo Wings</mark></h1>
+            </div>
+        </div>
+    </div>
+</body>
 
 @*    <div>
         @await Component.InvokeAsync("RecipeCard", "Blackened Shrimp Tacos")
@@ -25,3 +34,46 @@
     <div>
     <p>After you do that, how about <a asp-controller="User" asp-action="Create">creating an account</a> and start making some of your own.</p>
     </div>*@
+
+<script type="text/javascript">
+
+    function RandomRecipe() {
+        let randNum = Math.floor(Math.random() * 5);
+        let imgMod;
+        let txtMod;
+        if (randNum <= 1)
+        {
+          imgMod = document.getElementById("randImg").src = "/images/Recipe/blackenedshrimptacos.jpg";
+          txtMod = document.getElementById("randText").innerHTML = "Blackened Shrimp Tacos";
+          //imgMod.style.width = 100 + "px";
+          //imgMod.style.height = 100 + "px";
+        } else if (randNum > 1 && randNum <= 2) {
+            document.getElementById("randImg").src = "/images/Recipe/steakonstove.jpg";
+            document.getElementById("randText").innerHTML = "Steak on the Stovetop";
+        } else if (randNum > 2 && randNum <=3) {
+            document.getElementById("randImg").src = "/images/Recipe/stuffedpeppers.jpg";
+            document.getElementById("randText").innerHTML = "Stuffed Peppers";
+        } else{
+            document.getElementById("randImg").src = "/css/img/wings.jpg";
+            document.getElementById("randText").innerHTML = "Buffalo Wings";
+        }
+    }
+
+    //function on(picture) {
+    //    console.log('On')
+    //    document.getElementById("overlay").style.display = "block";
+    //    document.getElementById("output").src = picture;
+    //}
+
+    //function AddToCart(id) {
+    //    $.get("/ShoppingCart/AddToCart/" + id, function (data) {
+    //        console.log("Starting adding " + id);
+    //        var cartcount = parseInt($("#cartcount").val()) + 1
+    //        $("#cartcount").val(cartcount);
+    //        $("#cartcountdisp").text(cartcount + " Items");
+    //    });
+    //}
+
+
+
+</script>
