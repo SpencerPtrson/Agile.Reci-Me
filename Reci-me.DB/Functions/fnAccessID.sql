@@ -1,5 +1,5 @@
 ﻿GO
 CREATE FUNCTION fnAccessID (@Name VARCHAR(50))
 	RETURNS UNIQUEIDENTIFIER AS BEGIN
-		RETURN (SELECT Id FROM tblAccessLevel WHERE Name = @Name)
+		RETURN (SELECT Id FROM tblAccessLevel WHERE Description = @Name)
 END

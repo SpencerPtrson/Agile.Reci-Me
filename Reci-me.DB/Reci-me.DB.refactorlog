@@ -28,4 +28,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Category" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="9a8f6568-c4fe-4dc9-9d2e-6ffb120d5820" ChangeDateTime="03/27/2023 23:56:17">
+    <Property Name="ElementName" Value="[dbo].[tblAccessLevel].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblAccessLevel]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UsersName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e233ced4-c383-49e4-b62a-c7444486fae8" ChangeDateTime="03/28/2023 00:18:21">
+    <Property Name="ElementName" Value="[dbo].[tblAccessLevel].[AdminName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblAccessLevel]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Description" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8ca5c99f-8205-4160-a171-2504813093de" ChangeDateTime="03/28/2023 00:18:27">
+    <Property Name="ElementName" Value="[dbo].[tblAccessLevel].[UsersName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblAccessLevel]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Label" />
+  </Operation>
 </Operations>

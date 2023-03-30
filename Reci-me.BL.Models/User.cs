@@ -20,6 +20,7 @@ namespace Reci_me.BL.Models
         // Will be the image path of the picture
         public string ProfilePicture { get; set; }
         public string ProfileDescription { get; set; }
-        public Guid AccessLevelId { get; set; }
+        public AccessLevel AccessLevel { get; set; }
+
     }
 }

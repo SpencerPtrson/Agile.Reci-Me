@@ -44,7 +44,7 @@ namespace Reci_me.BL
                         Password = s.Password,
                         ProfilePicture = s.Picture,
                         ProfileDescription = s.Description,
-                        AccessLevelId = s.AccessLevelId,
+                        AccessLevel = AccessManager.Load(s.AccessLevelId),
                         FirstName = s.FirstName,
                         LastName = s.LastName,
                     }));
@@ -68,7 +68,7 @@ namespace Reci_me.BL
                         Password = s.Password,
                         ProfilePicture = s.Picture,
                         ProfileDescription = s.Description,
-                        AccessLevelId = s.AccessLevelId,
+                        AccessLevel = AccessManager.Load(s.AccessLevelId),
                         FirstName = s.FirstName,
                         LastName = s.LastName,
                     }));
@@ -124,7 +124,7 @@ namespace Reci_me.BL
                     row.Password = GetHash(user.Password);
                     row.Picture = user.ProfilePicture;
                     row.Description = user.ProfileDescription;
-                    row.AccessLevelId = user.AccessLevelId;
+                    row.AccessLevelId = user.AccessLevel.Id;
                     row.FirstName = user.FirstName;
                     row.LastName = user.LastName;
 
@@ -158,7 +158,7 @@ namespace Reci_me.BL
                         row.FirstName = user.FirstName;
                         row.LastName = user.LastName;
                         // Need to implement Profile Picture and Profile Description fields in database
-                        row.AccessLevelId = user.AccessLevelId;
+                        row.AccessLevelId = user.AccessLevel.Id;
 
                         results = dc.SaveChanges();
 
@@ -242,7 +242,7 @@ namespace Reci_me.BL
                                     // login happened
                                     user.Id = tblUser.Id;
                                     user.ProfileDescription = tblUser.Description;
-                                    user.AccessLevelId = tblUser.AccessLevelId;
+                                    user.AccessLevel = AccessManager.Load(tblUser.AccessLevelId);
                                     user.FirstName = tblUser.FirstName;
                                     user.LastName = tblUser.LastName;
                                     user.ProfilePicture = tblUser.Picture;
@@ -289,7 +289,6 @@ namespace Reci_me.BL
                         Password = s.Password,
                         ProfilePicture = s.Picture,
                         ProfileDescription = s.Description,
-                        AccessLevelId = s.AccessLevelId,
                         FirstName = s.FirstName,
                         LastName = s.LastName
                     }));
