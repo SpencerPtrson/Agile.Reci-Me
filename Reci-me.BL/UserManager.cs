@@ -242,7 +242,7 @@ namespace Reci_me.BL
                                     // login happened
                                     user.Id = tblUser.Id;
                                     user.ProfileDescription = tblUser.Description;
-                                    user.AccessLevel.Id = tblUser.AccessLevelId;
+                                    user.AccessLevel = AccessManager.Load(tblUser.AccessLevelId);
                                     user.FirstName = tblUser.FirstName;
                                     user.LastName = tblUser.LastName;
                                     user.ProfilePicture = tblUser.Picture;
