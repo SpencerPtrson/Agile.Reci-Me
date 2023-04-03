@@ -13,7 +13,7 @@
         <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Recipe.Name" class="control-label" style="padding-right:600px"></label>
+                <label asp-for="Recipe.Name" class="control-label" style="padding-right:600px; position:relative"></label>
                 <input asp-for="Recipe.Name" class="form-control" />
                 <span asp-validation-for="Recipe.Name" class="text-danger"></span>
             </div>
