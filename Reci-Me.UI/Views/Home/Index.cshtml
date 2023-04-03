@@ -1,31 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<body>
-@*<div class="wrapper" style="width:100%; text-align:center; max-width:1200px">
-    <div class="hero-image">
-        <img class="img-fluid" src="~/css/img/wings.jpg"/>
-        <div class="hero-text">
-                <h1><mark>Recipe of the week: Buffalo Wings</mark></h1>
-        </div>
+<body>  
+    <div>
+        <h1 id="header">
+            Check out our recipe of the day:
+            <a id="lnkText" class="text-dark text-decoration-none" asp-area="" asp-controller="ViewRecipe" asp-action="Index"></a>
+        </h1>     
     </div>
-</div>*@
-
-    <h1 id="header">
-        Check out our recipe of the week:
-    </h1>
 </body>
-<body onload="RandomRecipe()">
+<body onload="RecipeDaily()">
     <div class="wrapper mt-4" style="width:100%; text-align:center; max-width:1200px">
         <div class="hero-text">
-                <h1 id="randText"><mark>Recipe of the week: Buffalo Wings</mark></h1>
+            <h1 id="randText"><mark>Recipe of the week: Buffalo Wings</mark></h1>
         </div>
         <div class="hero-image">
             <img id="randImg" class="img-fluid" style="max-height: 400" src="~/css/img/wings.jpg" />
         </div>
         @*<div>
-            For an eventual brief description of the dish
-            <p id="desc"></p>
+        For an eventual brief description of the dish
+        <p id="desc"></p>
         </div>*@
         <div class="hero-text">
             <br />
@@ -33,59 +27,57 @@
     </div>
 </body>
 
-
-
-    @*<div>
-        @await Component.InvokeAsync("RecipeCard", "Blackened Shrimp Tacos")
-    </div>
-    <div>
-        @await Component.InvokeAsync("RecipeCard", "Steak on the Stovetop")
-    </div>
-    <div>
-        @await Component.InvokeAsync("RecipeCard", "Stuffed Peppers")
-    </div>
-    <div>
-    <p>After you do that, how about <a asp-controller="User" asp-action="Create">creating an account</a> and start making some of your own.</p>
-    </div>*@
-
 <script type="text/javascript">
 
-    function RandomRecipe() {
-        let randNum = Math.floor(Math.random() * 5);
-        let imgMod;
-        let txtMod;
-        if (randNum <= 1)
-        {
-            imgMod = document.getElementById("randImg").src = "/css/img/blackenedshrimptacos.jpg";
-          txtMod = document.getElementById("randText").innerHTML = "Blackened Shrimp Tacos";
-          //imgMod.style.width = 100 + "px";
-          //imgMod.style.height = 100 + "px";
-        } else if (randNum > 1 && randNum <= 2) {
-            document.getElementById("randImg").src = "/css/img/steakonstove.jpg";
-            document.getElementById("randText").innerHTML = "Steak on the Stovetop";
-        } else if (randNum > 2 && randNum <=3) {
-            document.getElementById("randImg").src = "/css/img/stuffed-peppers.jpg";
-            document.getElementById("randText").innerHTML = "Stuffed Peppers";
-        } else{
-            document.getElementById("randImg").src = "/css/img/wings.jpg";
-            document.getElementById("randText").innerHTML = "Buffalo Wings";
-        }
+    function RecipeDaily() {
+        var d = new Date();
+        var t = d.getTime();
+        var days = Math.floor(t / (86400000));
+
+        var imagearray = new Array('/css/img/blackenedshrimptacos.jpg', '/css/img/steakonstove.jpg', '/css/img/stuffed-peppers.jpg', '/css/img/wings.jpg', '/css/img/wings.jpg', '/css/img/wings.jpg', '/css/img/wings.jpg');
+        var i = days % imagearray.length;
+        //i = i - 2;
+        document.getElementById("randImg").src = imagearray[i];
+        var imagetextarray = new Array('Blackened Shrimp Tacos', 'Steak on the Stovetop', 'Stuffed Peppers', 'Buffalo Wings', 'Buffalo Wings', 'Buffalo Wings', 'Buffalo Wings');
+        document.getElementById("randText").innerHTML = imagetextarray[i];
+        document.getElementById("lnkText").innerHTML = imagetextarray[i];
     }
 
-    //function on(picture) {
-    //    console.log('On')
-    //    document.getElementById("overlay").style.display = "block";
-    //    document.getElementById("output").src = picture;
-    //}
+        //function RandomRecipe() {
+        //    let randNum = Math.floor(Math.random() * 5);
+        //    let imgMod;
+        //    let txtMod;
+        //    if (randNum <= 1) {
+        //        imgMod = document.getElementById("randImg").src = "/css/img/blackenedshrimptacos.jpg";
+        //        txtMod = document.getElementById("randText").innerHTML = "Blackened Shrimp Tacos";
+        //        //imgMod.style.width = 100 + "px";
+        //        //imgMod.style.height = 100 + "px";
+        //    } else if (randNum > 1 && randNum <= 2) {
+        //        document.getElementById("randImg").src = "/css/img/steakonstove.jpg";
+        //        document.getElementById("randText").innerHTML = "Steak on the Stovetop";
+        //    } else if (randNum > 2 && randNum <= 3) {
+        //        document.getElementById("randImg").src = "/css/img/stuffed-peppers.jpg";
+        //        document.getElementById("randText").innerHTML = "Stuffed Peppers";
+        //    } else {
+        //        document.getElementById("randImg").src = "/css/img/wings.jpg";
+        //        document.getElementById("randText").innerHTML = "Buffalo Wings";
+        //    }
+        //}
 
-    //function AddToCart(id) {
-    //    $.get("/ShoppingCart/AddToCart/" + id, function (data) {
-    //        console.log("Starting adding " + id);
-    //        var cartcount = parseInt($("#cartcount").val()) + 1
-    //        $("#cartcount").val(cartcount);
-    //        $("#cartcountdisp").text(cartcount + " Items");
-    //    });
-    //}
+        //function on(picture) {
+        //    console.log('On')
+        //    document.getElementById("overlay").style.display = "block";
+        //    document.getElementById("output").src = picture;
+        //}
+
+        //function AddToCart(id) {
+        //    $.get("/ShoppingCart/AddToCart/" + id, function (data) {
+        //        console.log("Starting adding " + id);
+        //        var cartcount = parseInt($("#cartcount").val()) + 1
+        //        $("#cartcount").val(cartcount);
+        //        $("#cartcountdisp").text(cartcount + " Items");
+        //    });
+        //}
 
 
 
