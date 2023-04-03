@@ -7,6 +7,7 @@ namespace Reci_Me.UI.ViewModels
     {
         public User User { get; set; }
         public List<AccessLevel> AccessLevels { get; set; }
+        public List<User> Users { get; set; }
 
         // Constructor used with the word Create
         public UserVM()

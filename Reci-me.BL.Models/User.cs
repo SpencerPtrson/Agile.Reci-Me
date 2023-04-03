@@ -15,6 +15,7 @@ namespace Reci_me.BL.Models
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [DisplayName("Full Name")]
         public string FullName { get { return FirstName + " " + LastName; } }
 
         // Will be the image path of the picture
