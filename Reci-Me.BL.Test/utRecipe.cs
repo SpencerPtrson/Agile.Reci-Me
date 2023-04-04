@@ -13,6 +13,13 @@ namespace Reci_Me.BL.Test
         }
 
         [TestMethod]
+        public void LoadByCategoryId()
+        {
+            List<Category> categories = CategoryManager.Load();
+            Assert.AreEqual(1, RecipeManager.Load(categories[0].Id).Count);
+        }
+
+        [TestMethod]
         public void LoadByIdTest()
         {
             Recipe firstRecipe = RecipeManager.Load()[0];
@@ -23,8 +30,11 @@ namespace Reci_Me.BL.Test
         [TestMethod]
         public void LoadByNameTest()
         {
-            Guid nameId = RecipeManager.LoadByName("Stuffed Peppers").Id;
-            Guid firstId = RecipeManager.Load()[0].Id;
+            Recipe firstRecipe = RecipeManager.Load()[0];
+            Guid firstId = firstRecipe.Id;
+            String firstRecipeName = firstRecipe.Name;
+            Guid nameId = RecipeManager.LoadByName(firstRecipeName).Id;
+
             Assert.AreEqual(nameId, firstId);
         }
 

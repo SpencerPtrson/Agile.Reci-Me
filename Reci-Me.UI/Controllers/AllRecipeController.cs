@@ -20,10 +20,10 @@ namespace Reci_Me.UI.Controllers
         }
 
         // Shows the filtered list
-        public ActionResult Browse(Guid categoryId)
+        public ActionResult Browse(Guid id)
         {
             ViewBag.Title = "Recipes";
-            return View(nameof(Index), RecipeManager.Load(categoryId));
+            return View(nameof(Index), RecipeManager.Load(id));
         }
 
 

@@ -28,6 +28,9 @@
         <div class="col-md-4" style="width:100%; text-align:center">
             <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                <input asp-for="User.Id" hidden />
+                
                 <div class="form-group">
                     <input type="text" placeholder="@HttpContextAccessor.HttpContext?.Session.GetString("email").Replace("\"", "")" asp-for="User.Email" class="form-control" />
                     <span asp-validation-for="User.Email" class="text-danger"></span>
