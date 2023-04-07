@@ -2,8 +2,11 @@
 <!--Goes to the recipe page--!>
 <a href="">
 <div class="card">
-    <img class="card-img-top rounded mx-auto d-block img-fluid" src="~/images/Recipe/@Model.MainImagePath" alt="@Html.DisplayFor(model => model.Name) Image" style="object-fit: cover; height: 300px">
-    <h3>@Html.DisplayFor(model => model.Name)</h3>
+<img class="card-img-top rounded mx-auto d-block img-fluid"
+            src="~/images/Recipe/@Model.MainImagePath"
+            alt="@Html.DisplayFor(model => model.Name) Image"
+            style="object-fit: cover; height: 300px">    
+<h3>@Html.DisplayFor(model => model.Name)</h3>
     <!--Ratings should go here-->
 </div>
 </a>
