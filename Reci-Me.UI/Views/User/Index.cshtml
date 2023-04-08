@@ -13,10 +13,10 @@
     <h1>
         @{
             Reci_me.BL.UserManager.Seed();
-            var description = @HttpContextAccessor.HttpContext?.Session.GetString("description");
+            var description = Model.User.FullName;
             if (description != null)
             {
-                <p>@HttpContextAccessor.HttpContext?.Session.GetString("description")</p>
+                <p>@description</p>
             }
             else
             {
@@ -92,7 +92,7 @@
                             <h6 class="mb-0">Full Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            @HttpContextAccessor.HttpContext?.Session.GetString("fullname").Replace("\"", "")
+                            @Model.User.FirstName  @Model.User.LastName
                         </div>
                     </div>
                     <hr>
@@ -101,7 +101,7 @@
                             <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            @HttpContextAccessor.HttpContext?.Session.GetString("email").Replace("\"", "")
+                            @Model.User.Email
                         </div>
                     </div>
                     <hr>
@@ -145,7 +145,7 @@
                 if (description != null)
                 {
                     <a asp-controller="User" asp-action="Logout"><input type="submit" value="Logout" class="btn btn-primary" /></a>
-                    <a asp-controller="User" asp-action="Edit"><input type="submit" value="Edit Account" class="btn btn-primary" /></a>
+                    <a asp-controller="User" asp-action="Edit" asp-route-id="@Model.User.Id"><input type="submit" value="Edit Account" class="btn btn-primary" /></a>
                     //var id = HttpContextAccessor.HttpContext?.Session.GetString("id");
                     //<a asp-controller="User" asp-action="Delete" asp-route-id="@id"><input type="submit" value="Delete Account" class="btn btn-primary" /></a>
 

@@ -53,58 +53,35 @@ namespace Reci_me.BL
             }
             catch (Exception ex) { throw ex; }
         }
-        public static List<User> LoadById(Guid id)
+        public static User LoadById(Guid id)
         {
             try
             {
-                List<User> rows = new List<User>();
-
                 using (ReciMeEntities dc = new ReciMeEntities())
                 {
-                    dc.tblUsers.Where(s => s.Id == id).ToList().ForEach(s => rows.Add(new User
+                    tblUser tblUser = dc.tblUsers.Where(c => c.Id == id).FirstOrDefault();
+                    if (tblUser != null)
                     {
-                        Id = s.Id,
-                        Email = s.Email,
-                        Password = s.Password,
-                        ProfilePicture = s.Picture,
-                        ProfileDescription = s.Description,
-                        AccessLevel = AccessManager.Load(s.AccessLevelId),
-                        FirstName = s.FirstName,
-                        LastName = s.LastName,
-                    }));
-                    return rows;
+                        User user = new User
+                        {
+                            Id = tblUser.Id,
+                            Email = tblUser.Email,
+                            Password = tblUser.Password,
+                            ProfilePicture = tblUser.Picture,
+                            ProfileDescription = tblUser.Description,
+                            AccessLevel = AccessManager.Load(tblUser.AccessLevelId),
+                            FirstName = tblUser.FirstName,
+                            LastName = tblUser.LastName
+                        };
+                        return user;
+                    }
+                    else
+                    {
+                        throw new Exception(RowError);
+                    }
                 }
             }
             catch (Exception ex) { throw ex; }
-            //try
-            //{
-            //    using (ReciMeEntities dc = new ReciMeEntities())
-            //    {
-            //        tblUser tblUser = dc.tblUsers.Where(c => c.Id == id).FirstOrDefault();
-            //        User user = new User();
-
-            //        if (tblUser != null)
-            //        {
-            //            // Put the table row values into the object.
-            //            user.Id = tblUser.Id;
-            //            user.Email = tblUser.Email;
-            //            user.Password = tblUser.Password;
-            //            user.ProfilePicture = tblUser.Picture;
-            //            user.ProfileDescription = tblUser.Description;
-            //            user.AccessLevelId = tblUser.AccessLevelId;
-            //            return user;
-            //        }
-            //        else
-            //        {
-            //            throw new Exception("Could not find the row");
-            //        }
-            //    }
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
         }
         public static int Insert(User user, bool rollback = false)
         {

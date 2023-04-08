@@ -121,10 +121,11 @@ namespace Reci_Me.UI.Controllers
 
 
         // GET: UserController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
             ViewBag.Title = "Edit Recipe";
             UserVM userVM = new UserVM();
+            userVM.User = UserManager.LoadById(id);
             return View(userVM);
         }
 
@@ -136,6 +137,9 @@ namespace Reci_Me.UI.Controllers
             try
             {
                 ViewBag.Title = "Edit Profile";
+                List<AccessLevel> accessLevels = AccessManager.Load();
+                userVM.User.AccessLevel = accessLevels[0];
+
                 UserManager.Update(userVM.User);
                 return RedirectToAction(nameof(Index));
             }

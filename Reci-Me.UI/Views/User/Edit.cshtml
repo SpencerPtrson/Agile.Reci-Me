@@ -37,12 +37,12 @@
                 </div>
                 <br />
                 <div class="form-group">
-                    <input type="text" placeholder="@HttpContextAccessor.HttpContext?.Session.GetString("firstname").Replace("\"", "")" asp-for="User.FirstName" class="form-control" />
+                    <input type="text" placeholder="@Model.User.FirstName" asp-for="User.FirstName" class="form-control" />
                     <span asp-validation-for="User.FirstName" class="text-danger"></span>
                 </div>
                 <br />
                 <div class="form-group">
-                    <input type="text" placeholder="@HttpContextAccessor.HttpContext?.Session.GetString("lastname").Replace("\"", "")" asp-for="User.LastName" class="form-control" />
+                    <input type="text" placeholder="@Model.User.LastName" asp-for="User.LastName" class="form-control" />
                     <span asp-validation-for="User.LastName" class="text-danger"></span>
                 </div>
                 <br />
