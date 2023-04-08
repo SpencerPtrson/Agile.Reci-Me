@@ -2,11 +2,11 @@
 
 <ul>
     @foreach(var category in Model) {
-        <li><a asp-controller="AllRecipe"
+        <li><a asp-controller="Recipe"
                asp-action="Browse"
                asp-route-id="@category.Id">@category.Name
             </a>
         </li>
     }
-    <li><a asp-controller="AllRecipe" asp-action="Index">All Recipes</a></li>
+    <li><a asp-controller="Recipe" asp-action="Index">All Recipes</a></li>
 </ul>
