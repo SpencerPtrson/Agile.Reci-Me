@@ -13,7 +13,7 @@
     <h1>
         @{
             Reci_me.BL.UserManager.Seed();
-            var description = Model.User.FullName;
+            var description = @HttpContextAccessor.HttpContext?.Session.GetString("description");
             if (description != null)
             {
                 <p>@description</p>
@@ -92,7 +92,7 @@
                             <h6 class="mb-0">Full Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            @Model.User.FirstName  @Model.User.LastName
+                            @HttpContextAccessor.HttpContext?.Session.GetString("fullname").Replace("\"", "")
                         </div>
                     </div>
                     <hr>
@@ -101,7 +101,7 @@
                             <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            @Model.User.Email
+                            @HttpContextAccessor.HttpContext?.Session.GetString("email").Replace("\"", "")
                         </div>
                     </div>
                     <hr>
