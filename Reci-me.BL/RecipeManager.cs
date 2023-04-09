@@ -23,10 +23,6 @@ namespace Reci_me.BL
                 using (ReciMeEntities dc = new ReciMeEntities())
                 {
                     var recipes = (from r in dc.tblRecipes
-                                   join rInst in dc.tblRecipeInstructions on r.Id equals rInst.Recipe_Id
-                                   join rIng in dc.tblRecipeIngredients on r.Id equals rIng.RecipeId
-                                   join ing in dc.tblIngredients on rIng.IngredientId equals ing.Id
-                                   join m in dc.tblMeasuringTypes on rIng.MeasuringId equals m.Id
                                    join c in dc.tblRecipeCategories on r.CategoryId equals c.Id
                                    where r.CategoryId == categoryId || categoryId == null
                                    orderby c.Category
