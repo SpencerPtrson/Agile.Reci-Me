@@ -30,6 +30,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 
                 <input asp-for="User.Id" hidden />
+                <input asp-for="User.AccessLevel.Id" hidden />
                 
                 <div class="form-group">
                     <input type="text" placeholder="@HttpContextAccessor.HttpContext?.Session.GetString("email").Replace("\"", "")" asp-for="User.Email" class="form-control" />

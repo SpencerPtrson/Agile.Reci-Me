@@ -137,8 +137,7 @@ namespace Reci_Me.UI.Controllers
             try
             {
                 ViewBag.Title = "Edit Profile";
-                List<AccessLevel> accessLevels = AccessManager.Load();
-                userVM.User.AccessLevel = accessLevels[0];
+                userVM.User.AccessLevel = AccessManager.Load(userVM.User.AccessLevel.Id);
 
                 UserManager.Update(userVM.User);
 
