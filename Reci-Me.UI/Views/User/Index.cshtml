@@ -145,7 +145,7 @@
                 if (description != null)
                 {
                     <a asp-controller="User" asp-action="Logout"><input type="submit" value="Logout" class="btn btn-primary" /></a>
-                    <a asp-controller="User" asp-action="Edit" asp-route-id="@Model.User.Id"><input type="submit" value="Edit Account" class="btn btn-primary" /></a>
+                    <a asp-controller="User" asp-action="Edit" asp-route-id=@HttpContextAccessor.HttpContext?.Session.GetString("id").Replace("\"", "")><input type="submit" value="Edit Account" class="btn btn-primary" /></a>
                     //var id = HttpContextAccessor.HttpContext?.Session.GetString("id");
                     //<a asp-controller="User" asp-action="Delete" asp-route-id="@id"><input type="submit" value="Delete Account" class="btn btn-primary" /></a>
 
