@@ -141,6 +141,14 @@ namespace Reci_Me.UI.Controllers
                 userVM.User.AccessLevel = accessLevels[0];
 
                 UserManager.Update(userVM.User);
+
+                HttpContext.Session.SetObject("email", userVM.User.Email);
+                HttpContext.Session.SetObject("firstname", userVM.User.FirstName);
+                HttpContext.Session.SetObject("lastname", userVM.User.LastName);
+                HttpContext.Session.SetObject("description", "Welcome " + userVM.User.FirstName);
+                HttpContext.Session.SetObject("fullname", userVM.User.FirstName + " " + userVM.User.LastName);
+
+
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
