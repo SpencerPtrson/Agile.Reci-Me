@@ -164,7 +164,7 @@ namespace Reci_Me.UI.Controllers
         public ActionResult Delete(Guid id)
         {
             UserManager.Delete(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Logout));
         }
 
         // POST: UserController/Delete/5
@@ -174,7 +174,7 @@ namespace Reci_Me.UI.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
