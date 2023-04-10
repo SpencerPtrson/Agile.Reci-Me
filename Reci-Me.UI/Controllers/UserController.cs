@@ -163,7 +163,6 @@ namespace Reci_Me.UI.Controllers
         // GET: UserController/Delete/5
         public ActionResult Delete(Guid id)
         {
-
             UserManager.Delete(id);
             return RedirectToAction(nameof(Index));
         }
@@ -171,7 +170,7 @@ namespace Reci_Me.UI.Controllers
         // POST: UserController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, UserVM userVM)
         {
             try
             {

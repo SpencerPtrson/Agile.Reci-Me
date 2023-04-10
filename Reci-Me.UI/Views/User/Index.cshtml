@@ -146,13 +146,14 @@
                 {
                     <a asp-controller="User" asp-action="Logout"><input type="submit" value="Logout" class="btn btn-primary" /></a>
                     <a asp-controller="User" asp-action="Edit" asp-route-id=@HttpContextAccessor.HttpContext?.Session.GetString("id").Replace("\"", "")><input type="submit" value="Edit Account" class="btn btn-primary" /></a>
+                    <a asp-controller="User" asp-action="Delete" asp-route-id=@HttpContextAccessor.HttpContext?.Session.GetString("id").Replace("\"", "")><input type="submit" value="Delete Account" class="btn btn-primary" /></a>
                     //var id = HttpContextAccessor.HttpContext?.Session.GetString("id");
                     //<a asp-controller="User" asp-action="Delete" asp-route-id="@id"><input type="submit" value="Delete Account" class="btn btn-primary" /></a>
 
-                    <button name="X-HTTP-Method-Override" value="DELETE" formnovalidate
-                            class="btn btn-primary" onclick="return confirm('Are you sure?')">
-                        Delete Account
-                    </button>
+                    //<button name="X-HTTP-Method-Override" value="DELETE" formnovalidate
+                    //        class="btn btn-primary" onclick="return confirm('Are you sure?')">
+                    //    Delete Account
+                    //</button>
                 }
             }
 
