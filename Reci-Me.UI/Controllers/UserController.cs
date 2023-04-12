@@ -33,9 +33,10 @@ namespace Reci_Me.UI.Controllers
         }
 
         // GET: UserController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            User user = UserManager.LoadById(id);
+            return View(user);
         }
 
         // GET: UserController/Create
