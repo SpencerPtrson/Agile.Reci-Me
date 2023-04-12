@@ -1,12 +1,34 @@
 ﻿@model IEnumerable<Reci_me.BL.Models.Category>
 
-<ul>
-    @foreach(var category in Model) {
-        <li><a asp-controller="Recipe"
-               asp-action="Browse"
-               asp-route-id="@category.Id">@category.Name
-            </a>
-        </li>
+<body onload="ChangeIcon()">
+    <ul>
+        @foreach (var category in Model)
+        {
+            @*<div id="icon" style="display: none;">@category.Name</div>*@
+            <li>
+                <a id="iconName" asp-controller="Recipe"
+                   asp-action="Browse"
+                   asp-route-id="@category.Id">@category.Name</a>
+                <i id="icon" class="fa" style="font-size:20px;color:black;"></i>
+            </li>
+        }
+        @*<li onload="ChangeIcon()"></li>*@
+        <li><a asp-controller="Recipe" asp-action="Index">All Recipes</a></li>      
+    </ul>
+    <h1 id="icon"></h1>
+</body>
+
+<script type="text/javascript">   
+    function ChangeIcon() {
+        //for (let i = 0; i < 7; i++) {
+        //    if (document.getElementById("iconName").innerHTML == "American") {
+        //        document.getElementById("icon").classList.add("fa-hotdog");
+        //    } else if (document.getElementById("iconName").innerHTML == "Mexican") {
+        //        document.getElementById("icon").classList.add("fa-pepper-hot");
+        //    }
+        //}
+        document.getElementById("icon").classList.add("fa-hotdog");
+        
+        
     }
-    <li><a asp-controller="Recipe" asp-action="Index">All Recipes</a></li>
-</ul>
+</script>
