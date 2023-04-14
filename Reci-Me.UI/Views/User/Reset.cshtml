@@ -24,10 +24,10 @@
                 <input asp-for="User.FirstName" hidden />
                 <input asp-for="User.LastName" hidden />
 
-
                 <br />
                 <div class="form-group">
-                    <input type="text" placeholder="Enter New Password" type="text" asp-for="User.Password" class="form-control" />
+                    <input type="text" placeholder="Confirm New Password" value="" type="password" asp-for="User.Password" class="form-control" />
+                    <span asp-validation-for="User.Password" class="text-danger"></span>
                 </div>
                 <br />
                 <div class="form-group" style="width:100%; text-align:center">
