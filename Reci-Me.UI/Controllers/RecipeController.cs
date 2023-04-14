@@ -50,8 +50,10 @@ namespace Reci_Me.UI.Controllers
             }
             catch (Exception ex)
             {
+                string message = ex.Message;
+
                 ViewBag.Error = ex.Message;
-                ViewBag.Title = "Create a Recipe";
+                ViewBag.Title = "Error";
                 return View(recipeVM);
             }
         }
