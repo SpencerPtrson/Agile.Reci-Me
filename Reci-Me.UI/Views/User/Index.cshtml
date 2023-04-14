@@ -77,7 +77,7 @@
                             <h2>
                                 @HttpContextAccessor.HttpContext?.Session.GetString("fullname").Replace("\"", "")
                             </h2>
-                            <input type="submit" value="Reset Password" class="btn btn-primary" />
+                            <a asp-controller="User" asp-action="Reset" asp-route-id=@HttpContextAccessor.HttpContext?.Session.GetString("id").Replace("\"", "")><input type="submit" value="Reset Password" class="btn btn-primary" /></a>
                             <br />
                         </div>
                     </div>

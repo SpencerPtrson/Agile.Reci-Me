@@ -159,6 +159,38 @@ namespace Reci_Me.UI.Controllers
             }
         }
 
+        public ActionResult Reset(Guid id)
+        {
+            ViewBag.Title = "Reset Password";
+            UserVM userVM = new UserVM();
+            userVM.User = UserManager.LoadById(id);
+            return View(userVM);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Reset(int id, UserVM userVM)
+        {
+            try
+            {
+                ViewBag.Title = "Reset Password";
+                userVM.User.AccessLevel = AccessManager.Load(userVM.User.AccessLevel.Id);
+
+                UserManager.Update(userVM.User);
+
+                
+                HttpContext.Session.SetObject("password", userVM.User.Password);
+
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                ViewBag.Title = "Error";
+                return View(userVM);
+            }
+        }
+
 
 
         // GET: UserController/Delete/5

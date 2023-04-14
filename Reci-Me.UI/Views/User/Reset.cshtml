@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc;
+@inject IHttpContextAccessor HttpContextAccessor
+@model Reci_Me.UI.ViewModels.UserVM
+
+
+@{
+    ViewData["Title"] = ViewBag.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="width:100%; text-align:center">
+    <h1>
+        Reset Your Password
+    </h1>
+    <br />
+    <div class="row" style="width:100%; text-align:center">
+        <div class="col-md-4" style="width:100%; text-align:center">
+            <form asp-action="Reset">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <input asp-for="User.Id" hidden />
+                <input asp-for="User.AccessLevel.Id" hidden />
+
+                <br />
+                <div class="form-group">
+                    <input type="text" placeholder="Enter Old Password "type="password" asp-for="User.Password" class="form-control" />
+                    <span asp-validation-for="User.Password" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="text" placeholder="Enter New Password" type="password" asp-for="User.Password" class="form-control" />
+                    <span asp-validation-for="User.Password" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="text" placeholder="Confirm New Password " type="password" asp-for="User.Password" class="form-control" />
+                    <span asp-validation-for="User.Password" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group" style="width:100%; text-align:center">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <br />
+    <div>
+        <a asp-action="Index">Back to User Profile</a>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
