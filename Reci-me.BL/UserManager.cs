@@ -131,7 +131,7 @@ namespace Reci_me.BL
                     if (row != null)
                     {
                         row.Email = user.Email;
-                        // row.Password = GetHash(user.Password);
+                        if (user.Password != null) row.Password = GetHash(user.Password);
                         row.FirstName = user.FirstName;
                         row.LastName = user.LastName;
                         // Need to implement Profile Picture and Profile Description fields in database

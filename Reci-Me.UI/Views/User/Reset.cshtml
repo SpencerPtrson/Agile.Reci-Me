@@ -20,21 +20,14 @@
 
                 <input asp-for="User.Id" hidden />
                 <input asp-for="User.AccessLevel.Id" hidden />
+                <input asp-for="User.Email" hidden />
+                <input asp-for="User.FirstName" hidden />
+                <input asp-for="User.LastName" hidden />
+
 
                 <br />
                 <div class="form-group">
-                    <input type="text" placeholder="Enter Old Password "type="password" asp-for="User.Password" class="form-control" />
-                    <span asp-validation-for="User.Password" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <input type="text" placeholder="Enter New Password" type="password" asp-for="User.Password" class="form-control" />
-                    <span asp-validation-for="User.Password" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <input type="text" placeholder="Confirm New Password " type="password" asp-for="User.Password" class="form-control" />
-                    <span asp-validation-for="User.Password" class="text-danger"></span>
+                    <input type="text" placeholder="Enter New Password" type="text" asp-for="User.Password" class="form-control" />
                 </div>
                 <br />
                 <div class="form-group" style="width:100%; text-align:center">

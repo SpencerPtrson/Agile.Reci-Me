@@ -45,13 +45,12 @@ namespace Reci_Me.UI.Controllers
         {
             try
             {
+
                 RecipeManager.Insert(recipeVM.Recipe);
                 return RedirectToAction(nameof(Index), "Home");
             }
             catch (Exception ex)
             {
-                string message = ex.Message;
-
                 ViewBag.Error = ex.Message;
                 ViewBag.Title = "Error";
                 return View(recipeVM);

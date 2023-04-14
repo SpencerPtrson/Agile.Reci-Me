@@ -124,7 +124,7 @@ namespace Reci_Me.UI.Controllers
         // GET: UserController/Edit/5
         public ActionResult Edit(Guid id)
         {
-            ViewBag.Title = "Edit Recipe";
+            ViewBag.Title = "Edit Profile";
             UserVM userVM = new UserVM();
             userVM.User = UserManager.LoadById(id);
             return View(userVM);
@@ -148,7 +148,6 @@ namespace Reci_Me.UI.Controllers
                 HttpContext.Session.SetObject("description", "Welcome " + userVM.User.FirstName);
                 HttpContext.Session.SetObject("fullname", userVM.User.FirstName + " " + userVM.User.LastName);
 
-
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -158,6 +157,8 @@ namespace Reci_Me.UI.Controllers
                 return View(userVM);
             }
         }
+
+
 
         public ActionResult Reset(Guid id)
         {
@@ -172,14 +173,14 @@ namespace Reci_Me.UI.Controllers
         {
             try
             {
+                User user = userVM.User;
+
+
                 ViewBag.Title = "Reset Password";
                 userVM.User.AccessLevel = AccessManager.Load(userVM.User.AccessLevel.Id);
 
-                UserManager.Update(userVM.User);
-
-                
+                UserManager.Update(userVM.User);         
                 HttpContext.Session.SetObject("password", userVM.User.Password);
-
 
                 return RedirectToAction(nameof(Index));
             }
