@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Reci_me.BL;
+using Reci_me.BL.Models;
 using Reci_Me.UI.ViewModels;
 
 namespace Reci_Me.UI.Controllers
@@ -17,9 +18,10 @@ namespace Reci_Me.UI.Controllers
         }
 
         // GET: RecipeController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            Recipe recipe = RecipeManager.LoadById(id);
+            return View(recipe);
         }
 
         public ActionResult Browse(Guid id)
