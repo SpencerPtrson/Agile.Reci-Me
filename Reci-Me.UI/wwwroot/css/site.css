@@ -35,13 +35,13 @@ html {
         background-color: #FFC018;
         color: black;
         margin-right: -6px;
-        margin-top: 6.5px;
-        font-size: 18px;
+        margin-top: 7.2px;
+        font-size: 25px;
         border: none;
         cursor: pointer;
     }
 
-    
+
 
 .search input[type=text] {
     width: 175px;
@@ -124,7 +124,7 @@ footer {
     font-size: 20px;
 }
 
-.fa {
+.icon {
     padding: 10px;
     font-size: 30px;
     width: 30px;

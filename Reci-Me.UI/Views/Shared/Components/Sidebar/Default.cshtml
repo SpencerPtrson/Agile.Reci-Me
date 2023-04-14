@@ -2,10 +2,28 @@
 
 <body onload="ChangeIcon()">
     <ul>
+        <li>
+            <i id="icon" class="fa fa-hotdog" style="font-size: 20px;color:black;"> </i>
+            <a id="iconName" href="/Recipe/Browse/28656c65-0749-4dee-b822-6dbbc2bb6504"> American</a>
+        </li>
+        <li>
+            <i id="icon" class="fa fa-fish" style="font-size: 20px;color:black;"> </i>
+            <a id="iconName" href="/Recipe/Browse/91021692-342d-4ddd-8440-2a8dc65d20a0"> Greek</a>
+        </li>
+        <li>
+            <i id="icon" class="fa fa-pizza-slice" style="font-size: 20px;color:black;"> </i>
+            <a id="iconName" href="/Recipe/Browse/8c7d7c6f-839a-4b32-84a8-faf64da92bcf"> Italian</a>
+        </li>
+        <li>
+            <i id="icon" class="fa fa-pepper-hot" style="font-size: 20px;color:black;"> </i>
+            <a id="iconName" href="/Recipe/Browse/cfe59428-cbfd-41b1-a677-3b2be658757b"> Mexican</a>
+        </li>
+    </ul>
+    @*<ul>
         @foreach (var category in Model)
         {
             @*<div id="icon" style="display: none;">@category.Name</div>*@
-            <li>
+          @*  <li>
                 <a id="iconName" asp-controller="Recipe"
                    asp-action="Browse"
                    asp-route-id="@category.Id">@category.Name</a>
@@ -13,9 +31,9 @@
             </li>
         }
         @*<li onload="ChangeIcon()"></li>*@
-        <li><a asp-controller="Recipe" asp-action="Index">All Recipes</a></li>      
-    </ul>
-    <h1 id="icon"></h1>
+      @*  <li><a asp-controller="Recipe" asp-action="Index">All Recipes</a></li>      
+    </ul>*@
+@*    <h1 id="icon"></h1>*@
 </body>
 
 <script type="text/javascript">   
