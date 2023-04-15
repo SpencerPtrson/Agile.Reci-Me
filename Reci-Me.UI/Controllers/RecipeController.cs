@@ -18,6 +18,11 @@ namespace Reci_Me.UI.Controllers
         }
 
         // GET: RecipeController/Details/5
+        /*public ActionResult Details()
+        {
+            //Recipe recipe = RecipeManager.LoadById(id);
+            return View();
+        }*/
         public ActionResult Details(Guid id)
         {
             Recipe recipe = RecipeManager.LoadById(id);

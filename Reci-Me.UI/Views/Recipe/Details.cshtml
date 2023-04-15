@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Reci_me.BL.Models.Recipe
+
+@{
     ViewData["Title"] = "View Recipe";
 }
 <div class="section-padding-80">
@@ -8,12 +10,11 @@
             <div class="row">
                 <div class="col-12 col-md-8">
                     <div>
-                        <span>Date Added</span>
-                        <h2>Buffalo Wings</h2>
+                        <h2>@Html.DisplayNameFor(model => model.Name)</h2>
                         <div class="receipe-duration">
-                            <h6>Prep: 15 mins</h6>
-                            <h6>Cook: 30 mins</h6>
-                            <h6>Yields: 8 Servings</h6>
+                            <h6>Total: @Html.DisplayNameFor(model => model.TotalTime) hours</h6>
+                            <h6>Prep: @Html.DisplayNameFor(model => model.PrepTime) hours</h6>
+                            <h6>Yields: @Html.DisplayNameFor(model => model.Servings) Servings</h6>
                         </div>
                     </div>
                 </div>
