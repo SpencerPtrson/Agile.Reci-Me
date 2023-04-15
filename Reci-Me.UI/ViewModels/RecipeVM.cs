@@ -19,5 +19,7 @@ namespace Reci_Me.UI.ViewModels
         {
             Categories = CategoryManager.Load();
         }
+
+        public IFormFile File { get; set; }
     }
 }

@@ -68,8 +68,8 @@
                      width="300" />
                 <br />
                 <br />
-                <input type="file" accept="image/*" class="form-control" onchange="loadFile(event)" />
-                <input id="filename" asp-for="Recipe.MainImagePath" class="form-control" readonly/>
+                <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" />
+                <input id="filename" asp-for="Recipe.MainImagePath" class="form-control" readonly />
             </div>
 
             <br />
@@ -99,9 +99,9 @@
 <script>
     var loadFile = function (event) {
         var output = document.getElementById('recipeimage');
-        var filename = document.getElementById('filename');
-
         output.src = URL.createObjectURL(event.target.files[0]);
+
+        var filename = document.getElementById('filename');
         filename.value = event.target.files[0].name;
 
         document.getElementById('File').onchange = function () {

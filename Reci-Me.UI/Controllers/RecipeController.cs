@@ -8,6 +8,13 @@ namespace Reci_Me.UI.Controllers
 {
     public class RecipeController : Controller
     {
+        private readonly IWebHostEnvironment _host;
+
+        public RecipeController(IWebHostEnvironment host)
+        {
+            // Store the parameter from the constructor into a private, readonly field
+            _host = host;
+        }
 
         // LOADS
         // GET: RecipeController
@@ -47,6 +54,20 @@ namespace Reci_Me.UI.Controllers
         {
             try
             {
+                if(recipeVM.File != null)
+                {
+                    recipeVM.Recipe.MainImagePath = recipeVM.File.FileName;
+                    // Upload the File
+                    string path = _host.WebRootPath + "\\images\\Recipe\\";
+                    if (!System.IO.File.Exists(path + recipeVM.File.FileName))
+                    {
+                        using (var stream = System.IO.File.Create(path + recipeVM.File.FileName))
+                        {
+                            recipeVM.File.CopyTo(stream); // upload the code to the server
+                            ViewBag.Message = "File uploaded successfully";
+                        }
+                    }
+                }
 
                 RecipeManager.Insert(recipeVM.Recipe);
                 return RedirectToAction(nameof(Index), "Home");
