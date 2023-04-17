@@ -75,6 +75,16 @@ namespace Reci_Me.UI.Controllers
                 }
 
                 RecipeManager.Insert(recipeVM.Recipe);
+
+                //Instruction instruction = new Instruction
+                //{
+                //    Id = new Guid(),
+                //    Text = "test upload",
+                //    InstructionNum = 1,
+                //    RecipeId = recipeVM.Recipe.Id
+                //};
+                //RecipeInstructionManager.Insert(instruction);
+
                 return RedirectToAction(nameof(Index), "Home");
             }
             catch (Exception ex)

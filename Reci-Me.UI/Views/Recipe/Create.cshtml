@@ -44,21 +44,6 @@
             </div>
             <br />
             <br />
-
-@*            <div class="form-group">
-                <img class="imagepropmed"
-                     alt="Select an Image"
-                     id="recipeimage"
-                     src="~/css/img/upload stock.jpg"
-                     height="300"
-                     width="300" />
-                <br />
-                <br />
-                <input id="FileName" asp-for="Recipe.MainImagePath" class="form-control" />
-                <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" />
-            </div>*@
-
-
             <div class="form-group">
                 <img class="imagepropmed"
                      alt="Select an Image"
@@ -115,6 +100,13 @@
 </script>
 
 <script type="text/javascript">
+    var InstructionNum;
+    $(document).ready(function() {
+       InstructionNum = 1;
+       console.log("Instruction Number: " + InstructionNum)
+    });
+
+
     function GetDynamicTextBox(value) {
         var div = $("<div />");
 

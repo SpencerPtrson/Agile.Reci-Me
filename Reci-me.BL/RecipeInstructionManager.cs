@@ -89,6 +89,7 @@ namespace Reci_me.BL
                     row.Id = Guid.NewGuid();
                     row.Recipe_Id = instruction.RecipeId;
                     row.Instruction = instruction.Text;
+                    row.InstructionNum = instruction.InstructionNum;
                     row.ImagePath = instruction.ImagePath;
 
                     instruction.Id = row.Id;
