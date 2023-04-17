@@ -11,13 +11,8 @@ namespace Reci_me.BL.Models
         public Guid Id { get; set; }
         public Guid RecipeId { get; set; }
         public Guid IngredientId { get; set; }
-        public Nullable<double> Quantity { get; set; }
+        public double? Quantity { get; set; }
         public Guid MeasuringId { get; set; }
         public bool IsOptional { get; set; }
-
-        public RecipeIngredient()
-        {
-            Quantity = null;
-        }
     }
 }
