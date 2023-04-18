@@ -1,4 +1,5 @@
-﻿@model Reci_me.BL.Models.Recipe
+﻿@using Reci_me.BL
+@model Reci_me.BL.Models.Recipe
 
 @{
     ViewData["Title"] = "View Recipe";
@@ -10,37 +11,26 @@
             <div class="row">
                 <div class="col-12 col-md-8">
                     <div>
-                        <h2>@Html.DisplayNameFor(model => model.Name)</h2>
+                        <h2>@Html.DisplayFor(model => model.Name)</h2>
+                        <h1>By: <a asp-controller="User" asp-action="Details" asp-route-id="@Model.UserId">@UserManager.LoadById(@Model.UserId)</a></h1>
                         <div class="receipe-duration">
-                            <h6>Total: @Html.DisplayNameFor(model => model.TotalTime) hours</h6>
-                            <h6>Prep: @Html.DisplayNameFor(model => model.PrepTime) hours</h6>
-                            <h6>Yields: @Html.DisplayNameFor(model => model.Servings) Servings</h6>
+                            <h6>Total: @Html.DisplayFor(model => model.TotalTime) minutes</h6>
+                            <h6>Prep: @Html.DisplayFor(model => model.PrepTime) minutes</h6>
+                            <h6>Yields: @Html.DisplayFor(model => model.Servings) Servings</h6>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-lg-8">
-                        <!-- Single Preparation Step -->
+                        @foreach (var item in Model.Instructions)
+                        {
+                                <!-- Single Preparation Step -->
                         <div class="d-flex">
-                            <h4>01.</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+                                    <h4>@Html.DisplayFor(modelItem => item.InstructionNum).</h4>
+                                    <p>@Html.DisplayFor(modelItem => item.Text)</p>
                         </div>
-                        <!-- Single Preparation Step -->
-                        <div class="d-flex">
-                            <h4>02.</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-                        </div>
-                        <!-- Single Preparation Step -->
-                        <div class="d-flex">
-                            <h4>03.</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-                        </div>
-                        <!-- Single Preparation Step -->
-                        <div class="d-flex">
-                            <h4>04.</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-                        </div>
+                        }
                     </div>
 
                     <!-- Ingredients -->

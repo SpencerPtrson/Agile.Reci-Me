@@ -28,5 +28,6 @@ namespace Reci_me.BL.Models
         [DisplayName("Category")]
         public Guid CategoryId { get; set; }
         //public List<Ingredient> Ingredients { get; set; }
+        public List<Instruction> Instructions { get; set; }
     }
 }
