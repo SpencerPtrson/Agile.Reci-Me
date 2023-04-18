@@ -27,7 +27,7 @@ namespace Reci_me.BL.Models
         public bool IsHidden { get; set; }
         [DisplayName("Category")]
         public Guid CategoryId { get; set; }
-        //public List<Ingredient> Ingredients { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
         public List<Instruction> Instructions { get; set; }
     }
 }
