@@ -18,7 +18,7 @@
             <h1 id="randText"><mark>Recipe of the week: Buffalo Wings</mark></h1>
         </div>
         <div class="hero-image">
-            <img id="randImg" class="img-fluid" style="max-height: 400" src="~/css/img/wings.jpg" />
+            <img id="randImg" class="img-fluid" src="~/css/img/wings.jpg" height="350" width="350" style="border-radius: 15px" />
         </div>
         @*<div>
         For an eventual brief description of the dish
@@ -142,11 +142,11 @@
         var t = d.getTime();
         var days = Math.floor(t / (86400000));
 
-        var imagearray = new Array('/css/img/blackenedshrimptacos.jpg', '/css/img/steakonstove.jpg', '/css/img/stuffed-peppers.jpg', '/css/img/wings.jpg', '/css/img/wings.jpg', '/css/img/wings.jpg', '/css/img/wings.jpg');
+        var imagearray = new Array('/css/img/blackenedshrimptacos.jpg', '/css/img/steakonstove.jpg', '/css/img/stuffed-peppers.jpg', '/css/img/RockFishTacos.png', '/css/img/JalapenoLimeSteakTacos.png', '/css/img/BreakfastTacos.png', '/css/img/SweetPotatoBlackBeanTacos.png');
         var i = days % imagearray.length;
-        //i = i - 2;
+        i = 0;
         document.getElementById("randImg").src = imagearray[i];
-        var imagetextarray = new Array('Blackened Shrimp Tacos', 'Steak on the Stovetop', 'Stuffed Peppers', 'Buffalo Wings', 'Buffalo Wings', 'Buffalo Wings', 'Buffalo Wings');
+        var imagetextarray = new Array('Blackened Shrimp Tacos', 'Steak on the Stovetop', 'Stuffed Peppers', 'Rock Fish Tacos', 'Jalapeno Lime Steak Tacos', 'Breakfast Tacos', 'Sweet Potato Black Bean Tacos');
         document.getElementById("randText").innerHTML = imagetextarray[i];
         document.getElementById("lnkText").innerHTML = imagetextarray[i];
 
