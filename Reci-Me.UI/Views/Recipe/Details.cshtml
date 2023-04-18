@@ -12,7 +12,7 @@
                 <div class="col-12 col-md-8">
                     <div>
                         <h2>@Html.DisplayFor(model => model.Name)</h2>
-                        <h1>By: <a asp-controller="User" asp-action="Details" asp-route-id="@Model.UserId">@UserManager.LoadById(@Model.UserId)</a></h1>
+                        <h5>By: <a asp-controller="User" asp-action="Details" asp-route-id="@Model.UserId">@UserManager.LoadById(@Model.UserId).FullName</a></h5>
                         <div class="receipe-duration">
                             <h6>Total: @Html.DisplayFor(model => model.TotalTime) minutes</h6>
                             <h6>Prep: @Html.DisplayFor(model => model.PrepTime) minutes</h6>
