@@ -25,8 +25,6 @@ public partial class ReciMeEntities : DbContext
 
     public virtual DbSet<tblRecipeCategory> tblRecipeCategories { get; set; }
 
-    public virtual DbSet<tblRecipeImage> tblRecipeImages { get; set; }
-
     public virtual DbSet<tblRecipeIngredient> tblRecipeIngredients { get; set; }
 
     public virtual DbSet<tblRecipeInstruction> tblRecipeInstructions { get; set; }
@@ -106,16 +104,6 @@ public partial class ReciMeEntities : DbContext
             entity.Property(e => e.Category)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-        });
-
-        modelBuilder.Entity<tblRecipeImage>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07F2CE5F08");
-
-            entity.ToTable("tblRecipeImage");
-
-            entity.Property(e => e.Id).ValueGeneratedNever();
-            entity.Property(e => e.Recipe_Id).HasColumnName("Recipe Id");
         });
 
         modelBuilder.Entity<tblRecipeIngredient>(entity =>
