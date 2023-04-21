@@ -1,9 +1,51 @@
 ﻿@using Reci_me.BL
 @model Reci_me.BL.Models.Recipe
+@inject IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "View Recipe";
 }
+
+<head>
+    <style>
+        /* Style for the preview container */
+        .preview-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style for the preview image */
+        .preview-image {
+            position: absolute;
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: fit-content;
+            height: fit-content;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            display: none;
+        }
+
+        /* Show the preview image when hovering over the link */
+        .preview-container:hover .preview-image {
+            display: block;
+            border-radius: 25px;
+            border: 2px solid black;
+            padding: 20px;
+            width: fit-content;
+            height: fit-content;
+        }
+
+        ul {
+            list-style-type: none;
+            color: black;
+        }
+    </style>
+</head>
+
+
 <div class="section-padding-80">
     <div>
         <div class="container">
@@ -12,7 +54,14 @@
                 <div class="col-12 col-md-8">
                     <div>
                         <h2>@Html.DisplayFor(model => model.Name)</h2>
-                        <h5>By: <a asp-controller="User" asp-action="Details" asp-route-id="@Model.UserId">@UserManager.LoadById(@Model.UserId).FullName</a></h5>
+                        <h5>By: <a href="#" class="preview-container">@UserManager.LoadById(@Model.UserId).FullName<span class="preview-image">
+                            <ul>
+                            <li>@UserManager.LoadById(@Model.UserId).FullName</li>
+                            <li>@UserManager.LoadById(@Model.UserId).Email</li>
+                            </ul>
+                            </span>
+                            </a>
+                        </h5>
                         <div class="receipe-duration">
                             <h6>Total: @Html.DisplayFor(model => model.TotalTime) minutes</h6>
                             <h6>Prep: @Html.DisplayFor(model => model.PrepTime) minutes</h6>
