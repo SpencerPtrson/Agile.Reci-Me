@@ -52,12 +52,14 @@ namespace Reci_Me.UI.Controllers
         {
             try
             {
+                user.AccessLevel = AccessManager.Load("User");
                 UserManager.Insert(user);
+                Login(user);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception e)
             {
-                return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+                return RedirectToAction("Create", "User", new { returnUrl = e.Message });
             }
         }
 

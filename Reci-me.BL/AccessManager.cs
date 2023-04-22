@@ -108,6 +108,29 @@ namespace Reci_me.BL
                 throw ex;
             }
         }
+        public static AccessLevel Load(String name)
+        {
+            try
+            {
+                using (ReciMeEntities dc = new ReciMeEntities())
+                {
+                    tblAccessLevel tblAccessLevel = dc.tblAccessLevels.Where(c => c.Description == name).FirstOrDefault();
+
+                    if (tblAccessLevel != null)
+                    {
+                        return Load().Where(c => c.Description == name).FirstOrDefault();
+                    }
+                    else
+                    {
+                        throw new Exception("Could not find the row");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public static List<bool> LoadPermissions(Guid id)
         {
             try

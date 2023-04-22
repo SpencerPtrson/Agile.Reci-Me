@@ -99,8 +99,8 @@ namespace Reci_me.BL
                     row.Id = Guid.NewGuid();
                     row.Email = user.Email;
                     row.Password = GetHash(user.Password);
-                    row.Picture = user.ProfilePicture;
-                    row.Description = user.ProfileDescription;
+                    row.Picture = "default.jpg";
+                    row.Description = "";
                     row.AccessLevelId = user.AccessLevel.Id;
                     row.FirstName = user.FirstName;
                     row.LastName = user.LastName;
