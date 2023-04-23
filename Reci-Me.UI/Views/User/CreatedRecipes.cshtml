@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "All Recipes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container fluid">
+    <div style="width:100%; text-align:center">
+        <h1>Created Recipes</h1>
+    </div>
+    <br />
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-2 main body-content" style="min-width: 500px">
+                <div class="card mb-2 main body-content">
+                    @*<div class="card-header header">
+                        <h3>@item.Name</h3>
+                </div>*@
+
+                    @*<div class="card-img">
+                <img class="imagepropmed" src="~/images/Recipe/@item.MainImagePath" />
+                </div>*@
+                    <div class="main body-content">
+                        @await Component.InvokeAsync("RecipeCard", item.Name)
+                    </div>
+
+                    @*<div class="card-body">
+                <h5>@item.Name</h5>
+                <h5>@item.Servings</h5>
+                <h5>@item.PrepTime</h5>
+                <h5>@item.TotalTime</h5>
+                </div>*@
+                    <div class="card-footer">
+                        @*<a class="btn btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Edit">Edit</a>
+                    <a class="btn btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Details">Details</a>
+                    <a class="btn btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Delete">Delete</a>*@
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+    @*    <p class="ps-2" style="width:100%; text-align:center">
+    <a asp-controller="SubmitRecipe" asp-action="Index"><input type="submit" value="Create New Recipe" class="btn btn-primary" /></a>
+    </p>*@
+</div>

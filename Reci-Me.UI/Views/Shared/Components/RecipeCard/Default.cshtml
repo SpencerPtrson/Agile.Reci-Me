@@ -1,6 +1,6 @@
 ﻿@model Reci_me.BL.Models.Recipe
 <!--Goes to the recipe page--!>
-<a asp-controller="Recipe" asp-action="Details" asp-route-id="@Model.Id">
+<a asp-controller="Recipe" asp-action="Details" asp-route-id="@Model.Id" class="text-dark text-decoration-none">
     <div class="card">
         <img class="card-img-top rounded mx-auto d-block img-fluid"
             src="~/images/Recipe/@Model.MainImagePath"

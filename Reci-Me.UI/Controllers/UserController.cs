@@ -39,6 +39,12 @@ namespace Reci_Me.UI.Controllers
             return View(user);
         }
 
+        public ActionResult CreatedRecipes(Guid id)
+        {
+            ViewBag.Title = "Created Recipes";
+            return View(RecipeManager.Load().Where(c => c.UserId == id));
+        }
+
         // GET: UserController/Create
         public ActionResult Create()
         {

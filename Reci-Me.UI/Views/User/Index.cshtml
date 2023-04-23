@@ -128,7 +128,7 @@
                             <h6 class="mb-0">All Created Recipes</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <a asp-action="">All Created Recipes</a>
+                            <a asp-controller="User" asp-action="CreatedRecipes" asp-route-id=@HttpContextAccessor.HttpContext?.Session.GetString("id").Replace("\"", "")>All Created Recipes</a>
                         </div>
                     </div>
                 </div>

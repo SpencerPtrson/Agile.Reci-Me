@@ -54,7 +54,8 @@
                 <div class="col-12 col-md-8">
                     <div>
                         <h2>@Html.DisplayFor(model => model.Name)</h2>
-                        <h5>By: <a href="#" class="preview-container">@UserManager.LoadById(@Model.UserId).FullName<span class="preview-image">
+                        <h5>
+                            By: <a asp-controller="User" asp-action="CreatedRecipes" asp-route-id="@Model.UserId" class="preview-container">@UserManager.LoadById(Model.UserId).FullName<span class="preview-image">
                             <ul>
                             <li>@UserManager.LoadById(@Model.UserId).FullName</li>
                             <li>@UserManager.LoadById(@Model.UserId).Email</li>
