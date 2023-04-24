@@ -78,7 +78,8 @@ namespace Reci_me.BL
                             TotalTime = tblRecipe.TotalTime,
                             PrepTime = tblRecipe.PrepTime,
                             MainImagePath = tblRecipe.MainImagePath,
-                            Instructions = RecipeInstructionManager.Load(tblRecipe.Id).OrderBy(c => c.InstructionNum).ToList()
+                            Instructions = RecipeInstructionManager.Load(tblRecipe.Id).OrderBy(c => c.InstructionNum).ToList(),
+                            Comments = CommentManager.Load(tblRecipe.Id).ToList()
                         };
                         return recipe;
                     }

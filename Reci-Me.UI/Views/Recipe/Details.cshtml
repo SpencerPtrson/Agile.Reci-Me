@@ -133,6 +133,16 @@
                         </div>
                     </div>
                 </div>
+                 <!--Comments-->
+                @foreach (var item in Model.Comments)
+                {
+                    <!-- Single Comment -->
+                    <div class="d-flex card col-12 col-lg-8">
+                        <h4>@Html.DisplayFor(modelItem => item.Username)</h4>
+                        <h6>@Html.DisplayFor(modelItem => item.Rating)/10</h6>
+                        <p>@Html.DisplayFor(modelItem => item.Review)</p>
+                    </div>
+                }
             </div>
         </div>
     </div>

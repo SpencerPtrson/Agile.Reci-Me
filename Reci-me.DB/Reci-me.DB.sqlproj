@@ -79,6 +79,7 @@
     <None Include="PostDeploy\DefaultData\Categories.sql" />
     <Build Include="Tables\tblRecipeInstruction.sql" />
     <None Include="PostDeploy\DefaultData\RecipeInstructions.sql" />
+    <Build Include="Tables\tblComment.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Reci-me.DB.refactorlog" />

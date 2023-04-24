@@ -17,6 +17,8 @@ public partial class ReciMeEntities : DbContext
 
     public virtual DbSet<tblAccessLevel> tblAccessLevels { get; set; }
 
+    public virtual DbSet<tblComment> tblComments { get; set; }
+
     public virtual DbSet<tblIngredient> tblIngredients { get; set; }
 
     public virtual DbSet<tblMeasuringType> tblMeasuringTypes { get; set; }
@@ -39,7 +41,7 @@ public partial class ReciMeEntities : DbContext
     {
         modelBuilder.Entity<tblAccessLevel>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblAcces__3214EC07BABA4810");
+            entity.HasKey(e => e.Id).HasName("PK__tblAcces__3214EC07498CF2EC");
 
             entity.ToTable("tblAccessLevel");
 
@@ -52,9 +54,19 @@ public partial class ReciMeEntities : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<tblComment>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__tmp_ms_x__3214EC071BFBDA93");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Review)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<tblIngredient>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblIngre__3214EC07A9897FEC");
+            entity.HasKey(e => e.Id).HasName("PK__tblIngre__3214EC07B16D1D33");
 
             entity.ToTable("tblIngredient");
 
@@ -66,7 +78,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblMeasuringType>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblMeasu__3214EC074DB265EC");
+            entity.HasKey(e => e.Id).HasName("PK__tblMeasu__3214EC07EB6D0CEE");
 
             entity.ToTable("tblMeasuringType");
 
@@ -81,7 +93,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblRecipe>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07B37EF4FD");
+            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07886352CE");
 
             entity.ToTable("tblRecipe");
 
@@ -96,7 +108,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblRecipeCategory>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07E51B77CA");
+            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC0763304887");
 
             entity.ToTable("tblRecipeCategory");
 
@@ -108,7 +120,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblRecipeIngredient>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07049E6AAA");
+            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07B10D5B5B");
 
             entity.ToTable("tblRecipeIngredient");
 
@@ -117,7 +129,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblRecipeInstruction>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC074B531BEA");
+            entity.HasKey(e => e.Id).HasName("PK__tblRecip__3214EC07DF7AF892");
 
             entity.ToTable("tblRecipeInstruction");
 
@@ -133,7 +145,7 @@ public partial class ReciMeEntities : DbContext
 
         modelBuilder.Entity<tblUser>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tblUser__3214EC0785943E66");
+            entity.HasKey(e => e.Id).HasName("PK__tblUser__3214EC076CDAC8B7");
 
             entity.ToTable("tblUser");
 
