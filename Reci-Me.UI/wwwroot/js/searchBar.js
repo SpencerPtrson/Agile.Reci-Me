@@ -2,24 +2,19 @@
 function loadSearchData() {
 
     if (infoLoaded == 0) {
-    let countries = [
-        'Australia',
-        'Austria',
-        'Brazil',
-        'Canada',
-        'Denmark',
-        'Egypt',
-        'France',
-        'Germany',
-        'USA',
-        'Vietnam'
+    let recipes = [
+        'Blackened Shrimp Tacos',
+        'Steak on the Stovetop',
+        'Stuffed Peppers',
+        'Pasta Fazool'
     ];
     // Get the HTML element of the list
     let list = document.getElementById('list');
     // Add each data item as an <a> tag
-    countries.forEach((country) => {
+    recipes.forEach((recipe) => {
         let a = document.createElement("a");
-        a.innerText = country;
+        a.innerText = recipe;
+        a.href = "/Recipe/DetailsName?name=" + recipe;
         a.classList.add("listItem");
         list.appendChild(a);
     });
