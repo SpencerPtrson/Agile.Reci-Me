@@ -285,4 +285,36 @@ mark {
     .button:hover {
         background-color: #555;
     }
+
+#searchbar {
+padding: 15px;
+border-radius: 5px;
+}
+
+input[type=text] {
+-webkit-transition: width 0.15s ease-in-out;
+transition: width 0.15s ease-in-out;
+}
+
+#list {
+    position: absolute;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    display: block;
+    background-color: white;
+    overflow-y: auto;
+    max-height: 150px;
+}
+
+.listItem {
+ display: flex;
+ flex-direction: column;
+ text-decoration: none;
+ padding: 5px 20px;
+ color: black;
+}
+
+    .listItem:hover {
+     background-color: lightgrey;
+    }
    

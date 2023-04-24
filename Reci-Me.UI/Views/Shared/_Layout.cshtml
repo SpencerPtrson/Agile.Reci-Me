@@ -92,12 +92,13 @@
                             </li>
                         }
 
-                        <div class="search">
+                        @*<div class="search" onclick="loadSearchData()">
                             <form class="navbar-form" action="#">
                                 <div class="input-group">
                                     <input type="text"
                                            placeholder=" Search Recipes"
                                            name="search">
+                                           <div id="list"></div>
                                     <button>
                                         <i class="fa fa-search"
                                            style="font-size: 18px;">
@@ -105,8 +106,26 @@
                                     </button>
                                 </div>
                             </form>
+                        </div>*@
+                        <div class="container" onclick="loadSearchData()">
+                            <h2>Search Recipes</h2>
+                            <input id="searchbar" autocomplete="off" onkeyup="search()" type="text" \n name="search" placeholder="Enter Recipe Name">
+                            <div id="list"></div>
                         </div>
-
+                        <script src="~/js/searchBar.js"></script>
+                        @*<div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                    <a href="#about">About</a>
+                                    <a href="#base">Base</a>
+                                    <a href="#blog">Blog</a>
+                                    <a href="#contact">Contact</a>
+                                    <a href="#custom">Custom</a>
+                                    <a href="#support">Support</a>
+                                    <a href="#tools">Tools</a>
+                                </div>
+                        </div>*@
                         
                         @*}
                         else
