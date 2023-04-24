@@ -14,37 +14,69 @@ namespace Reci_me.BL
     {
         private const string RowError = "Row doesn't exist.";
 
-        public static List<RecipeIngredient> Load(Guid? recipeId = null)
+        //public static List<RecipeIngredient> Load(Guid? recipeId = null)
+        //{
+        //    try
+        //    {
+        //        List<RecipeIngredient> rows = new List<RecipeIngredient>();
+
+        //        using (ReciMeEntities dc = new ReciMeEntities())
+        //        {
+        //            var recipeingredients = (from ri in dc.tblRecipeIngredients
+        //                                     join r in dc.tblRecipes on ri.RecipeId equals r.Id
+        //                                     join i in dc.tblIngredients on ri.IngredientId equals i.Id
+        //                                     join mt in dc.tblMeasuringTypes on ri.MeasuringId equals mt.Id
+        //                                     where ri.RecipeId == recipeId || recipeId == null
+        //                                     select new
+        //                                     {
+        //                                         ri.Id,
+        //                                         ri.RecipeId,
+        //                                         ri.IngredientId,
+        //                                         ri.Quantity,
+        //                                         ri.MeasuringId,
+        //                                         ri.IsOptional
+        //                                     }).Distinct().ToList();
+
+        //            recipeingredients.ForEach(r => rows.Add(new RecipeIngredient
+        //            {
+        //                Id = r.Id,
+        //                RecipeId = r.RecipeId,
+        //                IngredientId = r.IngredientId,
+        //                Quantity = r.Quantity ?? null,
+        //                MeasuringId = r.MeasuringId,
+        //                IsOptional = r.IsOptional
+        //            }));
+        //        }
+        //        return rows;
+        //    }
+        //    catch (Exception ex) { throw ex; }
+        //}
+
+        public static List<Ingredient> Load(Guid? recipeId = null)
         {
             try
             {
-                List<RecipeIngredient> rows = new List<RecipeIngredient>();
+                List<Ingredient> rows = new List<Ingredient>();
 
                 using (ReciMeEntities dc = new ReciMeEntities())
                 {
-                    var recipeingredients = (from ri in dc.tblRecipeIngredients
-                                   join r in dc.tblRecipes on ri.RecipeId equals r.Id
-                                   join i in dc.tblIngredients on ri.IngredientId equals i.Id
-                                   join mt in dc.tblMeasuringTypes on ri.MeasuringId equals mt.Id
-                                   where ri.RecipeId == recipeId || recipeId == null
-                                   select new
-                                   {
-                                       ri.Id,
-                                       ri.RecipeId,
-                                       ri.IngredientId,
-                                       ri.Quantity,
-                                       ri.MeasuringId,
-                                       ri.IsOptional
-                                   }).Distinct().ToList();
+                    var ingredients = (from r in dc.tblRecipes
+                                       join ri in dc.tblRecipeIngredients on r.Id equals ri.RecipeId
+                                       join i in dc.tblIngredients on ri.IngredientId equals i.Id
+                                       where ri.RecipeId == recipeId || recipeId == null
+                                       orderby ri.IngredientId
+                                       select new
+                                       {
+                                           r.Id,
+                                           i.Name,
+                                           i.IsCommonAllergen
+                                       }).Distinct().ToList();
 
-                    recipeingredients.ForEach(r => rows.Add(new RecipeIngredient
+                    ingredients.ForEach(r => rows.Add(new Ingredient
                     {
                         Id = r.Id,
-                        RecipeId = r.RecipeId,
-                        IngredientId = r.IngredientId,
-                        Quantity = r.Quantity ?? null,
-                        MeasuringId = r.MeasuringId,
-                        IsOptional = r.IsOptional
+                        Name = r.Name,
+                        IsCommonAllergen = r.IsCommonAllergen
                     }));
                 }
                 return rows;

@@ -73,6 +73,8 @@
 
                 <div class="row">
                     <div class="col-12 col-lg-8">
+                        
+
                         @foreach (var item in Model.Instructions)
                         {
                                 <!-- Single Preparation Step -->
@@ -82,18 +84,20 @@
                         </div>
                         }
                     </div>
-                    @*<div class="col-12 col-lg-8">
+                    <div class="col-12 col-lg-4">
                         @foreach (var item in Model.Ingredients)
                         {
-                            <!-- Single Preparation Step -->
-                            <div class="d-flex">
-                                <h4>@Html.DisplayFor(modelItem => item.Name).</h4>
+                        <!-- Single Preparation Step -->
+                        <div class="d-flex">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck">@Html.DisplayFor(modelItem => item.Name)</label>
                             </div>
                         }
-                    </div>*@
+                    </div>
+                    
 
                     <!-- Ingredients -->
-                    <div class="col-12 col-lg-4">
+                    @*<div class="col-12 col-lg-4">
                         <div class="ingredients">
                             <h4>Ingredients</h4>
 
@@ -131,7 +135,7 @@
                                 <label class="custom-control-label" for="customCheck">Ingredient</label>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>

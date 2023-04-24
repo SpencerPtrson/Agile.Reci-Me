@@ -21,12 +21,12 @@ namespace Reci_me.BL
                 {
                     // Store each row into an array
                     var ingredients = (from i in dc.tblIngredients
-                                      select new
-                                      {
-                                          i.Id,
-                                          i.Name,
-                                          i.IsCommonAllergen
-                                      }).ToList();
+                                       select new
+                                       {
+                                           i.Id,
+                                           i.Name,
+                                           i.IsCommonAllergen
+                                       }).ToList();
 
                     foreach (var ingredient in ingredients)
                     {
@@ -41,6 +41,38 @@ namespace Reci_me.BL
             }
             catch (Exception ex) { throw ex; }
         }
+
+        //public static List<Ingredient> Load(Guid? recipeId = null)
+        //{
+        //    try
+        //    {
+        //        List<Ingredient> rows = new List<Ingredient>();
+
+        //        using (ReciMeEntities dc = new ReciMeEntities())
+        //        {
+        //            var ingredients = (from r in dc.tblRecipes
+        //                               join ri in dc.tblRecipeIngredients on r.Id equals ri.RecipeId
+        //                               join i in dc.tblIngredients on ri.IngredientId equals i.Id
+        //                               where ri.RecipeId == recipeId || recipeId == null
+        //                               orderby ri.IngredientId
+        //                               select new
+        //                               {
+        //                                   r.Id,
+        //                                   i.Name,
+        //                                   i.IsCommonAllergen
+        //                               }).Distinct().ToList();
+
+        //            ingredients.ForEach(r => rows.Add(new Ingredient
+        //            {
+        //                Id = r.Id,
+        //                Name = r.Name,
+        //                IsCommonAllergen = r.IsCommonAllergen
+        //            }));
+        //        }
+        //        return rows;
+        //    }
+        //    catch (Exception ex) { throw ex; }
+        //}
 
         public static int Insert(Ingredient ingredient, bool rollback = false)
         {
