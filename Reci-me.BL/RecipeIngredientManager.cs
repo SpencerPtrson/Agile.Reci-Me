@@ -14,44 +14,6 @@ namespace Reci_me.BL
     {
         private const string RowError = "Row doesn't exist.";
 
-        //public static List<RecipeIngredient> Load(Guid? recipeId = null)
-        //{
-        //    try
-        //    {
-        //        List<RecipeIngredient> rows = new List<RecipeIngredient>();
-
-        //        using (ReciMeEntities dc = new ReciMeEntities())
-        //        {
-        //            var recipeingredients = (from ri in dc.tblRecipeIngredients
-        //                                     join r in dc.tblRecipes on ri.RecipeId equals r.Id
-        //                                     join i in dc.tblIngredients on ri.IngredientId equals i.Id
-        //                                     join mt in dc.tblMeasuringTypes on ri.MeasuringId equals mt.Id
-        //                                     where ri.RecipeId == recipeId || recipeId == null
-        //                                     select new
-        //                                     {
-        //                                         ri.Id,
-        //                                         ri.RecipeId,
-        //                                         ri.IngredientId,
-        //                                         ri.Quantity,
-        //                                         ri.MeasuringId,
-        //                                         ri.IsOptional
-        //                                     }).Distinct().ToList();
-
-        //            recipeingredients.ForEach(r => rows.Add(new RecipeIngredient
-        //            {
-        //                Id = r.Id,
-        //                RecipeId = r.RecipeId,
-        //                IngredientId = r.IngredientId,
-        //                Quantity = r.Quantity ?? null,
-        //                MeasuringId = r.MeasuringId,
-        //                IsOptional = r.IsOptional
-        //            }));
-        //        }
-        //        return rows;
-        //    }
-        //    catch (Exception ex) { throw ex; }
-        //}
-
         public static List<Ingredient> Load(Guid? recipeId = null)
         {
             try
