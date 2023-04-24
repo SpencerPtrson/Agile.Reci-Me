@@ -21,12 +21,12 @@ namespace Reci_me.BL
                 {
                     // Store each row into an array
                     var ingredients = (from i in dc.tblIngredients
-                                      select new
-                                      {
-                                          i.Id,
-                                          i.Name,
-                                          i.IsCommonAllergen
-                                      }).ToList();
+                                       select new
+                                       {
+                                           i.Id,
+                                           i.Name,
+                                           i.IsCommonAllergen
+                                       }).ToList();
 
                     foreach (var ingredient in ingredients)
                     {

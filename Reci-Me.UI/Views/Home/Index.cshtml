@@ -11,8 +11,11 @@
     <div>
         <h1 id="header" style="text-align: center; font-family: 'Libre Baskerville', serif;">
             Recipe of the day:
-            <a id="lnkText" class="text-dark text-decoration-none" asp-area="" asp-controller="Recipe" asp-action="Details"></a>
-        </h1>     
+            <a id="lnkText" class="text-dark text-decoration-none" asp-area="" asp-controller="Recipe" asp-action="DetailsName" asp-route-name="Steak on the Stovetop"></a>         
+        
+        @*<a id="lnkText" class="text-dark text-decoration-none" asp-area="" asp-controller="Recipe" asp-action="DetailsName" asp-route-name="g_Id"></a>
+    *@
+    </h1>     
     </div>
 </body>
 <body onload="RecipeDaily()">
@@ -151,13 +154,14 @@
 
         var imagearray = new Array('/css/img/blackenedshrimptacos.jpg', '/css/img/steakonstove.jpg', '/css/img/stuffed-peppers.jpg', '/css/img/RockFishTacos.png', '/css/img/JalapenoLimeSteakTacos.png', '/css/img/BreakfastTacos.png', '/css/img/SweetPotatoBlackBeanTacos.png');
         var i = days % imagearray.length;
-        i = 0;
+        i = 1;
         document.getElementById("randImg").src = imagearray[i];
         var imagetextarray = new Array('Blackened Shrimp Tacos', 'Steak on the Stovetop', 'Stuffed Peppers', 'Rock Fish Tacos', 'Jalapeno Lime Steak Tacos', 'Breakfast Tacos', 'Sweet Potato Black Bean Tacos');
         document.getElementById("randText").innerHTML = imagetextarray[i];
         document.getElementById("lnkText").innerHTML = imagetextarray[i];
+        var a = document.getElementById("lnkText");
+        a.href = "/Recipe/DetailsName?name=" + imagetextarray[i];
 
-        
     }
 
         //function RandomRecipe() {
