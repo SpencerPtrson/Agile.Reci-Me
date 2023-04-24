@@ -45,14 +45,58 @@
     </style>
 </head>
 
-
 <div class="section-padding-80">
     <div>
-        <div class="container">
-
+        <div class="container" style="margin: auto; width: 100%;">
             <div class="row">
-                <div class="col-12 col-md-8">
-                    <div>
+                <div class="col-12 col-md-8" style="float: left;">
+
+                    <!-- Ingredients -->
+                    <div class="col-12 ingredients col-lg-4" style="float: right; padding-left: 10px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="ingredients">
+                                    <h4>Ingredients</h4>
+
+                                    <!-- Custom Checkbox -->
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck">Ingredient</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck">Ingredient</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck">Ingredient</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck">Ingredient</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck">Ingredient</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck">Ingredient</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck">Ingredient</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck">Ingredient</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
                         <h2>@Html.DisplayFor(model => model.Name)</h2>
                         <h5>
                             By: <a asp-controller="User" asp-action="CreatedRecipes" asp-route-id="@Model.UserId" class="preview-container">@UserManager.LoadById(Model.UserId).FullName<span class="preview-image">
@@ -68,13 +112,14 @@
                             <h6>Prep: @Html.DisplayFor(model => model.PrepTime) minutes</h6>
                             <h6>Yields: @Html.DisplayFor(model => model.Servings) Servings</h6>
                         </div>
-                    </div>
+                            <div class="recipeimg">
+                                <img class="dish" src="~/images/Recipe/@Model.MainImagePath" />
+                            </div>
+
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-lg-8">
-                        
-
                         @foreach (var item in Model.Instructions)
                         {
                                 <!-- Single Preparation Step -->
@@ -83,18 +128,16 @@
                                     <p>@Html.DisplayFor(modelItem => item.Text)</p>
                         </div>
                         }
-                    </div>
-                    <div class="col-12 col-lg-4">
+                    @*<div class="col-12 col-lg-8">
                         @foreach (var item in Model.Ingredients)
                         {
-                        <!-- Single Preparation Step -->
-                        <div class="d-flex">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck">@Html.DisplayFor(modelItem => item.Name)</label>
+                            <!-- Single Preparation Step -->
+                            <div class="d-flex">
+                                <h4>@Html.DisplayFor(modelItem => item.Name).</h4>
                             </div>
                         }
-                    </div>
+                    </div>*@
+                   </div>
                 </div>
             </div>
-        </div>
-    </div>
+

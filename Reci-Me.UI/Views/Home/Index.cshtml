@@ -1,12 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Permanent+Marker&family=Satisfy&display=swap" rel="stylesheet">
+</head>
 
 <body>  
     <div>
-        <h1 id="header" style="text-align: center;">
+        <h1 id="header" style="text-align: center; font-family: 'Libre Baskerville', serif;">
             Recipe of the day:
             <a id="lnkText" class="text-dark text-decoration-none" asp-area="" asp-controller="Recipe" asp-action="DetailsName" asp-route-name="Steak on the Stovetop"></a>
     </h1>     
@@ -33,10 +36,14 @@
 </body>
 <br />
 <br />
-
-<div class="container-fluid">
+<div class="card" style="padding: 10px; font-family: 'Libre Baskerville', serif;">
+    <p>Reci-Me is a popular recipe website that offers users a seamless platform to search, save and create delicious recipes. With a vast collection of recipes from around the world, users can easily search for recipes based on their dietary preferences, ingredients, cooking methods, and more. The website's user-friendly interface allows users to create personalized recipe collections and easily access them from any device. Additionally, Reci-Me enables users to create and share their own unique recipes, making it an excellent platform for passionate cooks and aspiring chefs. With its extensive recipe database and interactive features, Reci-Me is a must-visit website for anyone looking to enhance their culinary skills and explore new flavors.   -- <em>Your RECI-ME Team</em></p>
+</div>
+<br />
+<br />
+<div class="card container-fluid">
     <div class="Taco Gallery">
-        <h3 style="text-align:center;">Surround yourself with tacos, not negativity.</h3>
+        <h3 style="text-align:center; font-family: 'Libre Baskerville', serif;">Surround yourself with tacos, not negativity.</h3>
         </div>
     <div class="row">
         <div class="col-xs-12 col-md-3">
@@ -67,9 +74,14 @@
 </div>
 <br />
 <br />
+<div class="card" style="padding: 10px; font-family: 'Libre Baskerville', serif;">
+    <p>The creators of Reci-Me come from diverse backgrounds, but they all share a passion for food and exploring different cuisines. Some have formal culinary training, while others have learned through travel and experimentation in the kitchen. They believe that food is a universal language that brings people together and allows them to experience different cultures and traditions. With this shared love of food, they have come together to create a platform where people can discover, learn and share their favorite recipes with others. Through their collective knowledge and expertise, they have built a website that offers a wide variety of recipes from all around the world, catering to different tastes and dietary needs. They hope that their website inspires others to discover and explore new foods and flavors, and to enjoy the many benefits of cooking and sharing meals with loved ones.</p>
+</div>
+<br />
+<br />
 
     <div class="row">
-        <h3 style="text-align:center;">Meet The Team</h3>
+    <h3 style="text-align:center; font-family: 'Libre Baskerville', serif;">Meet The Team</h3>
     <div class="column">
         <div class="card">
             <img src="css/img/Abigail.png" alt="Abigail" style="width:100%">
