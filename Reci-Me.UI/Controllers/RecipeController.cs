@@ -36,6 +36,12 @@ namespace Reci_Me.UI.Controllers
             return View(recipe);
         }
 
+        public ActionResult DetailsName(String name)
+        {
+            Recipe recipe = RecipeManager.LoadByName(name);
+            return View("Details",recipe);
+        }
+
         public ActionResult Browse(Guid id)
         {
             ViewBag.Title = "Recipes";

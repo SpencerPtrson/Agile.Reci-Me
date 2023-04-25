@@ -10,5 +10,5 @@
 		dbo.fnUserID('spencer.peterson0728@fvtc.edu'), 0, 'stuffedpeppers.jpg', dbo.fnCategoryID('Mexican')),
 		
 		(NEWID(), 'Pasta Fazool', 2, 10.00, 35.00, 
-		dbo.fnUserID('spencer.peterson0728@fvtc.edu'), 0, 'Pasta Fazool Image Path', dbo.fnCategoryID('Italian'))	
+		dbo.fnUserID('spencer.peterson0728@fvtc.edu'), 0, 'Pasta-Fazool.jpg', dbo.fnCategoryID('Italian'))	
 END

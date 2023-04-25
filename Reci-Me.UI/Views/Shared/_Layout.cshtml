@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Reci_Me.UI.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://kit.fontawesome.com/126ecd1951.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Nav Bar -->
@@ -92,12 +93,13 @@
                             </li>
                         }
 
-                        <div class="search">
+                        @*<div class="search" onclick="loadSearchData()">
                             <form class="navbar-form" action="#">
                                 <div class="input-group">
                                     <input type="text"
                                            placeholder=" Search Recipes"
                                            name="search">
+                                           <div id="list"></div>
                                     <button>
                                         <i class="fa fa-search"
                                            style="font-size: 18px;">
@@ -105,8 +107,26 @@
                                     </button>
                                 </div>
                             </form>
+                        </div>*@
+                        <div class="container" onclick="loadSearchData()">
+                            <h2>Search Recipes</h2>
+                            <input id="searchbar" autocomplete="off" onkeyup="search()" type="text" \n name="search" placeholder="Enter Recipe Name">
+                            <div id="list"></div>
                         </div>
-
+                        <script src="~/js/searchBar.js"></script>
+                        @*<div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                    <a href="#about">About</a>
+                                    <a href="#base">Base</a>
+                                    <a href="#blog">Blog</a>
+                                    <a href="#contact">Contact</a>
+                                    <a href="#custom">Custom</a>
+                                    <a href="#support">Support</a>
+                                    <a href="#tools">Tools</a>
+                                </div>
+                        </div>*@
                         
                         @*}
                         else
@@ -136,9 +156,9 @@
         <div class="container">
             &copy; 2023 - ReciMe - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-        @*<a href="#" class="fa fa-facebook-f"></a>
-        <a href="#" class="fa fa-twitter"></a>
-        <a href="#" class="fa fa-instagram"></a>*@
+        <a href="#" <i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" <i class="fa-brands fa-twitter"></i></a>
+        <a href="#" <i class="fa-brands fa-instagram"></i></a>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

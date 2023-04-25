@@ -13,6 +13,22 @@ html {
   min-height: 100%;
 }
 
+a {
+    text-decoration: none;
+
+}
+
+a:hover {
+    color: black;
+}
+
+ul {
+    text-decoration: none;
+}
+
+ul:hover {
+    color: black;
+}
 
 .navbar-nav {
     position: relative;
@@ -105,6 +121,12 @@ body {
             color: white;
         }
 
+
+        .sidebar a:link {
+            color: #FFC018;
+            ;
+        }
+
     .sidebar li {
         font-size: 0px;
     }
@@ -122,6 +144,10 @@ footer {
     text-align:center;
     font-family: 'Brush Script MT';
     font-size: 20px;
+}
+
+.fa-brands {
+    padding-right: 10px;
 }
 
 .icon {
@@ -284,5 +310,65 @@ mark {
 
     .button:hover {
         background-color: #555;
+    }
+
+@media (min-width: 992px) {
+    .col-lg-4 {
+        flex: 0 0 auto;
+        width: fit-content;
+    }
+
+    @media (min-width: 992px) {
+        .col-lg-8 {
+            flex: 0 0 auto;
+            width: 66.66666667%;
+            padding-left: 20px;
+        }
+
+        @media screen and (max-width: 650px) {
+            .col-lg-8, .col-md-8 {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .col-lg-4 {
+                display: none;
+            }
+        }
+    }
+}
+
+#searchbar {
+padding: 15px;
+border-radius: 5px;
+}
+
+input[type=text] {
+-webkit-transition: width 0.15s ease-in-out;
+transition: width 0.15s ease-in-out;
+}
+
+#list {
+    position: absolute;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    display: block;
+    background-color: white;
+    overflow-y: auto;
+    max-height: 150px;
+}
+
+.listItem {
+ display: flex;
+ flex-direction: column;
+ text-decoration: none;
+ padding: 5px 20px;
+ color: black;
+}
+
+    .listItem:hover {
+     background-color: lightgrey;
     }
    
