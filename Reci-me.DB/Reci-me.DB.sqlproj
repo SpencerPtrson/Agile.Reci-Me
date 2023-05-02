@@ -61,6 +61,7 @@
     <Folder Include="PostDeploy" />
     <Folder Include="PostDeploy\DefaultData" />
     <Folder Include="Functions" />
+    <Folder Include="PostDeploy\CurrentData" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\tblIngredient.sql" />
@@ -80,6 +81,14 @@
     <Build Include="Tables\tblRecipeInstruction.sql" />
     <None Include="PostDeploy\DefaultData\RecipeInstructions.sql" />
     <Build Include="Tables\tblComment.sql" />
+    <None Include="PostDeploy\CurrentData\AccessLevels.sql" />
+    <None Include="PostDeploy\CurrentData\Categories.sql" />
+    <None Include="PostDeploy\CurrentData\Ingredients.sql" />
+    <None Include="PostDeploy\CurrentData\MeasuringTypes.sql" />
+    <None Include="PostDeploy\CurrentData\Recipe-Ingredients.sql" />
+    <None Include="PostDeploy\CurrentData\RecipeInstructions.sql" />
+    <None Include="PostDeploy\CurrentData\Recipes.sql" />
+    <None Include="PostDeploy\CurrentData\Users.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Reci-me.DB.refactorlog" />

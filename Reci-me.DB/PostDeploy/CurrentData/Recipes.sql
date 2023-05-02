@@ -1,0 +1,6 @@
+﻿BEGIN
+INSERT INTO [dbo].[tblRecipe] ([Id], [Name], [Servings], [TotalTime], [PrepTime], [UserId], [IsHidden], [MainImagePath], [CategoryId]) VALUES (N'c029fad3-09a0-43ba-8a74-4167b1d975e3', N'Steak on the Stovetop', 2, 40, 30, N'd4e65259-bff9-423c-a9db-d1f99b48750a', 0, N'steakonstove.jpg', N'0248972d-498a-4d3b-9051-8cfd3306df71')
+INSERT INTO [dbo].[tblRecipe] ([Id], [Name], [Servings], [TotalTime], [PrepTime], [UserId], [IsHidden], [MainImagePath], [CategoryId]) VALUES (N'1aeade99-fb83-453a-9387-4f7fb19c981d', N'Blackened Shrimp Tacos', 4, 31, 15, N'd4e65259-bff9-423c-a9db-d1f99b48750a', 0, N'blackenedshrimptacos.jpg', N'e6482bdc-46d6-4777-b0ee-658b337febc4')
+INSERT INTO [dbo].[tblRecipe] ([Id], [Name], [Servings], [TotalTime], [PrepTime], [UserId], [IsHidden], [MainImagePath], [CategoryId]) VALUES (N'f30fa144-f97a-4899-aa8a-6ea2226347db', N'Pasta Fazool', 2, 35, 10, N'd4e65259-bff9-423c-a9db-d1f99b48750a', 0, N'Pasta-Fazool.jpg', N'a894832e-b0fd-46b3-8e3c-c58b4b7f43a4')
+INSERT INTO [dbo].[tblRecipe] ([Id], [Name], [Servings], [TotalTime], [PrepTime], [UserId], [IsHidden], [MainImagePath], [CategoryId]) VALUES (N'7c22917d-bb42-48fc-83ca-d2fb20ffa0f4', N'Stuffed Peppers', 6, 80, 10, N'd4e65259-bff9-423c-a9db-d1f99b48750a', 0, N'stuffedpeppers.jpg', N'e6482bdc-46d6-4777-b0ee-658b337febc4')
+END

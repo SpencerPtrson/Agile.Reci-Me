@@ -10,12 +10,12 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-:r .\DefaultData\Categories.sql
-:r .\DefaultData\AccessLevels.sql
-:r .\DefaultData\Users.sql
-:r .\DefaultData\Recipes.sql
-:r .\DefaultData\RecipeInstructions.sql
-:r .\DefaultData\Ingredients.sql
-:r .\DefaultData\MeasuringTypes.sql
-:r .\DefaultData\Recipe-Ingredients.sql
+:r .\CurrentData\Categories.sql
+:r .\CurrentData\AccessLevels.sql
+:r .\CurrentData\Users.sql
+:r .\CurrentData\Recipes.sql
+:r .\CurrentData\RecipeInstructions.sql
+:r .\CurrentData\Ingredients.sql
+:r .\CurrentData\MeasuringTypes.sql
+:r .\CurrentData\Recipe-Ingredients.sql
 
