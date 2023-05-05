@@ -83,11 +83,15 @@ namespace Reci_Me.UI.Controllers
                 recipeVM.Recipe.Id = Guid.NewGuid();
                 RecipeManager.Insert(recipeVM.Recipe);
 
+
+                int instructionNum = 1;
                 foreach(Instruction i in recipeVM.Recipe.Instructions)
                 {
                     i.Id = Guid.NewGuid();
                     i.RecipeId = recipeVM.Recipe.Id;
+                    i.InstructionNum = instructionNum;
                     RecipeInstructionManager.Insert(i);
+                    instructionNum++;
                 }
 
                 //Instruction testInstruction = new Instruction

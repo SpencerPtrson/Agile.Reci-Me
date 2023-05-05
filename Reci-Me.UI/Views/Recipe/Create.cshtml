@@ -65,9 +65,6 @@
             <br />
 
             <div class="form-group">
-                <input type="hidden" name="Instructions.Index" value="0" />
-                <input type="hidden" asp-for="Recipe.Instructions[0].InstructionNum" value="1" class="control-label" style="padding-right:600px; position:relative"></input>
-                <input type="hidden" asp-for="Recipe.Instructions[0].Id" value=crypto.randomUUID() class="control-label" style="padding-right:600px; position:relative"></input>
                 <input type="text" asp-for="Recipe.Instructions[0].Text" class="control-label" style="padding-right:600px; position:relative"></input>
             </div>
 
@@ -112,7 +109,14 @@
     function GetDynamicTextBox(value) {
         var div = $("<div />");
 
-        var textBox = $("<input />").attr("type", "textbox").attr("name", "DynamicTextBox").attr("class", "instruction");
+        var textBox = $("<input />")
+                .attr("type", "text")
+                .attr("name", "DynamicTextBox")
+                .attr("class", "control-label")
+                .attr("style", "padding-right:600px; margin-left:74px")
+                .attr("asp-for", "Recipe.Instructions[1].Text");
+        
+                
         textBox.val(value);
         div.append(textBox);
 
