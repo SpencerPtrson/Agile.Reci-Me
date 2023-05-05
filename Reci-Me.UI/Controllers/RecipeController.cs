@@ -80,9 +80,17 @@ namespace Reci_Me.UI.Controllers
                     }
                 }
 
+                recipeVM.Recipe.Id = Guid.NewGuid();
                 RecipeManager.Insert(recipeVM.Recipe);
 
-                //Instruction instruction = new Instruction
+                foreach(Instruction i in recipeVM.Recipe.Instructions)
+                {
+                    i.Id = Guid.NewGuid();
+                    i.RecipeId = recipeVM.Recipe.Id;
+                    RecipeInstructionManager.Insert(i);
+                }
+
+                //Instruction testInstruction = new Instruction
                 //{
                 //    Id = new Guid(),
                 //    Text = "test upload",
@@ -90,6 +98,13 @@ namespace Reci_Me.UI.Controllers
                 //    RecipeId = recipeVM.Recipe.Id
                 //};
                 //RecipeInstructionManager.Insert(instruction);
+
+                //RecipeIngredient testIngredient = new RecipeIngredient
+                //{
+                //    Id = Guid.NewGuid(),
+                //    RecipeId = recipeVM.Recipe.Id,
+                //};
+                //RecipeIngredientManager.Insert(testIngredient);
 
                 return RedirectToAction(nameof(Index), "Home");
             }
