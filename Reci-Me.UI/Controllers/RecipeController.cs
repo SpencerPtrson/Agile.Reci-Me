@@ -94,6 +94,23 @@ namespace Reci_Me.UI.Controllers
                     instructionNum++;
                 }
 
+                for (int i = 0; i < recipeVM.Recipe.Ingredients.Count; i++)
+                {
+                    if (recipeVM.MeasuringTypes[i] != null)
+                    {
+                        RecipeIngredient recIng = new RecipeIngredient
+                        {
+                            Id = Guid.NewGuid(),
+                            RecipeId = recipeVM.Recipe.Id,
+                            IngredientId = recipeVM.Ingredients[i].Id,
+                            MeasuringId = recipeVM.MeasuringTypes[i].Id,
+                            Quantity = 1,
+                            IsOptional = false,
+                        };
+                        RecipeIngredientManager.Insert(recIng);
+                    }
+                }
+
                 //Instruction testInstruction = new Instruction
                 //{
                 //    Id = new Guid(),
