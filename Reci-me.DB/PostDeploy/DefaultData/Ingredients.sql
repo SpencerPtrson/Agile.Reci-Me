@@ -51,8 +51,8 @@
 		(NEWID(),'Plum Tomatoes', 0),
 		(NEWID(),'White Kidney Beans', 0),
 		(NEWID(),'Mushrooms', 0),
-		(NEWID(),'Red Bell Peppers', 0),
-		(NEWID(),'Green Bell Peppers', 0),
+		(NEWID(),'Red Bell Pepper', 0),
+		(NEWID(),'Green Bell Pepper', 0),
 		
 		/* Fruit */
 		(NEWID(),'Lime Wedge', 0),
@@ -77,6 +77,7 @@
 		(NEWID(),'Ricotta Cheese', 0),
 		(NEWID(),'Egg', 0),
 		(NEWID(),'Parmesan Cheese', 0),
+		(NEWID(),'Milk', 0),
 		(NEWID(),'Mozzarella Cheese', 0),
 		
 		/* Grains */
