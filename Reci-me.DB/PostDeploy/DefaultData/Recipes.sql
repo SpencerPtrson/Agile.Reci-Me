@@ -10,5 +10,20 @@
 		dbo.fnUserID('spencer.peterson0728@fvtc.edu'), 0, 'stuffedpeppers.jpg', dbo.fnCategoryID('Mexican')),
 		
 		(NEWID(), 'Pasta Fazool', 2, 10.00, 35.00, 
-		dbo.fnUserID('spencer.peterson0728@fvtc.edu'), 0, 'Pasta-Fazool.jpg', dbo.fnCategoryID('Italian'))	
+		dbo.fnUserID('spencer.peterson0728@fvtc.edu'), 0, 'Pasta-Fazool.jpg', dbo.fnCategoryID('Italian')),
+
+		(NEWID(), 'Chicken Cacciatore', 6, 20.00, 110.00, 
+		dbo.fnUserID('abigail.proudlock0180@fvtc.edu'), 0, 'chickenCacciatore.jpg', dbo.fnCategoryID('Italian')),
+
+		(NEWID(), 'Bolognese Sauce', 6, 15.00, 215.00, 
+		dbo.fnUserID('abigail.proudlock0180@fvtc.edu'), 0, 'bolognese.jpg', dbo.fnCategoryID('Italian')),
+
+		(NEWID(), 'Lasagna', 12, 25.00, 195.00, 
+		dbo.fnUserID('abigail.proudlock0180@fvtc.edu'), 0, 'lasagna.jpg', dbo.fnCategoryID('Italian')),
+
+		(NEWID(), 'Pork Saltimbocca', 2, 20.00, 105.00, 
+		dbo.fnUserID('abigail.proudlock0180@fvtc.edu'), 0, 'porkSaltimbocca.jpg', dbo.fnCategoryID('Italian')),
+
+		(NEWID(), 'Beef Braciole', 4, 20.00, 55.00, 
+		dbo.fnUserID('abigail.proudlock0180@fvtc.edu'), 0, 'beefBraciole.jpg', dbo.fnCategoryID('Italian'))
 END
