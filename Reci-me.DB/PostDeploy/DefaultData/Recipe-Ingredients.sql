@@ -115,5 +115,5 @@
 		(NEWID(), dbo.fnRecipeID('Beef Braciole'), dbo.fnIngredientID('Water'), 1, dbo.fnMeasuringID('Cup'), 0),
 		(NEWID(), dbo.fnRecipeID('Beef Braciole'), dbo.fnIngredientID('Red Pepper Flakes'), 0.5, dbo.fnMeasuringID('Teaspoon'), 0),
 		(NEWID(), dbo.fnRecipeID('Beef Braciole'), dbo.fnIngredientID('Bay Leaf'), 1, dbo.fnMeasuringID('Whole'), 0),
-		(NEWID(), dbo.fnRecipeID('Beef Braciole'), dbo.fnIngredientID('Tamoato Sauce'), 1.5, dbo.fnMeasuringID('Cup'), 0),
+		(NEWID(), dbo.fnRecipeID('Beef Braciole'), dbo.fnIngredientID('Tamoato Sauce'), 1.5, dbo.fnMeasuringID('Cup'), 0)
 END
