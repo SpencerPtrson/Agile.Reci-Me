@@ -87,6 +87,7 @@ namespace Reci_Me.UI.Controllers
                 int instructionNum = 1;
                 foreach(Instruction i in recipeVM.Recipe.Instructions)
                 {
+                    if (i.Text == "ignore" || i.Text == null) break;
                     i.Id = Guid.NewGuid();
                     i.RecipeId = recipeVM.Recipe.Id;
                     i.InstructionNum = instructionNum;
