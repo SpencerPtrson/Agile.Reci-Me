@@ -87,7 +87,6 @@
             </div>
             <br />
 
-
             <div class="form-group">
                 <label asp-for="Recipe.Ingredients[0].Id" class="control-label" style="padding-right:580px"></label>
                 <select asp-for="Recipe.Ingredients[0].Id" class="form-control"
@@ -100,9 +99,6 @@
                         asp-items="@(new SelectList(Model.MeasuringTypes, "Id", "Name"))"></select>
                 <span asp-validation-for="Recipe.Measurements[0].Id" class="text-danger"></span>
             </div>
-
-            <p id="test">Test</p>
-
             <div class="form-group mt-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
