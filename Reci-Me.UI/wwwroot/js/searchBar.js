@@ -6,7 +6,26 @@ function loadSearchData() {
         'Blackened Shrimp Tacos',
         'Steak on the Stovetop',
         'Stuffed Peppers',
-        'Pasta Fazool'
+        'Pasta Fazool',
+        'Italian BLT',
+        'Traditional Gyro',
+        'Gorditas',
+        'Tyrokafteri',
+        'Seasoned Turkey Burgers',
+        'Waffles',
+        'Pastitsio',
+        'Venison Gyros',
+        'Carne Asada Torta',
+        'Honey Mustard Mac Salad',
+        'Greek Salad',
+        'Texas Chili',
+        'Grilled Chicken Street Tacos',
+        'American Goulash',
+        'Asparagus Casserole',
+        'Dakos',
+        'Tzatziki Sauce',
+        'Sopes',
+        'Mexican Rice'
     ];
     // Get the HTML element of the list
     let list = document.getElementById('list');
